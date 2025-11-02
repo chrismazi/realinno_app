@@ -3,17 +3,25 @@ import random
 LANGS = ["rw", "en", "sw"]
 
 rw = dict(
-    ABOUT = (
-        "Twite ku Buzima n’Imibereho - Real Works\n\n"
-        "Vision: Gutoza urubyiruko rufite umurava kugira ngo rube urufite imibereho myiza, ifite intego no kubaho neza mu kazi.\n"
-        "Mission: Gutegurira urubyiruko ruri mu kazi ubumenyi bw’ubuzima, imitekerereze, no gucunga ibyabo kugira ngo barusheho kuba abakozi b’indashyikirwa mu mibereho yabo yose.\n\n"
-        "FAQ: Real Works itanga ubufasha ku mibereho myiza, gucunga imari, n’umutekano mu kazi kabucukuzi mu Rwanda. Ushobora guhamagara umurongo wa GBV: 3512, kumenya byinshi kuri SACCO, cyangwa kugisha inama ku kazi n’ubuzima.\n"
-    ),
+    ABOUT_PAGES = [
+        "Twite ku Buzima n’Imibereho - Real Works\nVision: Gutoza urubyiruko rufite umurava kugira ngo rube urufite imibereho myiza, ifite intego no kubaho neza mu kazi.\nPress 9. Next, 0. Garuka.",
+        "Mission: Gutegurira urubyiruko ruri mu kazi ubumenyi bw’ubuzima, imitekerereze, no gucunga ibyabo kugira ngo barusheho kuba abakozi b’indashyikirwa mu mibereho yabo yose.\nPress 9. Next, 0. Garuka.",
+        "FAQ: Real Works itanga ubufasha ku mibereho myiza, gucunga imari, n’umutekano mu kazi kabucukuzi mu Rwanda. Ushobora guhamagara umurongo wa GBV: 3512, kumenya byinshi kuri SACCO, cyangwa kugisha inama ku kazi n’ubuzima.\n0. Garuka"
+    ],
     MAIN_MENU = (
-        "1. Ubuzima bwo mu mutwe n’imibereho myiza\n2. Ubumenyi bw’imari\n3. Umutekano n’ubumenyi bw’ubuzima\n4. Ubufasha n’amakuru\n5. FAQ/Ikibazo\n6. Sohoka\n#. Hindura ururimi (Change Language)"
+        "1.Ubuzima bw’imitekerereze 2.Imari 3.Umutekano 4.Ubufasha 5.Ibindi 6.Sohoka\n0.Garuka #.Ururimi"
+    ),
+    OTHER_MENU = (
+        "1.Ibyerekeye Real Works\n2.Tanga igitekerezo\n0.Garuka"
+    ),
+    FEEDBACK_PROMPT = (
+        "Tanga igitekerezo cyawe cyangwa ikibazo: (Andika igitekerezo cyawe hanyuma twohereze)\n0.Garuka"
+    ),
+    FEEDBACK_DONE = (
+        "Murakoze cyane ku gitekerezo! Tuzagikurikirana.\n0.Garuka"
     ),
     MH_MENU = (
-        "Ubuzima bwo mu mutwe n’imibereho myiza:\n1. Guhangana n’umunaniro\n2. Guhangana n’agahinda/ubwoba\n3. Kwiyubakamo icyizere\n4. Imibanire myiza n’abandi\n0. Garuka"
+        "1.Guhangana n’umunaniro 2.Agahinda/ubwoba 3.Icyizere 4.Imibanire\n0.Garuka #.Ururimi"
     ),
     MH_STRESS = [
         "Akazi k’ubucukuzi karimo igitutu. Niba wumva uremerewe: Humeka buhoro kandi wihangane. Ganiriza inshuti cyangwa umuyobozi ukizeye. Fata akaruhuko gake niba bishoboka.",
@@ -40,7 +48,7 @@ rw = dict(
         "Gira inshuti, ntugategereze kuvuga gusa mu bibazo; no mu byiza bibuke kubashimira."
     ],
     FL_MENU = (
-        "Ubumenyi bw’imari:\n1. Kuzigama neza\n2. Gukora ingengo y’imari\n3. Kumenya inguzanyo za SACCO\n4. Kwirinda imyenda mibi\n0. Garuka"
+        "1.Kuzigama neza 2.Gukora ingengo y’imari 3.Kumenya inguzanyo za SACCO 4.Kwirinda imyenda mibi\n0.Garuka #.Ururimi"
     ),
     FL_SAVINGS = [
         "Buri gihe gerageza kuzigama n’ubwo ari make. Koresha cyangwa ujye muri Umurenge SACCO.",
@@ -67,7 +75,7 @@ rw = dict(
         "Ujye ubanza witekerezeho mbere yo gusaba ideni; ese urabishoboye?"
     ],
     SAFETY_MENU = (
-        "Umutekano n’ubumenyi bw’ubuzima:\n1. Imyitwarire yizewe\n2. Gukorera hamwe\n3. Uburyo bwo kuvugana neza\n4. Gutegura intego z’ubuzima\n0. Garuka"
+        "1.Imyitwarire yizewe 2.Gukorera hamwe 3.Uburyo bwo kuvugana neza 4.Gutegura intego z’ubuzima\n0.Garuka #.Ururimi"
     ),
     SAFETY_BEHAVIOR = [
         "Wambara ibikoresho by’umutekano buri gihe. Menyesha abayobozi ahantu hatari heza.",
