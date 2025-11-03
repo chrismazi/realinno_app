@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏗️ Real Works USSD Platform
+#  Real Works USSD Platform
 
 ### Empowering Young Mining Workers Through Mobile Technology
 
@@ -17,21 +17,21 @@
 
 ---
 
-## 📖 About
+##  About
 
 **Real Works** is a production-ready, secure USSD platform designed to provide mental health support, financial literacy education, and workplace safety knowledge to young mining workers in Rwanda through basic mobile phones. No smartphone or internet connection required.
 
-### 🎯 Mission
+###  Mission
 Improving the wellbeing and financial stability of young workers in the mining sector through accessible, mobile-first education.
 
-### 🌍 Impact
+###  Impact
 - **Accessible**: Works on any phone (USSD - *XXX#)
 - **Bilingual**: Kinyarwanda & English support
 - **Always Available**: 24/7 access to support resources
 - **Gamified**: Progress tracking keeps users engaged
 - **Free to Use**: No data costs for end-users
 
-## ✨ Features
+##  Features
 
 ### Core Functionality
 - **Multi-language Support**: Kinyarwanda (Rw) and English
@@ -52,7 +52,7 @@ Improving the wellbeing and financial stability of young workers in the mining s
 - **Input Validation**: Phone number and request validation
 - **Production-ready Configuration**: Environment-based config management
 
-## 🖼️ Screenshots
+## Screenshots
 
 <div align="center">
 
@@ -73,7 +73,7 @@ Improving the wellbeing and financial stability of young workers in the mining s
 
 </div>
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 | Component | Technology |
 |-----------|------------|
@@ -87,7 +87,7 @@ Improving the wellbeing and financial stability of young workers in the mining s
 | **Containerization** | Docker, Docker Compose |
 | **WSGI Server** | Gunicorn (production) |
 
-## 🎬 Demo & User Flow
+##  Demo & User Flow
 
 ### How It Works
 
@@ -131,7 +131,7 @@ Test the application using Africa's Talking sandbox:
 4. Enter your configured shortcode
 5. Start testing!
 
-## 📁 Folder Structure
+##  Folder Structure
 ```
 ussd_mental_finlit/
 │
@@ -155,7 +155,7 @@ ussd_mental_finlit/
 └── README.md
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.9+
@@ -235,7 +235,7 @@ Run with coverage:
 python -m pytest tests/ --cov=app --cov-report=html
 ```
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### USSD Callback
 - **POST** `/ussd/`
@@ -280,7 +280,7 @@ python -m pytest tests/ --cov=app --cov-report=html
 9. View Progress
 \#. Change Language
 
-## 🎯 Gamification & Progress Tracking
+##  Gamification & Progress Tracking
 
 Users earn:
 - **5 points** per content visit
@@ -291,7 +291,7 @@ Users earn:
   - `mental_health_champion`: 5+ mental health visits
   - `financial_guru`: 5+ financial literacy visits
 
-## 🔧 Africa's Talking Setup
+##  Africa's Talking Setup
 
 1. **Register on Africa's Talking**
    - Create an account at [africastalking.com](https://africastalking.com)
@@ -306,7 +306,7 @@ Users earn:
    - Use the sandbox simulator to test your flow
    - Test all menu paths and language switches
 
-## 🚢 Deployment
+##  Deployment
 
 ### Docker Deployment
 
@@ -354,7 +354,7 @@ The application supports three environments:
 
 Set via `FLASK_ENV` environment variable.
 
-## 🔐 Security Features
+##  Security Features
 
 - Phone number validation (Rwanda format)
 - Rate limiting per user
@@ -364,7 +364,7 @@ Set via `FLASK_ENV` environment variable.
 - SQL injection protection (SQLAlchemy ORM)
 - Environment-based secrets management
 
-## 📊 Analytics & Monitoring
+##  Analytics & Monitoring
 
 ### Built-in Analytics
 - Session logs with timestamps
@@ -379,7 +379,7 @@ Set via `FLASK_ENV` environment variable.
 - Subscription rates
 - User engagement scores
 
-## 🛠️ Maintenance
+##  Maintenance
 
 ### Scheduled Tasks
 - **Weekly SMS Tips**: Every Monday 9 AM
@@ -394,7 +394,7 @@ pg_dump realworks > backup_$(date +%Y%m%d).sql
 cp dev_realworks.db backup_$(date +%Y%m%d).db
 ```
 
-## 🔄 Extending & Customizing
+##  Extending & Customizing
 
 ### Adding New Content
 Edit `app/content.py`:
@@ -420,7 +420,7 @@ en['NEW_CATEGORY'] = [
 2. Add handler in `handle_ussd_session()` in `flows.py`
 3. Update tests in `tests/test_flows.py`
 
-## 🤝 Contributing
+##  Contributing
 
 We welcome contributions! Here's how you can help:
 
@@ -442,9 +442,9 @@ We welcome contributions! Here's how you can help:
 - Add tests for new features
 - Update documentation
 
-## 🗺️ Roadmap
+##  Roadmap
 
-### Completed ✅
+### Completed 
 - [x] Professional welcome screen
 - [x] Database-backed session management
 - [x] Progress tracking & gamification
@@ -455,7 +455,7 @@ We welcome contributions! Here's how you can help:
 - [x] Comprehensive test suite
 - [x] Production deployment ready
 
-### Planned 🚀
+### Planned 
 - [ ] Admin dashboard for analytics
 - [ ] Advanced reporting & data export
 - [ ] Integration with other communication channels (WhatsApp)
@@ -463,7 +463,7 @@ We welcome contributions! Here's how you can help:
 - [ ] AI-powered content recommendations
 - [ ] Mobile app companion
 
-## 📄 Documentation
+## Documentation
 
 - **[API Documentation](docs/API.md)** - Detailed API reference
 - **[Deployment Guide](docs/DEPLOYMENT.md)** - Production deployment steps
@@ -471,20 +471,20 @@ We welcome contributions! Here's how you can help:
 - **[Fixes Summary](FIXES_SUMMARY.md)** - All implemented fixes
 - **[Completion Report](COMPLETION_REPORT.md)** - Comprehensive project completion report
 
-## 📊 Project Stats
+## Project Stats
 
-- **30+ Issues Resolved** ✅
-- **17 Files Created/Modified** 📝
-- **2,869 Lines Added** ➕
-- **Production Ready** 🚀
-- **Test Coverage** 🧪
-- **Docker Support** 🐳
+- **30+ Issues Resolved** 
+- **17 Files Created/Modified** 
+- **2,869 Lines Added** 
+- **Production Ready** 
+- **Test Coverage** 
+- **Docker Support** 
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Team & Contact
+##  Team & Contact
 
 **Real Works** - Empowering young mining workers in Rwanda
 
@@ -493,7 +493,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Issues**: [Report a bug](https://github.com/chrismazi/realinno_app/issues)
 - **Pull Requests**: [Contribute](https://github.com/chrismazi/realinno_app/pulls)
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Africa's Talking** - SMS & USSD infrastructure
 - **Flask Community** - Web framework support
@@ -505,13 +505,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ for the mining communities in Rwanda**
 
-*If this project helps you, please consider giving it a ⭐ on GitHub!*
 
 [⬆ Back to Top](#-real-works-ussd-platform)
 
 </div>
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
