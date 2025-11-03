@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://realworks:realworks@db:5432/realworks
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=dev-secret-key-change-in-production
+      - AFRICASTALKING_API_KEY=${AFRICASTALKING_API_KEY}
+      - AFRICASTALKING_USERNAME=${AFRICASTALKING_USERNAME}
+      - AFRICASTALKING_SHORTCODE=${AFRICASTALKING_SHORTCODE}
+    volumes:
+      - .:/app
+      - logs:/app/logs
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=realworks
+      - POSTGRES_PASSWORD=realworks
+      - POSTGRES_DB=realworks
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  logs:

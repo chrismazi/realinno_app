@@ -1,6 +1,6 @@
 import random
 
-LANGS = ["rw", "en", "sw"]
+LANGS = ["rw", "en"]
 
 rw = dict(
     ABOUT = (
@@ -8,7 +8,9 @@ rw = dict(
         "Mission: Gutegurira urubyiruko ruri mu kazi ubumenyi bw’ubuzima, imitekerereze, no gucunga ibyabo kugira ngo barusheho kuba abakozi b’indashyikirwa mu mibereho yabo yose.\n\n"
     ),
     MAIN_MENU = (
-        "1. Ubuzima bwo mu mutwe n’imibereho myiza\n2. Ubumenyi bw’imari\n3. Umutekano n’ubumenyi bw’ubuzima\n4. Ubufasha n’amakuru\n5. FAQ/Ikibazo\n6. Sohoka\n#. Hindura ururimi (Change Language)"
+        "1. Ubuzima bwo mu mutwe n'imibereho myiza\n2. Ubumenyi bw'imari\n3. Umutekano n'ubumenyi bw'ubuzima\n"
+        "4. Ubufasha n'amakuru\n5. FAQ/Ikibazo\n6. Sohoka\n7. Kwiyandikisha kuri SMS\n8. Tanga igitekerezo\n"
+        "9. Reba aho ugeze\n#. Hindura ururimi"
     ),
     MH_MENU = (
         "Ubuzima bwo mu mutwe n’imibereho myiza:\n1. Guhangana n’umunaniro\n2. Guhangana n’agahinda/ubwoba\n3. Kwiyubakamo icyizere\n4. Imibanire myiza n’abandi\n0. Garuka"
@@ -101,80 +103,117 @@ rw = dict(
     )
 )
 
-# Expanded, smarter English and Swahili omitted for brevity but would be written here, with: ABOUT/VISION/MISSION blocks, and all advice arrays >=4 messages (see rw structure above).
+# Complete English content with full parity to Kinyarwanda
 en = dict(
+    ABOUT = (
+        "Focus on Wellbeing & Life - Real Works\n\n"
+        "Mission: Prepare young workers with knowledge of health, mental wellbeing, and personal finance management "
+        "to become resilient workers throughout their lives.\n\n"
+    ),
     MAIN_MENU = (
-        "Welcome!\n1. Mental Health Support\n2. Financial Literacy\n3. Request Tips via SMS\n4. Helpline/Support Info\n#. Language/Change Language"
+        "1. Mental Health & Wellbeing\n2. Financial Literacy\n3. Safety & Health Knowledge\n4. Support & Information\n"
+        "5. FAQ/About\n6. Exit\n7. Subscribe to SMS\n8. Send Feedback\n9. View Progress\n#. Change Language"
     ),
     MH_MENU = (
-        "Mental Health Support:\n1. Coping Strategy\n2. Mindfulness Exercise\n3. Speak to a Counsellor\n0. Back"
+        "Mental Health & Wellbeing:\n1. Coping with stress\n2. Dealing with loss/fear\n3. Building confidence\n"
+        "4. Healthy relationships\n0. Back"
     ),
+    MH_STRESS = [
+        "Mining work involves stress. If you feel overwhelmed: Breathe slowly and be patient. "
+        "Talk to a trusted friend or supervisor. Take a short break if possible.",
+        "If stress persists for a long time, seek help at a health center or from a health professional.",
+        "Try to complete the work at hand, remember that asking for help is not weakness.",
+        "Find a quiet place, listen to your heartbeat, this reduces stress."
+    ],
+    MH_LOSS_FEAR = [
+        "Losing a friend or fearing going into the mines is painful. You are not alone. "
+        "Share your feelings with others, hiding them makes the pain worse.",
+        "Feeling fear is not weakness, it's a sign that you value life. Let's help each other, together we are stronger.",
+        "Have someone you trust to share your feelings with, it helps.",
+        "Do short breathing exercises, you will regain confidence."
+    ],
+    MH_CONFIDENCE = [
+        "Building confidence brings strength. Celebrate what you achieve every day, even simple things. "
+        "Learn new skills in safety and life.",
+        "Tell yourself 'I am a valuable person and I have confidence.'",
+        "Connecting well with others and taking steps to care for yourself builds confidence.",
+        "Set simple goals, you will achieve much gradually."
+    ],
+    MH_RELATIONSHIPS = [
+        "Respect brings peace. Say no to violence or sexual pressure.",
+        "Treat everyone with respect, whether man or woman. If you're abused, you can report it confidentially "
+        "(see 4 in main menu).",
+        "Know that everyone has value. Say: I put respect and peace first.",
+        "Have friends, don't wait to speak only in problems; even in small joys, appreciate them."
+    ],
     FL_MENU = (
-        "Financial Literacy:\n1. Savings Tips\n2. Budgeting 101\n3. Small Business Ideas\n0. Back"
+        "Financial Literacy:\n1. Saving well\n2. Making a budget\n3. Understanding SACCO loans\n4. Avoiding bad debts\n0. Back"
     ),
-    SUPPORT_INFO = (
-        "Helpline: 123-456-HELP\nYou are not alone! For urgent support, dial national helpline.\n0. Back"
-    ),
-    MH_COPING_STRATEGIES = [
-        "Take slow, deep breaths. Try a short walk and notice your surroundings.",
-        "Pause and chat with a friend or trusted person. Even a short talk helps.",
-    ],
-    MH_MINDFULNESS = [
-        "Focus on 5 things you can see. Say them out loud.",
-        "Sit still; notice the feeling of your feet touching the ground.",
-    ],
-    FL_SAVINGS_TIPS = [
-        "Save a small amount regularly. Even coins add up over time!",
-        "Record every expense for a week—you’ll see where your savings can start.",
+    FL_SAVINGS = [
+        "Always try to save even if it's little. Use or join your Sector SACCO.",
+        "Saving gives you peace and security when you face difficulties.",
+        "Make a plan, set goals for the money you save weekly.",
+        "Remember: small amounts add up slowly, don't fool yourself that it's too little."
     ],
     FL_BUDGETING = [
-        "Write down all money in/out. Review weekly to plan ahead.",
-        "Plan tomorrow’s small purchases tonight. Set a limit—stick to it!",
+        "Separate what you need from what you just want. Write down how you use money weekly.",
+        "Plan for life, family and emergencies. A budget is the key to independence.",
+        "Good use of money helps you avoid borrowing and having many debts.",
+        "Planning plays a big role in maintaining good living conditions."
     ],
-    FL_SMALL_BIZ = [
-        "Start small: sell food or basic items from home.",
-        "Team up with friends for group selling or farming to split costs.",
+    FL_LOANS = [
+        "Sector SACCO offers loans based on what you've saved and your good history. Save all the time. "
+        "Repay well on time.",
+        "A good loan helps you progress, not one that brings you burden.",
+        "Take a loan only for a plan that has benefits, avoid repaying beyond your capacity.",
+        "SACCO is a good partner; know the rules and regulations before taking a loan."
     ],
-)
-en.update(ABOUT="Welcome to Real Works! Empowering young mining workers for wellbeing, financial literacy, and workplace safety.")
-
-sw = dict(
-    MAIN_MENU = (
-        "Karibu!\n1. Usaidizi wa Afya ya Akili\n2. Elimu ya Fedha\n3. Omba Ushauri kwa SMS\n4. Nambari ya Msaada\n#. Badilisha Lugha (Change Language)"
+    FL_DEBT = [
+        "Avoid borrowing money to buy non-urgent things. If you need to borrow, go to an approved institution, "
+        "not untrusted people.",
+        "Remember: a wise worker plans before using.",
+        "Bad debts bring problems; make good decisions before deciding to borrow.",
+        "Think first before asking for a loan; can you afford it?"
+    ],
+    SAFETY_MENU = (
+        "Safety & Health Knowledge:\n1. Safe behavior\n2. Working together\n3. Ways to communicate well\n"
+        "4. Preparing life goals\n0. Back"
     ),
-    MH_MENU = (
-        "Afya ya Akili:\n1. Njia ya Kukabiliana\n2. Mazoezi ya Utulivu\n3. Ongea na Mshauri\n0. Rudi Nyuma"
-    ),
-    FL_MENU = (
-        "Elimu ya Fedha:\n1. Vidokezo vya Akiba\n2. Bajeti 101\n3. Biashara Ndogo Ndogo\n0. Rudi Nyuma"
-    ),
+    SAFETY_BEHAVIOR = [
+        "Wear safety equipment all the time. Report to supervisors where conditions are unsafe.",
+        "Don't go into the mines alone. Safety is not fear, it's strength.",
+        "Be careful about your colleague: if they see danger, help them, call for help.",
+        "Avoid working without following safety rules."
+    ],
+    SAFETY_TEAMWORK = [
+        "Respect and working together brings safety. Look out for your colleagues.",
+        "Help newcomers at work. Together we overcome, together we progress.",
+        "Work as a team, help each other on the path of progress.",
+        "Unity at work makes everyone feel important."
+    ],
+    SAFETY_COMMUNICATION = [
+        "Communicating well reduces conflicts. Listen carefully before responding. Speak calmly and respectfully.",
+        "Appreciate what others have done.",
+        "Take time to listen to your colleague before giving them an answer.",
+        "If there are difficulties, speak the truth but maintain respect."
+    ],
+    SAFETY_GOALS = [
+        "Plan your tomorrow. What do you want to achieve in one year?",
+        "Write down your goals, and every week take small steps.",
+        "Find a friend to track your goals with, it makes the journey easier.",
+        "Put first your willingness to change and continue learning."
+    ],
     SUPPORT_INFO = (
-        "Nambari ya Msaada: 123-456-HELP\nHauko peke yako! Kwa msaada wa haraka, piga nambari ya taifa.\n0. Rudi Nyuma"
-    ),
-    MH_COPING_STRATEGIES = [
-        "Pumua taratibu. Tembea kidogo uangalie mazingira yako.",
-        "Zungumza na rafiki au mtu unayemuamini. Hata mazungumzo mfupi yanasaidia.",
-    ],
-    MH_MINDFULNESS = [
-        "Taja vitu 5 unavyoona sasa hivi. Vitamke kwa sauti.",
-        "Kaa kimya; hisi miguu yako ikiwa chini ya ardhi.",
-    ],
-    FL_SAVINGS_TIPS = [
-        "Hifadhi pesa kidogo mara kwa mara. Hata sarafu ndogo huongezeka!",
-        "Andika kila matumizi kwa wiki—utaona wapi unaweza kuanza kuweka akiba.",
-    ],
-    FL_BUDGETING = [
-        "Andika mapato na matumizi yote. Kagua kila wiki kupanga vizuri kesho.",
-        "Panga manunuzi madogo ya kesho leo. Weka kikomo—kishike!",
-    ],
-    FL_SMALL_BIZ = [
-        "Anza kidogo: uza chakula au bidhaa muhimu nyumbani.",
-        "Ungana na rafiki kwa biashara ya pamoja kupunguza gharama.",
-    ],
+        "If you're facing gender-based violence, grief, or mental health issues:\n"
+        "Talk to a trusted trainer or supervisor.\n"
+        "Go to your health center.\n"
+        "Call the GBV hotline: 3512 (it's free and confidential).\n"
+        "Get advice on finances at your Sector SACCO.\n"
+        "Your voice matters. You deserve safety and respect.\n0. Back"
+    )
 )
-sw.update(ABOUT="Karibu Real Works! Tunasaidia wafanyakazi wachanga wa migodi kupata ustawi.")
 
-LANG_MAP = {'rw': rw, 'en': en, 'sw': sw}
+LANG_MAP = {'rw': rw, 'en': en}
 
 def pick_random_message(options):
     return random.choice(options)
