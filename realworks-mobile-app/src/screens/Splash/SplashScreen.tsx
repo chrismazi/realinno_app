@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View,
   Text,
@@ -17,32 +17,13 @@ const SplashScreen = () => {
   const [loadingMessage, setLoadingMessage] = useState('');
   const [hasError, setHasError] = useState(false);
   
-  const fadeAnim = useState(new Animated.Value(0))[0];
-  const scaleAnim = useState(new Animated.Value(0.8))[0];
-  const progressAnim = useState(new Animated.Value(0))[0];
+  // Use useRef for Animated.Value to prevent re-creation on every render
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const scaleAnim = useRef(new Animated.Value(0.8)).current;
+  const progressAnim = useRef(new Animated.Value(0)).current;
+  const hasInitialized = useRef(false);
 
-  useEffect(() => {
-    // Start animations
-    Animated.parallel([
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-        easing: Easing.ease,
-      }),
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        tension: 20,
-        friction: 7,
-        useNativeDriver: true,
-      }),
-    ]).start();
-
-    // Start initialization
-    initializeApp();
-  }, []);
-
-  const initializeApp = async () => {
+  const initializeApp = useCallback(async () => {
     const steps = [
       { message: 'Checking authentication...', duration: 400 },
       { message: 'Loading language preferences...', duration: 300 },
@@ -76,13 +57,39 @@ const SplashScreen = () => {
     
     // Navigate to welcome intro
     navigation.navigate('Welcome' as never);
-  };
+  }, [navigation, progressAnim]);
+
+  useEffect(() => {
+    // Prevent double initialization
+    if (hasInitialized.current) return;
+    hasInitialized.current = true;
+
+    // Start animations
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+        easing: Easing.ease,
+      }),
+      Animated.spring(scaleAnim, {
+        toValue: 1,
+        tension: 20,
+        friction: 7,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
+    // Start initialization
+    initializeApp();
+  }, [fadeAnim, scaleAnim, initializeApp]);
 
   const retryInitialization = () => {
     setHasError(false);
     setLoadingProgress(0);
     setLoadingMessage('');
     progressAnim.setValue(0);
+    hasInitialized.current = false;
     initializeApp();
   };
 
