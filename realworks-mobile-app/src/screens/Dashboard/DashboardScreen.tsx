@@ -1,125 +1,219 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  StatusBar,
+  RefreshControl,
+  Dimensions,
+  Image,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors, spacing, typography } from '../../theme/theme';
+import { useNavigation } from '@react-navigation/native';
+
+const { width } = Dimensions.get('window');
 
 const DashboardScreen = () => {
+  const navigation = useNavigation();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const userData = {
+    name: 'Amara Uwimana',
+    currentStreak: 7,
+    weeklyProgress: 65.0,
+  };
+
+  const todayLesson = {
+    id: 1,
+    title: 'Managing Daily Stress Through Mindful Breathing',
+    description:
+      'Learn simple breathing techniques that can help you stay calm and focused throughout your day, even during challenging moments.',
+    category: 'Mindfulness',
+    duration: 5,
+    thumbnail: 'https://images.unsplash.com/photo-1616376392184-07997129a23e',
+    isCompleted: false,
+  };
+
+  const budgetData = {
+    totalBudget: 150000.0,
+    spent: 89500.0,
+    categories: [
+      { name: 'Food', spent: 45000, budget: 60000 },
+      { name: 'Transport', spent: 25000, budget: 40000 },
+      { name: 'Family Support', spent: 19500, budget: 30000 },
+    ],
+  };
+
+  const achievements = [
+    {
+      id: 1,
+      title: '7-Day Streak',
+      description: 'Completed lessons for 7 consecutive days',
+      points: 50,
+    },
+    {
+      id: 2,
+      title: 'Mindfulness Master',
+      description: 'Completed 5 mindfulness lessons',
+      points: 30,
+    },
+  ];
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setRefreshing(false);
+  };
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning,';
+    if (hour < 17) return 'Good afternoon,';
+    return 'Good evening,';
+  };
+
+  const formatCurrency = (amount: number) => {
+    return `RWF ${amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
       
-      {/* Header with Gradient */}
-      <LinearGradient
-        colors={[colors.primary, colors.primaryDark]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={styles.header}
+      {/* App Bar */}
+      <View style={styles.appBar}>
+        <View style={styles.appBarContent}>
+          <Image
+            source={{ uri: 'https://images.pexels.com/photos/8923194/pexels-photo-8923194.jpeg' }}
+            style={styles.appLogo}
+          />
+          <Text style={styles.appName}>RealWorks</Text>
+        </View>
+        <TouchableOpacity style={styles.notificationIcon}>
+          <View style={styles.notificationDot} />
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />
+        }
       >
-        <Text style={styles.greeting}>Hello! 👋</Text>
-        <Text style={styles.name}>Welcome back</Text>
-        <Text style={styles.subtitle}>Let's continue your journey</Text>
-      </LinearGradient>
-
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {/* Stats Cards */}
-        <View style={styles.statsContainer}>
-          <View style={[styles.statCard, styles.statCardPrimary]}>
-            <View style={styles.statIconContainer}>
-              <Text style={styles.statIcon}>📚</Text>
+        {/* Greeting Card */}
+        <View style={styles.greetingCard}>
+          <View style={styles.greetingHeader}>
+            <View style={styles.greetingInfo}>
+              <Text style={styles.greetingText}>{getGreeting()}</Text>
+              <Text style={styles.userName}>{userData.name}</Text>
             </View>
-            <Text style={styles.statValue}>0</Text>
-            <Text style={styles.statLabel}>Lessons Completed</Text>
+            <TouchableOpacity style={styles.streakBadge}>
+              <Text style={styles.streakNumber}>{userData.currentStreak}</Text>
+            </TouchableOpacity>
           </View>
-          
-          <View style={[styles.statCard, styles.statCardAccent]}>
-            <View style={styles.statIconContainer}>
-              <Text style={styles.statIcon}>⭐</Text>
-            </View>
-            <Text style={styles.statValue}>0</Text>
-            <Text style={styles.statLabel}>Points Earned</Text>
+          <Text style={styles.progressLabel}>Weekly Progress</Text>
+          <View style={styles.progressBar}>
+            <View style={[styles.progressFill, { width: `${userData.weeklyProgress}%` }]} />
           </View>
-
-          <View style={[styles.statCard, styles.statCardSuccess]}>
-            <View style={styles.statIconContainer}>
-              <Text style={styles.statIcon}>🔥</Text>
-            </View>
-            <Text style={styles.statValue}>0</Text>
-            <Text style={styles.statLabel}>Day Streak</Text>
-          </View>
+          <Text style={styles.progressText}>{userData.weeklyProgress.toFixed(0)}% complete</Text>
         </View>
 
-        {/* Quick Actions */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Quick Actions</Text>
-          
-          <TouchableOpacity style={styles.actionCard} activeOpacity={0.7}>
-            <LinearGradient
-              colors={[colors.learning, '#5FA8FF']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.actionGradient}
-            >
-              <View style={styles.actionContent}>
-                <Text style={styles.actionIcon}>📚</Text>
-                <View style={styles.actionText}>
-                  <Text style={styles.actionTitle}>Start Learning</Text>
-                  <Text style={styles.actionSubtitle}>Mental health & financial lessons</Text>
-                </View>
-              </View>
-              <Text style={styles.actionArrow}>→</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.actionCard} activeOpacity={0.7}>
-            <LinearGradient
-              colors={[colors.financial, '#00C9A7']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.actionGradient}
-            >
-              <View style={styles.actionContent}>
-                <Text style={styles.actionIcon}>💰</Text>
-                <View style={styles.actionText}>
-                  <Text style={styles.actionTitle}>Track Budget</Text>
-                  <Text style={styles.actionSubtitle}>Manage income and expenses</Text>
-                </View>
-              </View>
-              <Text style={styles.actionArrow}>→</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.actionCard} activeOpacity={0.7}>
-            <LinearGradient
-              colors={[colors.mentalHealth, '#B5A9FF']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.actionGradient}
-            >
-              <View style={styles.actionContent}>
-                <Text style={styles.actionIcon}>💬</Text>
-                <View style={styles.actionText}>
-                  <Text style={styles.actionTitle}>AI Assistant</Text>
-                  <Text style={styles.actionSubtitle}>Get instant support</Text>
-                </View>
-              </View>
-              <Text style={styles.actionArrow}>→</Text>
-            </LinearGradient>
-          </TouchableOpacity>
+        {/* Today's Micro-Lesson */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Today's Lesson</Text>
         </View>
-
-        {/* Emergency Support */}
-        <TouchableOpacity style={styles.emergencyCard} activeOpacity={0.8}>
-          <View style={styles.emergencyContent}>
-            <Text style={styles.emergencyIcon}>🆘</Text>
-            <View>
-              <Text style={styles.emergencyTitle}>Need Help Now?</Text>
-              <Text style={styles.emergencyText}>24/7 Crisis Support Available</Text>
+        <TouchableOpacity style={styles.lessonCard} onPress={() => navigation.navigate('Lessons' as never)}>
+          <Image source={{ uri: todayLesson.thumbnail }} style={styles.lessonImage} />
+          <View style={styles.lessonOverlay}>
+            <View style={styles.lessonDuration}>
+              <Text style={styles.lessonDurationText}>{todayLesson.duration} min</Text>
             </View>
+            <TouchableOpacity style={styles.playButton}>
+              <Text style={styles.playIcon}>▶</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.lessonContent}>
+            <View style={styles.lessonCategoryBadge}>
+              <Text style={styles.lessonCategoryText}>{todayLesson.category}</Text>
+            </View>
+            <Text style={styles.lessonTitle}>{todayLesson.title}</Text>
+            <Text style={styles.lessonDescription} numberOfLines={2}>
+              {todayLesson.description}
+            </Text>
           </View>
         </TouchableOpacity>
 
-        <View style={{ height: spacing.xxl }} />
+        {/* Budget Summary */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Budget Summary</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Budget' as never)}>
+            <Text style={styles.sectionAction}>View All</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.budgetCard}>
+          <View style={styles.budgetRow}>
+            <View style={styles.budgetItem}>
+              <Text style={styles.budgetLabel}>Total Budget</Text>
+              <Text style={styles.budgetValue}>{formatCurrency(budgetData.totalBudget)}</Text>
+            </View>
+            <View style={styles.budgetItem}>
+              <Text style={styles.budgetLabel}>Spent</Text>
+              <Text style={[styles.budgetValue, { color: colors.error }]}>
+                {formatCurrency(budgetData.spent)}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.budgetProgress}>
+            <View
+              style={[
+                styles.budgetProgressFill,
+                { width: `${(budgetData.spent / budgetData.totalBudget) * 100}%` },
+              ]}
+            />
+          </View>
+        </View>
+
+        {/* Achievements */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Recent Achievements</Text>
+        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.achievementsScroll}>
+          {achievements.map((achievement) => (
+            <View key={achievement.id} style={styles.achievementCard}>
+              <Text style={styles.achievementTitle}>{achievement.title}</Text>
+              <Text style={styles.achievementDescription}>{achievement.description}</Text>
+              <Text style={styles.achievementPoints}>+{achievement.points} points</Text>
+            </View>
+          ))}
+        </ScrollView>
+
+        {/* Quick Actions */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Quick Actions</Text>
+        </View>
+        <View style={styles.quickActions}>
+          <TouchableOpacity style={styles.quickActionButton}>
+            <Text style={styles.quickActionText}>Crisis Support</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.quickActionButton}>
+            <Text style={styles.quickActionText}>Mood Log</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.quickActionButton}>
+          <Text style={styles.quickActionText}>Journal</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ height: 120 }} />
       </ScrollView>
+
+      {/* Crisis FAB */}
+      <TouchableOpacity style={styles.fab} activeOpacity={0.9}>
+        <Text style={styles.fabText}>Crisis Support</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -129,170 +223,318 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
-  header: {
-    paddingTop: spacing.xxl + 20,
-    paddingBottom: spacing.xl,
-    paddingHorizontal: spacing.xl,
-  },
-  greeting: {
-    fontSize: typography.fontSize.lg,
-    color: colors.white,
-    opacity: 0.9,
-    marginBottom: spacing.xs,
-  },
-  name: {
-    fontSize: typography.fontSize.xxxl,
-    fontWeight: typography.fontWeight.bold,
-    color: colors.white,
-    marginBottom: spacing.xs,
-  },
-  subtitle: {
-    fontSize: typography.fontSize.md,
-    color: colors.white,
-    opacity: 0.95,
-  },
-  scrollView: {
-    flex: 1,
-    marginTop: -spacing.xl,
-  },
-  statsContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: spacing.md,
-    gap: spacing.sm,
-    marginBottom: spacing.lg,
-  },
-  statCard: {
-    flex: 1,
+  appBar: {
     backgroundColor: colors.white,
-    padding: spacing.md,
-    borderRadius: 16,
+    paddingHorizontal: spacing.md,
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.sm,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 3,
   },
-  statCardPrimary: {
-    borderTopWidth: 3,
-    borderTopColor: colors.primary,
+  appBarContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  statCardAccent: {
-    borderTopWidth: 3,
-    borderTopColor: colors.accent,
+  appLogo: {
+    width: 32,
+    height: 32,
+    borderRadius: 8,
   },
-  statCardSuccess: {
-    borderTopWidth: 3,
-    borderTopColor: colors.warning,
+  appName: {
+    fontSize: typography.fontSize.lg,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.text,
+    marginLeft: spacing.sm,
   },
-  statIconContainer: {
+  notificationIcon: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: colors.gray50,
+    backgroundColor: colors.gray100,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: spacing.sm,
   },
-  statIcon: {
-    fontSize: 20,
+  notificationDot: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: colors.error,
   },
-  statValue: {
-    fontSize: typography.fontSize.xxl,
+  scrollView: {
+    flex: 1,
+  },
+  greetingCard: {
+    margin: spacing.md,
+    padding: spacing.md,
+    backgroundColor: colors.primarySoft,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: colors.primary + '20',
+  },
+  greetingHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: spacing.md,
+  },
+  greetingInfo: {
+    flex: 1,
+  },
+  greetingText: {
+    fontSize: typography.fontSize.sm,
+    color: colors.textSecondary,
+    marginBottom: spacing.xs / 2,
+  },
+  userName: {
+    fontSize: typography.fontSize.lg,
     fontWeight: typography.fontWeight.bold,
     color: colors.text,
+  },
+  streakBadge: {
+    backgroundColor: '#E8F8F5',
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs / 2,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: colors.success + '30',
+  },
+  streakNumber: {
+    fontSize: typography.fontSize.md,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.success,
+  },
+  progressLabel: {
+    fontSize: typography.fontSize.sm,
+    color: colors.textSecondary,
     marginBottom: spacing.xs,
   },
-  statLabel: {
+  progressBar: {
+    height: 8,
+    backgroundColor: colors.gray200,
+    borderRadius: 4,
+    marginBottom: spacing.xs,
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: colors.primary,
+    borderRadius: 4,
+  },
+  progressText: {
     fontSize: typography.fontSize.xs,
     color: colors.textSecondary,
-    textAlign: 'center',
   },
-  section: {
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: spacing.md,
-    marginBottom: spacing.lg,
+    marginTop: spacing.md,
+    marginBottom: spacing.sm,
   },
   sectionTitle: {
-    fontSize: typography.fontSize.xl,
+    fontSize: typography.fontSize.md,
     fontWeight: typography.fontWeight.bold,
     color: colors.text,
-    marginBottom: spacing.md,
-    paddingHorizontal: spacing.xs,
   },
-  actionCard: {
-    marginBottom: spacing.md,
-    borderRadius: 16,
-    overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 5,
-  },
-  actionGradient: {
-    padding: spacing.lg,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  actionContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-  },
-  actionIcon: {
-    fontSize: 32,
-    marginRight: spacing.md,
-  },
-  actionText: {
-    flex: 1,
-  },
-  actionTitle: {
-    fontSize: typography.fontSize.lg,
-    fontWeight: typography.fontWeight.bold,
-    color: colors.white,
-    marginBottom: spacing.xs / 2,
-  },
-  actionSubtitle: {
+  sectionAction: {
     fontSize: typography.fontSize.sm,
-    color: colors.white,
-    opacity: 0.9,
-  },
-  actionArrow: {
-    fontSize: 24,
-    color: colors.white,
+    color: colors.primary,
     fontWeight: typography.fontWeight.bold,
   },
-  emergencyCard: {
+  lessonCard: {
     marginHorizontal: spacing.md,
     backgroundColor: colors.white,
-    borderRadius: 16,
-    padding: spacing.lg,
-    borderLeftWidth: 4,
-    borderLeftColor: colors.safety,
-    shadowColor: colors.safety,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 4,
+    borderRadius: 12,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
   },
-  emergencyContent: {
-    flexDirection: 'row',
+  lessonImage: {
+    width: '100%',
+    height: 160,
+  },
+  lessonOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 160,
+    justifyContent: 'space-between',
+    padding: spacing.sm,
+  },
+  lessonDuration: {
+    alignSelf: 'flex-end',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs / 2,
+    borderRadius: 6,
+  },
+  lessonDurationText: {
+    color: colors.white,
+    fontSize: typography.fontSize.xs,
+    fontWeight: typography.fontWeight.medium,
+  },
+  playButton: {
+    alignSelf: 'flex-end',
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: colors.primary,
+    justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  emergencyIcon: {
-    fontSize: 32,
-    marginRight: spacing.md,
+  playIcon: {
+    color: colors.white,
+    fontSize: 16,
+    marginLeft: 2,
   },
-  emergencyTitle: {
-    fontSize: typography.fontSize.lg,
+  lessonContent: {
+    padding: spacing.md,
+  },
+  lessonCategoryBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.primarySoft,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs / 2,
+    borderRadius: 6,
+    marginBottom: spacing.xs,
+  },
+  lessonCategoryText: {
+    color: colors.primary,
+    fontSize: typography.fontSize.xs,
+    fontWeight: typography.fontWeight.medium,
+  },
+  lessonTitle: {
+    fontSize: typography.fontSize.md,
     fontWeight: typography.fontWeight.bold,
     color: colors.text,
     marginBottom: spacing.xs / 2,
   },
-  emergencyText: {
+  lessonDescription: {
     fontSize: typography.fontSize.sm,
     color: colors.textSecondary,
+    lineHeight: 18,
+  },
+  budgetCard: {
+    marginHorizontal: spacing.md,
+    backgroundColor: colors.white,
+    padding: spacing.md,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  budgetRow: {
+    flexDirection: 'row',
+    marginBottom: spacing.sm,
+    gap: spacing.md,
+  },
+  budgetItem: {
+    flex: 1,
+  },
+  budgetLabel: {
+    fontSize: typography.fontSize.xs,
+    color: colors.textSecondary,
+    marginBottom: spacing.xs / 2,
+  },
+  budgetValue: {
+    fontSize: typography.fontSize.md,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.success,
+  },
+  budgetProgress: {
+    height: 6,
+    backgroundColor: colors.gray200,
+    borderRadius: 3,
+  },
+  budgetProgressFill: {
+    height: '100%',
+    backgroundColor: colors.error,
+    borderRadius: 3,
+  },
+  achievementsScroll: {
+    paddingLeft: spacing.md,
+  },
+  achievementCard: {
+    backgroundColor: colors.white,
+    padding: spacing.md,
+    borderRadius: 12,
+    marginRight: spacing.sm,
+    width: width * 0.6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  achievementTitle: {
+    fontSize: typography.fontSize.sm,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.text,
+    marginBottom: spacing.xs / 2,
+  },
+  achievementDescription: {
+    fontSize: typography.fontSize.xs,
+    color: colors.textSecondary,
+    marginBottom: spacing.xs,
+  },
+  achievementPoints: {
+    fontSize: typography.fontSize.xs,
+    color: colors.primary,
+    fontWeight: typography.fontWeight.bold,
+  },
+  quickActions: {
+    flexDirection: 'row',
+    paddingHorizontal: spacing.md,
+    gap: spacing.sm,
+  },
+  quickActionButton: {
+    flex: 1,
+    backgroundColor: colors.white,
+    paddingVertical: spacing.sm,
+    borderRadius: 8,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  quickActionText: {
+    fontSize: typography.fontSize.xs,
+    color: colors.text,
+    fontWeight: typography.fontWeight.medium,
+  },
+  fab: {
+    position: 'absolute',
+    bottom: spacing.xl,
+    left: spacing.md,
+    right: spacing.md,
+    backgroundColor: colors.error,
+    paddingVertical: spacing.md,
+    borderRadius: 12,
+    alignItems: 'center',
+    shadowColor: colors.error,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  fabText: {
+    color: colors.white,
+    fontSize: typography.fontSize.md,
+    fontWeight: typography.fontWeight.bold,
   },
 });
 
