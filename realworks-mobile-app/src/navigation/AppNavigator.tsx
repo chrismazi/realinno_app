@@ -26,7 +26,26 @@ const Stack = createStackNavigator<RootStackParamList>();
 const AppNavigator = () => {
   const { isAuthenticated, loading } = useAuth();
 
-  // Show splash while checking auth status
+  // For testing: Skip auth and go directly to Main
+  // TODO: Remove this and uncomment auth flow for production
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        cardStyle: { backgroundColor: '#F5F5F5' },
+      }}
+      initialRouteName="Main"
+    >
+      <Stack.Screen name="Main" component={MainTabNavigator} />
+      <Stack.Screen name="Splash" component={SplashScreen} />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Screen name="PhoneRegistration" component={PhoneRegistrationScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Signup" component={SignupScreen} />
+    </Stack.Navigator>
+  );
+
+  /* Production auth flow - uncomment when ready:
   if (loading) {
     return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -56,6 +75,7 @@ const AppNavigator = () => {
       )}
     </Stack.Navigator>
   );
+  */
 };
 
 export default AppNavigator;
