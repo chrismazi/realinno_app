@@ -17,7 +17,7 @@ import { useAuth } from '../../context/AuthContext';
 
 const SignupScreen = () => {
   const navigation = useNavigation();
-  const { login } = useAuth();
+  const { completeOnboarding } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -114,8 +114,8 @@ const SignupScreen = () => {
       // Simulate account creation
       await new Promise(resolve => setTimeout(resolve, 3000));
       
-      // Use auth context to login after signup
-      login();
+      // Use auth context to complete onboarding (demo mode)
+      await completeOnboarding();
       
       // Navigate to dashboard
       navigation.reset({

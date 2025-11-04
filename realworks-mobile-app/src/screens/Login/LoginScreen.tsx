@@ -17,7 +17,7 @@ import { useAuth } from '../../context/AuthContext';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
-  const { login } = useAuth();
+  const { completeOnboarding } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -82,8 +82,8 @@ const LoginScreen = () => {
       // Simulate authentication
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Use auth context to login
-      login();
+      // Use auth context to complete onboarding (demo mode)
+      await completeOnboarding();
       
       // Navigate to dashboard
       navigation.reset({
