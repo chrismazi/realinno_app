@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import { colors, spacing, typography } from '../../theme/theme';
 import { useAuth } from '../../context/AuthContext';
 
-const GoalSelectionScreen = ({ navigation }: any) => {
+const GoalSelectionScreen = () => {
   const { completeOnboarding } = useAuth();
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
 
@@ -23,8 +23,8 @@ const GoalSelectionScreen = ({ navigation }: any) => {
   };
 
   const handleContinue = async () => {
+    // Complete onboarding - AppNavigator will automatically show Main screen
     await completeOnboarding();
-    navigation.navigate('Main');
   };
 
   return (
