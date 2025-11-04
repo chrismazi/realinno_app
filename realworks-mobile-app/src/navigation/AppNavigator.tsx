@@ -2,46 +2,54 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useAuth } from '../context/AuthContext';
 
-// Auth Screens
-import OnboardingScreen from '../screens/Onboarding/OnboardingScreen';
-import PhoneAuthScreen from '../screens/Auth/PhoneAuthScreen';
-import OTPVerificationScreen from '../screens/Auth/OTPVerificationScreen';
-import LanguageSelectionScreen from '../screens/Onboarding/LanguageSelectionScreen';
-import GoalSelectionScreen from '../screens/Onboarding/GoalSelectionScreen';
+// Auth & Onboarding Screens
+import SplashScreen from '../screens/Splash/SplashScreen';
+import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
+import PhoneRegistrationScreen from '../screens/PhoneRegistration/PhoneRegistrationScreen';
+import LoginScreen from '../screens/Login/LoginScreen';
+import SignupScreen from '../screens/Signup/SignupScreen';
 
 // Main App
 import MainTabNavigator from './MainTabNavigator';
 
 export type RootStackParamList = {
-  Onboarding: undefined;
-  PhoneAuth: undefined;
-  OTPVerification: { phoneNumber: string };
-  LanguageSelection: undefined;
-  GoalSelection: undefined;
+  Splash: undefined;
+  Welcome: undefined;
+  PhoneRegistration: undefined;
+  Login: undefined;
+  Signup: undefined;
   Main: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
-  const { isAuthenticated, isFirstTime } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
+
+  // Show splash while checking auth status
+  if (loading) {
+    return (
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Splash" component={SplashScreen} />
+      </Stack.Navigator>
+    );
+  }
 
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: { backgroundColor: '#FFFFFF' },
+        cardStyle: { backgroundColor: '#F5F5F5' },
       }}
+      initialRouteName={isAuthenticated ? 'Main' : 'Splash'}
     >
       {!isAuthenticated ? (
         <>
-          {isFirstTime && (
-            <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-          )}
-          <Stack.Screen name="PhoneAuth" component={PhoneAuthScreen} />
-          <Stack.Screen name="OTPVerification" component={OTPVerificationScreen} />
-          <Stack.Screen name="LanguageSelection" component={LanguageSelectionScreen} />
-          <Stack.Screen name="GoalSelection" component={GoalSelectionScreen} />
+          <Stack.Screen name="Splash" component={SplashScreen} />
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="PhoneRegistration" component={PhoneRegistrationScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
         </>
       ) : (
         <Stack.Screen name="Main" component={MainTabNavigator} />
