@@ -9,24 +9,23 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#F57C3D',
-          light: '#FF9E6B',
           dark: '#E86520',
           soft: '#FFF4ED',
         },
-        secondary: {
-          DEFAULT: '#2D3436',
-          light: '#636E72',
-          dark: '#1A1D1E',
+        black: '#000000',
+        white: '#FFFFFF',
+        gray: {
+          50: '#FAFBFC',
+          100: '#F5F6F7',
+          200: '#E8EAED',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#636E72',
+          600: '#4B5563',
+          700: '#2D3436',
+          800: '#1A1D1E',
+          900: '#0F1011',
         },
-        accent: {
-          DEFAULT: '#00B894',
-          light: '#55EFC4',
-          dark: '#00917A',
-        },
-        mental: '#A29BFE',
-        financial: '#00B894',
-        safety: '#FF7675',
-        learning: '#74B9FF',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

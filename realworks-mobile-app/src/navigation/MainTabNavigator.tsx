@@ -5,7 +5,7 @@ import { Platform } from 'react-native';
 import { colors } from '../theme/theme';
 
 // Screens
-import DashboardScreen from '../screens/Dashboard/DashboardScreenEnhanced';
+import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import LessonsScreen from '../screens/Lessons/LessonsScreen';
 import BudgetScreen from '../screens/Budget/BudgetScreen';
 import ChatScreen from '../screens/Chat/ChatScreen';
