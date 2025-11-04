@@ -11,6 +11,7 @@ import {
   StatusBar,
   Dimensions,
 } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, spacing, typography } from '../../theme/theme';
 
 const { width } = Dimensions.get('window');
@@ -27,6 +28,7 @@ interface Message {
 
 const ChatScreen = () => {
   const scrollViewRef = useRef<ScrollView>(null);
+  const insets = useSafeAreaInsets();
   const [messageText, setMessageText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isCrisisMode, setIsCrisisMode] = useState(false);
@@ -181,15 +183,16 @@ const ChatScreen = () => {
   );
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
-    >
-      <StatusBar barStyle="dark-content" />
+    <SafeAreaView style={styles.container} edges={['top','bottom']}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+      >
+        <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       
       {/* Header */}
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + spacing.sm }]}>
         <View style={styles.headerContent}>
           <View style={styles.aiIconContainer}>
             <Text style={styles.aiIcon}>🤖</Text>
@@ -220,7 +223,7 @@ const ChatScreen = () => {
       <ScrollView
         ref={scrollViewRef}
         style={styles.messagesContainer}
-        contentContainerStyle={styles.messagesContent}
+        contentContainerStyle={[styles.messagesContent, { paddingBottom: spacing.xl }]}
         showsVerticalScrollIndicator={false}
       >
         {/* Quick Actions */}
@@ -259,7 +262,7 @@ const ChatScreen = () => {
       </ScrollView>
 
       {/* Input Area */}
-      <View style={styles.inputContainer}>
+      <View style={[styles.inputContainer, { paddingBottom: (Platform.OS === 'ios' ? spacing.lg : spacing.sm) + insets.bottom }]}>
         {/* Quick Replies from last AI message */}
         {quickReplies && !isTyping && (
           <ScrollView
@@ -301,7 +304,8 @@ const ChatScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 

@@ -13,6 +13,7 @@ import {
   ActivityIndicator,
   StatusBar,
 } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, spacing, typography } from '../../theme/theme';
 import { useLocale } from '../../context/LocaleContext';
 
@@ -35,6 +36,7 @@ interface Lesson {
 
 const LessonsScreen = () => {
   const { t } = useLocale();
+  const insets = useSafeAreaInsets();
   const [selectedTab, setSelectedTab] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('All');
@@ -270,11 +272,11 @@ const LessonsScreen = () => {
   const filteredLessons = getFilteredLessons();
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+    <SafeAreaView style={styles.container} edges={['top','bottom']}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       
       {/* Header */}
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + spacing.sm }]}>
         <Text style={styles.headerTitle}>Micro Lessons</Text>
         <TouchableOpacity onPress={() => setShowDownloadManager(!showDownloadManager)}>
           <View style={styles.downloadIcon}>
@@ -374,11 +376,11 @@ const LessonsScreen = () => {
           data={filteredLessons}
           renderItem={renderLessonCard}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.lessonsList}
+          contentContainerStyle={[styles.lessonsList, { paddingBottom: insets.bottom + spacing.xl + 24 }]}
           showsVerticalScrollIndicator={false}
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 

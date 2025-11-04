@@ -10,6 +10,7 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors, spacing, typography } from '../../theme/theme';
 import { useNavigation } from '@react-navigation/native';
@@ -19,6 +20,7 @@ const { width } = Dimensions.get('window');
 const DashboardScreen = () => {
   const navigation = useNavigation();
   const [refreshing, setRefreshing] = useState(false);
+  const insets = useSafeAreaInsets();
 
   const userData = {
     name: 'Amara Uwimana',
@@ -80,11 +82,11 @@ const DashboardScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
+    <SafeAreaView style={styles.container} edges={['top','bottom']}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       
       {/* App Bar */}
-      <View style={styles.appBar}>
+      <View style={[styles.appBar, { paddingTop: insets.top + spacing.sm }]}>
         <View style={styles.appBarContent}>
           <Image
             source={{ uri: 'https://images.pexels.com/photos/8923194/pexels-photo-8923194.jpeg' }}
@@ -100,6 +102,7 @@ const DashboardScreen = () => {
       <ScrollView
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: insets.bottom + spacing.xl + 24 }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[colors.primary]} />
         }
@@ -207,14 +210,14 @@ const DashboardScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <View style={{ height: 120 }} />
+        <View style={{ height: spacing.md }} />
       </ScrollView>
 
       {/* Crisis FAB */}
-      <TouchableOpacity style={styles.fab} activeOpacity={0.9}>
+      <TouchableOpacity style={[styles.fab, { bottom: insets.bottom + spacing.lg }]} activeOpacity={0.9}>
         <Text style={styles.fabText}>Crisis Support</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

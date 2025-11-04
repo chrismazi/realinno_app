@@ -10,6 +10,7 @@ import {
   Dimensions,
   StatusBar,
 } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, spacing, typography } from '../../theme/theme';
 import { useLocale } from '../../context/LocaleContext';
 
@@ -32,6 +33,7 @@ interface SavingsGoal {
 
 const BudgetScreen = () => {
   const { t } = useLocale();
+  const insets = useSafeAreaInsets();
   const [selectedPeriod, setSelectedPeriod] = useState('Monthly');
   const [isOfflineMode] = useState(false);
   const [showExpenseModal, setShowExpenseModal] = useState(false);
@@ -264,11 +266,11 @@ const BudgetScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+    <SafeAreaView style={styles.container} edges={['top','bottom']}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       
       {/* Header */}
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + spacing.sm }]}>
         <Text style={styles.headerTitle}>Budget Planner</Text>
         {isOfflineMode && (
           <View style={styles.offlineBadge}>
@@ -300,7 +302,11 @@ const BudgetScreen = () => {
         ))}
       </View>
 
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: insets.bottom + spacing.xl + 24 }}
+      >
         {/* Budget Summary */}
         {renderBudgetSummary()}
 
@@ -331,7 +337,7 @@ const BudgetScreen = () => {
           </ScrollView>
         </View>
 
-        <View style={{ height: 100 }} />
+        <View style={{ height: spacing.md }} />
       </ScrollView>
 
       {/* Add Expense FAB */}
@@ -342,7 +348,7 @@ const BudgetScreen = () => {
       >
         <Text style={styles.fabText}>+ Add Expense</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -630,7 +636,7 @@ const styles = StyleSheet.create({
   },
   fab: {
     position: 'absolute',
-    bottom: spacing.xl,
+    bottom: spacing.lg,
     left: spacing.md,
     right: spacing.md,
     backgroundColor: colors.primary,
