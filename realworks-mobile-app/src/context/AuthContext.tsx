@@ -97,8 +97,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const completeOnboarding = async () => {
     try {
+      // Create mock user for demo (until backend is connected)
+      const mockUser: User = {
+        id: 'demo-user-' + Date.now(),
+        phoneNumber: '+250 XXX XXX XXX',
+        language: 'en',
+        goals: [],
+        createdAt: new Date().toISOString(),
+      };
+
+      // Save onboarding completion and user data
       await AsyncStorage.setItem('has_onboarded', 'true');
+      await AsyncStorage.setItem('auth_token', 'demo-token-' + Date.now());
+      await AsyncStorage.setItem('user_data', JSON.stringify(mockUser));
+      
+      // Update state
       setIsFirstTime(false);
+      setIsAuthenticated(true);
+      setUser(mockUser);
     } catch (error) {
       console.error('Complete onboarding error:', error);
     }
