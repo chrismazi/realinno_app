@@ -3,11 +3,13 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions, StatusBar } from 
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors, spacing, typography } from '../../theme/theme';
+import { useLocale } from '../../context/LocaleContext';
 
 const { height } = Dimensions.get('window');
 
 const OnboardingScreen = () => {
   const navigation = useNavigation();
+  const { locale, setLocale, t } = useLocale();
 
   return (
     <>
@@ -18,6 +20,15 @@ const OnboardingScreen = () => {
         end={{ x: 1, y: 1 }}
         style={styles.container}
       >
+        {/* Language Switch */}
+        <View style={styles.languageSwitch}>
+          <TouchableOpacity onPress={() => setLocale('rw')} style={[styles.langBtn, locale === 'rw' && styles.langBtnActive]}>
+            <Text style={[styles.langText, locale === 'rw' && styles.langTextActive]}>Kinyarwanda</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setLocale('en')} style={[styles.langBtn, locale === 'en' && styles.langBtnActive]}>
+            <Text style={[styles.langText, locale === 'en' && styles.langTextActive]}>English</Text>
+          </TouchableOpacity>
+        </View>
         {/* Logo Area */}
         <View style={styles.logoContainer}>
           <View style={styles.logoCircle}>
@@ -29,24 +40,24 @@ const OnboardingScreen = () => {
 
         {/* Hero Content */}
         <View style={styles.content}>
-          <Text style={styles.title}>Empowering{'\n'}Mining Communities</Text>
+          <Text style={styles.title}>{t('welcome')}</Text>
           <Text style={styles.subtitle}>
-            Your journey to mental wellness and financial literacy starts here
+            {t('your_journey_to_mental_wellness_and_financial_literacy_starts_here')}
           </Text>
 
           {/* Features */}
           <View style={styles.features}>
             <View style={styles.featureRow}>
               <Text style={styles.featureIcon}>💡</Text>
-              <Text style={styles.featureText}>Learn Financial Skills</Text>
+              <Text style={styles.featureText}>{t('learn_financial_skills')}</Text>
             </View>
             <View style={styles.featureRow}>
               <Text style={styles.featureIcon}>🧠</Text>
-              <Text style={styles.featureText}>Mental Health Support</Text>
+              <Text style={styles.featureText}>{t('mental_health_support')}</Text>
             </View>
             <View style={styles.featureRow}>
               <Text style={styles.featureIcon}>🎯</Text>
-              <Text style={styles.featureText}>Track Your Progress</Text>
+              <Text style={styles.featureText}>{t('track_your_progress')}</Text>
             </View>
           </View>
         </View>

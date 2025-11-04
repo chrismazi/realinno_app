@@ -4,33 +4,19 @@ import { colors, spacing, typography } from '../../theme/theme';
 
 const PhoneAuthScreen = ({ navigation }: any) => {
   const [phoneNumber, setPhoneNumber] = useState('');
-
+  const isValid = phoneNumber.length >= 9;
   const handleContinue = () => {
-    // For demo: any phone number works
-    if (phoneNumber.length >= 9) {
+    if (isValid) {
       navigation.navigate('OTPVerification', { phoneNumber });
     }
   };
-
-  const isValid = phoneNumber.length >= 9;
-
   return (
-    <KeyboardAvoidingView 
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
+    <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <StatusBar barStyle="dark-content" />
-      
-      {/* Header */}
       <View style={styles.header}>
-        <View style={styles.iconContainer}>
-          <Text style={styles.icon}>📱</Text>
-        </View>
-        <Text style={styles.title}>Enter Your Phone Number</Text>
-        <Text style={styles.subtitle}>We'll send you a verification code</Text>
+        <Text style={styles.title}>Injiza nimero ya telefoni</Text>
+        <Text style={styles.subtitle}>Tuzakohereza kode yo kwemeza</Text>
       </View>
-      
-      {/* Input */}
       <View style={styles.content}>
         <TextInput
           style={styles.input}
@@ -42,11 +28,8 @@ const PhoneAuthScreen = ({ navigation }: any) => {
           autoFocus
           maxLength={15}
         />
-        
-        <Text style={styles.hint}>Enter your Rwanda mobile number</Text>
+        <Text style={styles.hint}>Andika nimero ya telefoni yawe yo mu Rwanda</Text>
       </View>
-
-      {/* Button */}
       <View style={styles.footer}>
         <TouchableOpacity 
           style={[styles.button, !isValid && styles.buttonDisabled]} 
@@ -54,7 +37,7 @@ const PhoneAuthScreen = ({ navigation }: any) => {
           disabled={!isValid}
           activeOpacity={0.8}
         >
-          <Text style={styles.buttonText}>Continue</Text>
+          <Text style={styles.buttonText}>Komeza</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -67,22 +50,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   header: {
-    paddingTop: spacing.xxl + 20,
-    paddingHorizontal: spacing.xl,
-    paddingBottom: spacing.xl,
+    paddingTop: spacing.xl,
+    paddingHorizontal: spacing.lg,
+    paddingBottom: spacing.md,
     alignItems: 'center',
-  },
-  iconContainer: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: colors.primarySoft,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: spacing.lg,
-  },
-  icon: {
-    fontSize: 40,
   },
   title: {
     fontSize: typography.fontSize.xxl,
