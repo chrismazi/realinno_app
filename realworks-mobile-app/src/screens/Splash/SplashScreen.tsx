@@ -75,10 +75,7 @@ const SplashScreen = () => {
     await new Promise(resolve => setTimeout(resolve, 500));
     
     // Navigate to welcome intro
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Welcome' as never }],
-    });
+    navigation.navigate('Welcome' as never);
   };
 
   const retryInitialization = () => {

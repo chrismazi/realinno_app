@@ -83,13 +83,8 @@ const LoginScreen = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Use auth context to complete onboarding (demo mode)
+      // This will automatically navigate to Main when isAuthenticated becomes true
       await completeOnboarding();
-      
-      // Navigate to dashboard
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'Main' as never }],
-      });
     } catch (error) {
       setPasswordError('Sign in failed. Please try again.');
     } finally {
