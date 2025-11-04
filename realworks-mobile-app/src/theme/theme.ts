@@ -1,59 +1,69 @@
 import { DefaultTheme } from 'react-native-paper';
 
+// Real Works Brand Color Palette
 export const colors = {
-  // Primary Brand Colors
-  primary: '#1E3A8A',        // Deep Blue
-  primaryLight: '#3B82F6',   // Lighter Blue
-  primaryDark: '#1E40AF',    // Darker Blue
+  // Primary Brand Colors - Warm Orange (from Real Works logo)
+  primary: '#F57C3D', // Real Works Orange
+  primaryLight: '#FF9E6B',
+  primaryDark: '#E86520',
+  primarySoft: '#FFF4ED', // Very light orange for backgrounds
   
-  // Secondary Colors
-  secondary: '#10B981',      // Emerald Green
-  secondaryLight: '#34D399', // Light Green
-  secondaryDark: '#059669',  // Dark Green
+  // Secondary Colors - Professional Grays
+  secondary: '#2D3436', // Dark Charcoal
+  secondaryLight: '#636E72',
+  secondaryDark: '#1A1D1E',
   
   // Accent Colors
-  accent: '#F59E0B',         // Amber
-  accentLight: '#FCD34D',    // Light Amber
+  accent: '#00B894', // Fresh Green (for success/growth)
+  accentLight: '#55EFC4',
+  accentDark: '#00917A',
   
-  // Mental Health Theme
-  mentalHealth: '#8B5CF6',   // Purple
-  mentalHealthLight: '#A78BFA',
-  
-  // Financial Theme
-  financial: '#10B981',      // Green
-  financialLight: '#6EE7B7',
-  
-  // Status Colors
-  success: '#10B981',
-  warning: '#F59E0B',
-  error: '#EF4444',
-  info: '#3B82F6',
+  // Feature-specific Colors
+  mentalHealth: '#A29BFE', // Soft Purple for mental health
+  financial: '#00B894', // Green for financial
+  safety: '#FF7675', // Coral Red for crisis
+  learning: '#74B9FF', // Sky Blue for learning
   
   // Neutral Colors
   white: '#FFFFFF',
   black: '#000000',
-  gray50: '#F9FAFB',
-  gray100: '#F3F4F6',
-  gray200: '#E5E7EB',
+  
+  // Grays - Professional palette
+  gray50: '#FAFBFC',
+  gray100: '#F5F6F7',
+  gray200: '#E8EAED',
   gray300: '#D1D5DB',
   gray400: '#9CA3AF',
-  gray500: '#6B7280',
+  gray500: '#636E72',
   gray600: '#4B5563',
-  gray700: '#374151',
-  gray800: '#1F2937',
-  gray900: '#111827',
+  gray700: '#2D3436',
+  gray800: '#1A1D1E',
+  gray900: '#0F1011',
   
-  // Background
-  background: '#F9FAFB',
+  // Semantic Colors
+  success: '#00B894',
+  warning: '#FDCB6E',
+  error: '#FF7675',
+  info: '#74B9FF',
+  
+  // UI Colors - Natural & Clean
+  background: '#FAFBFC', // Soft off-white
   surface: '#FFFFFF',
+  border: '#E8EAED',
+  text: '#2D3436', // Dark charcoal for readability
+  textSecondary: '#636E72',
+  textMuted: '#9CA3AF',
+  divider: '#E8EAED',
   
-  // Text Colors
-  text: '#111827',
-  textSecondary: '#6B7280',
-  textLight: '#9CA3AF',
+  // Interactive
+  link: '#F57C3D',
+  linkHover: '#E86520',
+  disabled: '#E8EAED',
+  disabledText: '#9CA3AF',
   
-  // Border
-  border: '#E5E7EB',
+  // Overlays
+  overlay: 'rgba(45, 52, 54, 0.7)',
+  overlayLight: 'rgba(45, 52, 54, 0.3)',
 };
 
 export const spacing = {
@@ -67,19 +77,27 @@ export const spacing = {
 
 export const typography = {
   fontFamily: {
-    regular: 'Poppins-Regular',
-    medium: 'Poppins-Medium',
-    semiBold: 'Poppins-SemiBold',
-    bold: 'Poppins-Bold',
+    regular: 'System',
+    medium: 'System',
+    semiBold: 'System',
+    bold: 'System',
   },
   fontSize: {
     xs: 12,
     sm: 14,
     md: 16,
     lg: 18,
-    xl: 20,
-    xxl: 24,
-    xxxl: 32,
+    xl: 22,
+    xxl: 28,
+    xxxl: 36,
+    hero: 42,
+  },
+  fontWeight: {
+    regular: '400' as const,
+    medium: '500' as const,
+    semiBold: '600' as const,
+    bold: '700' as const,
+    heavy: '800' as const,
   },
   lineHeight: {
     tight: 1.2,
