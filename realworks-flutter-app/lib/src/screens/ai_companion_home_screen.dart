@@ -210,7 +210,13 @@ class _AiCompanionHomeScreenState extends State<AiCompanionHomeScreen> {
       onTap: () {
         context.push('/ai-companion-chat');
       },
-      child: AppCard(
+      child: Container(
+        padding: const EdgeInsets.all(AppSpacing.md),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+          border: Border.all(color: AppColors.gray200),
+        ),
         child: Row(
           children: [
             Container(
