@@ -27,6 +27,17 @@ import 'screens/ai_companion_home_screen.dart';
 import 'screens/ai_companion_history_screen.dart';
 import 'screens/ai_companion_welcome_screen.dart';
 import 'screens/admin_dashboard_screen.dart';
+import 'screens/counseling_mood_selector_screen.dart';
+import 'screens/ai_thinking_screen.dart';
+import 'screens/learning_hub_courses_screen.dart';
+import 'screens/alt_home_wellbeing_screen.dart';
+import 'screens/alt_splash_screen.dart';
+import 'screens/chatbot_topics_screen.dart';
+import 'screens/counselor_booking_screen.dart';
+import 'screens/chat_resources_screen.dart';
+import 'screens/emergency_support_screen.dart';
+import 'screens/session_history_screen.dart';
+import 'screens/self_assessment_screen.dart';
 import 'services/mock_auth_service.dart';
 
 /// App router configuration using GoRouter
@@ -168,6 +179,53 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/admin-dashboard',
         builder: (context, state) => const AdminDashboardScreen(),
+      ),
+      // Additional Counseling/Support Routes
+      GoRoute(
+        path: '/counseling-mood-selector',
+        builder: (context, state) => const CounselingMoodSelectorScreen(),
+      ),
+      GoRoute(
+        path: '/ai-thinking',
+        builder: (context, state) => const AiThinkingScreen(),
+      ),
+      GoRoute(
+        path: '/chatbot-topics',
+        builder: (context, state) => const ChatbotTopicsScreen(),
+      ),
+      GoRoute(
+        path: '/counselor-booking',
+        builder: (context, state) => const CounselorBookingScreen(),
+      ),
+      GoRoute(
+        path: '/chat-resources',
+        builder: (context, state) => const ChatResourcesScreen(),
+      ),
+      GoRoute(
+        path: '/emergency-support',
+        builder: (context, state) => const EmergencySupportScreen(),
+      ),
+      GoRoute(
+        path: '/session-history',
+        builder: (context, state) => const SessionHistoryScreen(),
+      ),
+      GoRoute(
+        path: '/self-assessment',
+        builder: (context, state) => const SelfAssessmentScreen(),
+      ),
+      // Additional Learning Route
+      GoRoute(
+        path: '/learning-hub-courses',
+        builder: (context, state) => const LearningHubCoursesScreen(),
+      ),
+      // Alternative Screen Variants
+      GoRoute(
+        path: '/alt-home-wellbeing',
+        builder: (context, state) => const AltHomeWellbeingScreen(),
+      ),
+      GoRoute(
+        path: '/alt-splash',
+        builder: (context, state) => const AltSplashScreen(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(

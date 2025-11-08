@@ -157,14 +157,26 @@ flutter build web --release
 | AI Companion Home | `/ai-companion-home` | Chat with conversation starters |
 | AI Companion Chat | `/ai-companion-chat` | Live chat interface |
 | AI Companion History | `/ai-companion-history` | Chat history & conversations |
+| Counseling Mood Selector | `/counseling-mood-selector` | Choose your topic |
+| AI Thinking | `/ai-thinking` | Loading screen with tips |
+| Chatbot Topics | `/chatbot-topics` | Browse support categories |
+| Counselor Booking | `/counselor-booking` | Book appointments |
+| Chat Resources | `/chat-resources` | Articles and guides |
+| Emergency Support | `/emergency-support` | Crisis hotlines |
+| Session History | `/session-history` | Past appointments |
+| Self Assessment | `/self-assessment` | Wellness check-in |
 | Environmental Wellbeing | `/environmental-wellbeing` | Eco-friendly tips |
 | SRH & Family Planning | `/srh-family-planning` | Reproductive health |
 | **Learning & Education** |
 | Financial Literacy | `/financial-literacy` | Financial education |
 | Learning Hub | `/learning-hub` | Certificates & courses |
+| Learning Hub Courses | `/learning-hub-courses` | Video courses library |
 | **Admin & Other** |
 | Admin Dashboard | `/admin-dashboard` | Analytics and metrics (Admin) |
 | About & Help | `/about-help` | App info and support |
+| **Alternative Screens** |
+| Alt Home Wellbeing | `/alt-home-wellbeing` | Alternative home dashboard |
+| Alt Splash | `/alt-splash` | Alternative splash screen |
 
 ## 🔐 Mock Authentication
 
