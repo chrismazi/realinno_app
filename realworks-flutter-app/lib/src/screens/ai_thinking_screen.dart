@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 
-/// AI companion thinking/loading screen (Screen 10)
+/// AI thinking/loading screen - clean design matching images
 class AiThinkingScreen extends StatefulWidget {
   const AiThinkingScreen({super.key});
 
@@ -11,12 +11,20 @@ class AiThinkingScreen extends StatefulWidget {
   State<AiThinkingScreen> createState() => _AiThinkingScreenState();
 }
 
-class _AiThinkingScreenState extends State<AiThinkingScreen> {
+class _AiThinkingScreenState extends State<AiThinkingScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
   @override
   void initState() {
     super.initState();
-    // Auto navigate after thinking
-    Future.delayed(const Duration(seconds: 3), () {
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 1500),
+      vsync: this,
+    )..repeat();
+
+    // Navigate to chat screen after 2.5 seconds
+    Future.delayed(const Duration(milliseconds: 2500), () {
       if (mounted) {
         context.go('/ai-companion-chat');
       }
@@ -26,23 +34,37 @@ class _AiThinkingScreenState extends State<AiThinkingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.offWhite,
+      backgroundColor: AppColors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Animated dots
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildDot(0),
-                const SizedBox(width: 8),
-                _buildDot(1),
-                const SizedBox(width: 8),
-                _buildDot(2),
-              ],
+            // Animated dots - matching design
+            AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(3, (index) {
+                    final delay = index * 0.3;
+                    final value = ((_animationController.value + delay) % 1);
+                    final scale = 0.5 + (value * 0.5);
+                    
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 6),
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        color: index == 1 ? AppColors.primary : AppColors.gray400,
+                        shape: BoxShape.circle,
+                      ),
+                      transform: Matrix4.identity()..scale(scale),
+                    );
+                  }),
+                );
+              },
             ),
-            const SizedBox(height: AppSpacing.xl),
+            const SizedBox(height: 40),
             const Text(
               'Your AI companion is thinking...',
               style: TextStyle(
@@ -50,16 +72,21 @@ class _AiThinkingScreenState extends State<AiThinkingScreen> {
                 fontWeight: FontWeight.w600,
                 color: AppColors.textDark,
               ),
-              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: AppSpacing.xxl * 3),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
-              child: Text(
+            const SizedBox(height: 80),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: AppColors.gray50,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Text(
                 'Tip: Taking three deep breaths can help calm your nervous system.',
                 style: TextStyle(
                   fontSize: 14,
                   color: AppColors.textLight,
+                  height: 1.5,
                 ),
                 textAlign: TextAlign.center,
               ),
