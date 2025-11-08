@@ -1,299 +1,222 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../widgets/primary_button.dart';
 
-/// Learning and training hub screen
+/// Certificate celebration screen shown from Learning tab
 class LearningHubScreen extends StatelessWidget {
-  const LearningHubScreen({super.key});
+  const LearningHubScreen({super.key, this.extra});
+
+  final Map<String, dynamic>? extra;
 
   @override
   Widget build(BuildContext context) {
+    final certificateTitle = extra?['title'] as String? ?? 'Heavy Machinery Safety';
+    final certificateSubtitle = extra?['subtitle'] as String? ?? 'Completed: 15 Oct 2023';
+    final imageUrl = extra?['imageUrl'] as String?;
+
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            onPressed: () {
-              context.push('/notifications');
-            },
+        title: const Text('Certificate Earned'),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(AppSpacing.lg),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _buildConfettiHeader(),
+            const SizedBox(height: AppSpacing.lg),
+            const Text(
+              'Congratulations!',
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textDark,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: AppSpacing.xs),
+            Text(
+              certificateSubtitle,
+              style: const TextStyle(
+                fontSize: 15,
+                color: AppColors.textLight,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: AppSpacing.xl),
+            _buildCertificateCard(title: certificateTitle, imageUrl: imageUrl),
+            const SizedBox(height: AppSpacing.xxl),
+            _buildActions(context, certificateTitle),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildConfettiHeader() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        18,
+        (index) => Container(
+          width: 8,
+          height: 24,
+          margin: const EdgeInsets.symmetric(horizontal: 3),
+          decoration: BoxDecoration(
+            color: [
+              const Color(0xFFF97316),
+              const Color(0xFF38BDF8),
+              const Color(0xFFFB923C),
+              const Color(0xFF6366F1),
+            ][index % 4],
+            borderRadius: BorderRadius.circular(4),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCertificateCard({required String title, String? imageUrl}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFF4A3728),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.shadowMedium,
+            blurRadius: 20,
+            offset: const Offset(0, 10),
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      padding: const EdgeInsets.all(AppSpacing.lg),
+      child: Container(
+        padding: const EdgeInsets.all(AppSpacing.lg),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
+        ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Celebration Header
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  15,
-                  (index) => Container(
-                    width: 8,
-                    height: 24,
-                    margin: const EdgeInsets.symmetric(horizontal: 2),
-                    decoration: BoxDecoration(
-                      color: [
-                        Colors.orange,
-                        Colors.blue,
-                        Colors.yellow,
-                        AppColors.primary,
-                      ][index % 4],
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                  ),
+            if (imageUrl != null)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
+                child: Image.network(
+                  imageUrl,
+                  height: 160,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-            // Congratulations Text
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-              child: Column(
-                children: [
-                  const Text(
-                    'Congratulations, Alex!',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark,
-                    ),
-                  ),
-                  const SizedBox(height: AppSpacing.xs),
-                  const Text(
-                    "You've earned a new certificate",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.textLight,
-                    ),
-                  ),
-                  const SizedBox(height: AppSpacing.xl),
-                  // Certificate
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF4A3728),
-                      borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.shadowMedium,
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
-                        ),
-                      ],
-                    ),
-                    padding: const EdgeInsets.all(AppSpacing.lg),
-                    child: Container(
-                      padding: const EdgeInsets.all(AppSpacing.xl),
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
-                      ),
-                      child: Column(
-                        children: [
-                          const Text(
-                            'CERTIFICATE',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 2,
-                              color: AppColors.textDark,
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.xs),
-                          const Text(
-                            'EMPLOYEE ASSISTANCE PROJECT OF',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: AppColors.textLight,
-                            ),
-                          ),
-                          const Text(
-                            'SAFETY COURSE',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textDark,
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.md),
-                          const Divider(),
-                          const SizedBox(height: AppSpacing.md),
-                          const Text(
-                            'This is Awarded to',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: AppColors.textLight,
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.xs),
-                          const Text(
-                            "Nazaretten Sophomo O'Vintus",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textDark,
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.xs),
-                          const Text(
-                            'Occupation Service Engineer',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: AppColors.textLight,
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.md),
-                          // Gold Seal
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.amber,
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Colors.amber.shade700,
-                                width: 3,
-                              ),
-                            ),
-                            child: const Icon(
-                              Icons.verified,
-                              color: Colors.white,
-                              size: 24,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+            if (imageUrl != null) const SizedBox(height: AppSpacing.md),
+            const Text(
+              'CERTIFICATE',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+                color: AppColors.textDark,
               ),
             ),
-            const SizedBox(height: AppSpacing.xxl),
-            // Action Buttons
-            Padding(
-              padding: const EdgeInsets.all(AppSpacing.lg),
-              child: Column(
-                children: [
-                  PrimaryButton(
-                    text: 'Download Certificate',
-                    icon: Icons.download,
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Certificate downloaded'),
-                          backgroundColor: AppColors.success,
-                        ),
-                      );
-                    },
-                    isFullWidth: true,
-                  ),
-                  const SizedBox(height: AppSpacing.md),
-                  OutlinedButton.icon(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Shared to profile'),
-                          backgroundColor: AppColors.success,
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.share),
-                    label: const Text('Share to Profile'),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppColors.primary,
-                      side: const BorderSide(color: AppColors.primary, width: 2),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.xl,
-                        vertical: AppSpacing.md,
-                      ),
-                      minimumSize: const Size(double.infinity, 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-                      ),
-                    ),
-                  ),
-                ],
+            const SizedBox(height: AppSpacing.xs),
+            const Text(
+              'REALWORKS EMPLOYEE ASSISTANCE PROGRAM',
+              style: TextStyle(
+                fontSize: 10,
+                color: AppColors.textLight,
+                letterSpacing: 1.1,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: AppSpacing.md),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textDark,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: AppSpacing.xs),
+            const Text(
+              'Awarded to Alex Johnson',
+              style: TextStyle(
+                fontSize: 14,
+                color: AppColors.textLight,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: AppSpacing.lg),
+            Container(
+              width: 60,
+              height: 60,
+              decoration: const BoxDecoration(
+                color: Color(0xFFF97316),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.verified,
+                color: Colors.white,
+                size: 32,
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(context),
     );
   }
 
-  Widget _buildBottomNav(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadowLight,
-            blurRadius: 20,
-            offset: const Offset(0, -4),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
-            vertical: AppSpacing.sm,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(Icons.home_outlined, 'Home', false, () {
-                context.go('/home');
-              }),
-              _buildNavItem(Icons.school, 'Learning', true, () {}),
-              _buildNavItem(Icons.chat_bubble_outline, 'Support', false, () {
-                context.push('/counseling');
-              }),
-              _buildNavItem(Icons.account_circle_outlined, 'Profile', false, () {
-                context.push('/profile');
-              }),
-            ],
-          ),
+  Widget _buildActions(BuildContext context, String title) {
+    return Column(
+      children: [
+        PrimaryButton(
+          text: 'Download Certificate',
+          icon: Icons.download,
+          isFullWidth: true,
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('$title downloaded'),
+                backgroundColor: AppColors.success,
+              ),
+            );
+          },
         ),
-      ),
-    );
-  }
-
-  Widget _buildNavItem(
-    IconData icon,
-    String label,
-    bool isActive,
-    VoidCallback onTap,
-  ) {
-    return InkWell(
-      onTap: onTap,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            color: isActive ? AppColors.primary : AppColors.textLight,
-            size: 24,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: isActive ? AppColors.primary : AppColors.textLight,
+        const SizedBox(height: AppSpacing.md),
+        OutlinedButton.icon(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('$title shared to profile'),
+                backgroundColor: AppColors.success,
+              ),
+            );
+          },
+          icon: const Icon(Icons.share),
+          label: const Text('Share to Profile'),
+          style: OutlinedButton.styleFrom(
+            foregroundColor: AppColors.primary,
+            side: const BorderSide(color: AppColors.primary, width: 2),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.xl,
+              vertical: AppSpacing.md,
+            ),
+            minimumSize: const Size(double.infinity, 52),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

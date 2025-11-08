@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
-import '../theme/app_spacing.dart';
-import '../widgets/chip_button.dart';
 
-/// Learning & Training Hub with video courses (Screen 2)
+/// Learning & Training Hub screen matching provided design
 class LearningHubCoursesScreen extends StatefulWidget {
   const LearningHubCoursesScreen({super.key});
 
@@ -16,353 +14,369 @@ class LearningHubCoursesScreen extends StatefulWidget {
 class _LearningHubCoursesScreenState extends State<LearningHubCoursesScreen> {
   String _selectedCategory = 'All';
 
+  final _categories = const ['All', 'Safety', 'Finance', 'Wellness', 'Skills'];
+
+  final _courses = const [
+    _Course(
+      title: 'Advanced Site Safety',
+      duration: '3h 15m',
+      imageUrl:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuBImsWoCrvmmSojGgARq9gw9835adObZae_NmDC2Af4n8yCequeBh9gOEyN5UWg3AjOGBpe0C0kp-qeZFK49GADd_JO_tbDNxLIfObYXHSxttIFwRuoRp5FySctvzqrAVv3EUM2dUkvqfGIAPBi7_qQjDlN7C1e0b1IXPTrp1oKM2BZQVCw061pGocitaY7WHuzYHJX-wIrLOdlTUr-w6U3gPS_sW2Oh-nM9S6Xn-XuIOQ18spOZE0PRkjYbpXGaNfW1YzoJr7GJdA',
+    ),
+    _Course(
+      title: 'Financial Planning 101',
+      duration: '1h 30m',
+      imageUrl:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuAlrDmS1q2BVQqpsUD3lk6QMNwhwMkmowxqt2hAXkKUnAi94tNKiKJ5B5CTZ2NBlj44sglq7lNlR1fjmhpIQkyBVGaseseI049ExZgVs9Fv50u71V6IEl_yTd4WDQ-vqgt7GU_dB514QgsajuRtgugBs4D0uOyNPT2DQVe_j9PsrdS3xf3D_m1mpfdktYY0wib0zaitctTZp1SbUYIp2CZ1A9GJNRDU-iFv13ibKyiKvPRCYddFNd59pAkADQocCd2ey1vioSs8OR0',
+    ),
+    _Course(
+      title: 'Mindfulness at Work',
+      duration: '45m',
+      imageUrl:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuDDjjPTzwehdaedfvT7hCVSVpxyg921YTqzQAjcCACPrkVyYQK-ntI-EutApQq-J8Z2S5TG2XDiepEcvruONw17FvBGVCFAgSymFJR65URgS80rJ0DXHdwJc6RW4Lb0p7nbzOlJPi3nc69Ni6YZFRN3e-S6jR21ubYCO8OGfewqX7kRwzOnkyhY_Zz2wus69Afk3ihRHO3qrJe5yLPijKH9lLqmoAljnN4bNSBfiPBEr5RX2gmdxQuwF8fZCtxBjQApRaTIwRfXSLs',
+    ),
+    _Course(
+      title: 'Managing Debt',
+      duration: '2h 00m',
+      imageUrl:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuAUV2tTv88_aC1m9EAigRwahyUzGovsQ4d36IBl9VLdd771O8Sb1BWYm6iHDT3UaAJUxJkNxGMmcEvAvoQ4tUgX1asShlni3CqlzrMbRCzDHP4AV1CjKMe8qYVF5UkcSGqX6l0PBN-WFrzbv4RH_46J0I6fxn4oNHNeU1YyYFNghGPyK5noH87KgXZQPgxppuz7SMh8PysHVZKxrjHo6dG16oZiy69MvPzzoDsmcekLvoNsiKTmBVSI4JJhAjPj9T3hmmOceBEVEUI',
+    ),
+  ];
+
+  final _certificates = const [
+    _Certificate(
+      title: 'Heavy Machinery Safety',
+      subtitle: 'Completed: 15 Oct 2023',
+      imageUrl:
+          'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80',
+    ),
+    _Certificate(
+      title: 'First Aid Basics',
+      subtitle: 'Completed: 02 Sep 2023',
+      imageUrl:
+          'https://images.unsplash.com/photo-1559027615-5ee22b7bbcbb?auto=format&fit=crop&w=800&q=80',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.offWhite,
+      backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        backgroundColor: const Color(0xFFF8FAFC),
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Learning & Training',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'Learning & Training',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xFF0F172A),
+                  ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'Expand your skills and knowledge',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF64748B),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              'Expand your skills and knowledge',
-              style: TextStyle(
-                fontSize: 12,
-                color: AppColors.textLight,
-                fontWeight: FontWeight.normal,
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Icon(
+                Icons.search,
+                color: Color(0xFF475569),
               ),
             ),
           ],
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
-        ],
       ),
-      body: Column(
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
         children: [
-          // Category chips
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.all(AppSpacing.md),
-            child: Row(
-              children: [
-                _buildCategoryChip('All'),
-                const SizedBox(width: AppSpacing.sm),
-                _buildCategoryChip('Safety'),
-                const SizedBox(width: AppSpacing.sm),
-                _buildCategoryChip('Finance'),
-                const SizedBox(width: AppSpacing.sm),
-                _buildCategoryChip('Wellness'),
-              ],
+          _buildCategoryRow(),
+          const SizedBox(height: 16),
+          _buildCoursesGrid(),
+          const SizedBox(height: 32),
+          const Text(
+            'My Certificates',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: Color(0xFF0F172A),
             ),
           ),
-          // Courses grid
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              padding: const EdgeInsets.all(AppSpacing.md),
-              mainAxisSpacing: AppSpacing.md,
-              crossAxisSpacing: AppSpacing.md,
-              childAspectRatio: 0.85,
-              children: [
-                _buildCourseCard(
-                  imageUrl: 'assets/images/safety_course.jpg',
-                  title: 'Advanced Site Safety',
-                  duration: '3h 15m',
-                  category: 'Safety',
-                ),
-                _buildCourseCard(
-                  imageUrl: 'assets/images/finance_course.jpg',
-                  title: 'Financial Planning 101',
-                  duration: '1h 30m',
-                  category: 'Finance',
-                ),
-                _buildCourseCard(
-                  imageUrl: 'assets/images/mindfulness_course.jpg',
-                  title: 'Mindfulness at Work',
-                  duration: '45m',
-                  category: 'Wellness',
-                ),
-                _buildCourseCard(
-                  imageUrl: 'assets/images/debt_course.jpg',
-                  title: 'Managing Debt',
-                  duration: '2h 00m',
-                  category: 'Finance',
-                ),
-              ],
-            ),
-          ),
-          // My Certificates Section
-          Container(
-            color: AppColors.white,
-            padding: const EdgeInsets.all(AppSpacing.md),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'My Certificates',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textDark,
-                  ),
-                ),
-                const SizedBox(height: AppSpacing.sm),
-                _buildCertificateItem(
-                  title: 'Heavy Machinery Safety',
-                  subtitle: 'Completed: 15 Oct 2023',
-                ),
-              ],
-            ),
-          ),
+          const SizedBox(height: 16),
+          ..._certificates.map((certificate) => _buildCertificateTile(context, certificate)),
         ],
       ),
-      bottomNavigationBar: _buildBottomNav(context),
     );
   }
 
-  Widget _buildCategoryChip(String label) {
-    final isSelected = _selectedCategory == label;
-    return GestureDetector(
+  Widget _buildCategoryRow() {
+    return SizedBox(
+      height: 44,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: _categories.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 10),
+        itemBuilder: (context, index) {
+          final category = _categories[index];
+          final isSelected = category == _selectedCategory;
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedCategory = category;
+              });
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? const Color(0xFFF97316)
+                    : const Color(0xFFE2E8F0),
+                borderRadius: BorderRadius.circular(999),
+              ),
+              child: Text(
+                category,
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                  color: isSelected
+                      ? Colors.white
+                      : const Color(0xFF475569),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildCoursesGrid() {
+    return GridView.builder(
+      shrinkWrap: true,
+      primary: false,
+      itemCount: _courses.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 16,
+        crossAxisSpacing: 16,
+        childAspectRatio: 0.72,
+      ),
+      itemBuilder: (context, index) {
+        final course = _courses[index];
+        return _CourseCard(course: course);
+      },
+    );
+  }
+
+  Widget _buildCertificateTile(BuildContext context, _Certificate certificate) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(16),
       onTap: () {
-        setState(() {
-          _selectedCategory = label;
+        context.push('/learning-hub', extra: {
+          'title': certificate.title,
+          'subtitle': certificate.subtitle,
+          'imageUrl': certificate.imageUrl,
         });
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.sm,
-        ),
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary : AppColors.white,
-          borderRadius: BorderRadius.circular(AppSpacing.radiusFull),
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: isSelected ? AppColors.white : AppColors.textDark,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCourseCard({
-    required String imageUrl,
-    required String title,
-    required String duration,
-    required String category,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Opening: $title')),
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: AppColors.shadowLight,
-              blurRadius: 10,
-              offset: const Offset(0, 2),
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            // Image with play button
             Container(
-              height: 120,
+              width: 44,
+              height: 44,
               decoration: BoxDecoration(
-                color: AppColors.gray800,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(AppSpacing.radiusMd),
-                ),
+                color: const Color(0xFFFFEDD5),
+                shape: BoxShape.circle,
               ),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: AppColors.white.withOpacity(0.9),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.play_arrow,
-                      color: AppColors.primary,
-                      size: 32,
-                    ),
-                  ),
-                ],
+              child: const Icon(
+                Icons.emoji_events,
+                color: Color(0xFFF97316),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(AppSpacing.sm),
+            const SizedBox(width: 14),
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    certificate.title,
                     style: const TextStyle(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.textDark,
+                      color: Color(0xFF0F172A),
                     ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 2),
                   Text(
-                    duration,
+                    certificate.subtitle,
                     style: const TextStyle(
                       fontSize: 12,
-                      color: AppColors.textLight,
+                      color: Color(0xFF64748B),
                     ),
                   ),
                 ],
               ),
+            ),
+            const Icon(
+              Icons.chevron_right,
+              color: Color(0xFF94A3B8),
             ),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _buildCertificateItem({
-    required String title,
-    required String subtitle,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(AppSpacing.sm),
-      decoration: BoxDecoration(
-        color: AppColors.offWhite,
-        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: AppColors.primary.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
-            ),
-            child: const Icon(
-              Icons.emoji_events,
-              color: AppColors.primary,
-              size: 24,
-            ),
-          ),
-          const SizedBox(width: AppSpacing.sm),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textDark,
-                  ),
-                ),
-                Text(
-                  subtitle,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: AppColors.textLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const Icon(Icons.chevron_right, color: AppColors.textLight),
-        ],
-      ),
-    );
-  }
+class _CourseCard extends StatelessWidget {
+  const _CourseCard({required this.course});
 
-  Widget _buildBottomNav(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadowLight,
-            blurRadius: 20,
-            offset: const Offset(0, -4),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
-            vertical: AppSpacing.sm,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(Icons.home_outlined, 'Home', false, () {
-                context.go('/home');
-              }),
-              _buildNavItem(Icons.school, 'Learning', true, () {}),
-              _buildNavItem(Icons.chat_bubble_outline, 'Support', false, () {
-                context.push('/counseling');
-              }),
-              _buildNavItem(Icons.account_circle_outlined, 'Profile', false, () {
-                context.push('/profile');
-              }),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  final _Course course;
 
-  Widget _buildNavItem(
-    IconData icon,
-    String label,
-    bool isActive,
-    VoidCallback onTap,
-  ) {
-    return InkWell(
-      onTap: onTap,
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Opening: ${course.title}')),
+        );
+      },
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            icon,
-            color: isActive ? AppColors.primary : AppColors.textLight,
-            size: 24,
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.network(
+                    course.imageUrl,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      color: const Color(0xFFE2E8F0),
+                      child: const Icon(
+                        Icons.broken_image,
+                        color: Color(0xFF94A3B8),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          Colors.black.withOpacity(0.25),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      width: 46,
+                      height: 46,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.3),
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white.withOpacity(0.6),
+                          width: 1.5,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.15),
+                            blurRadius: 6,
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.play_circle,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            course.title,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              color: Color(0xFF0F172A),
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 4),
           Text(
-            label,
-            style: TextStyle(
+            course.duration,
+            style: const TextStyle(
               fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: isActive ? AppColors.primary : AppColors.textLight,
+              color: Color(0xFF64748B),
             ),
           ),
         ],
       ),
     );
   }
+}
+
+class _Course {
+  const _Course({
+    required this.title,
+    required this.duration,
+    required this.imageUrl,
+  });
+
+  final String title;
+  final String duration;
+  final String imageUrl;
+}
+
+class _Certificate {
+  const _Certificate({
+    required this.title,
+    required this.subtitle,
+    required this.imageUrl,
+  });
+
+  final String title;
+  final String subtitle;
+  final String imageUrl;
 }

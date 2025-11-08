@@ -5,6 +5,7 @@ import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import 'home_screen.dart';
 import 'budget_planner_screen.dart';
+import 'learning_hub_courses_screen.dart';
 import 'ai_companion_home_screen.dart';
 import 'counseling_screen.dart';
 import 'profile_screen.dart';
@@ -24,6 +25,7 @@ class _MainNavigationShellState extends ConsumerState<MainNavigationShell> {
   final List<Widget> _pages = const [
     HomeScreen(),
     BudgetPlannerScreen(),
+    LearningHubCoursesScreen(),
     AiCompanionHomeScreen(),
     CounselingScreen(),
     ProfileScreen(),
@@ -40,6 +42,11 @@ class _MainNavigationShellState extends ConsumerState<MainNavigationShell> {
       icon: Icons.account_balance_wallet_outlined,
       activeIcon: Icons.account_balance_wallet,
       label: 'Budget',
+    ),
+    NavigationItem(
+      icon: Icons.school_outlined,
+      activeIcon: Icons.school,
+      label: 'Learning',
     ),
     NavigationItem(
       icon: Icons.chat_bubble_outline,
