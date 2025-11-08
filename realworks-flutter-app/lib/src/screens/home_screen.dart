@@ -54,6 +54,54 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: AppSpacing.md),
+                    // Demo Button - View All Screens
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [AppColors.primary, AppColors.primary.withOpacity(0.8)],
+                        ),
+                        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.primary.withOpacity(0.3),
+                            blurRadius: 12,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            context.push('/all-screens');
+                          },
+                          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                          child: const Padding(
+                            padding: EdgeInsets.all(AppSpacing.sm),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.grid_view, color: AppColors.white, size: 24),
+                                SizedBox(width: AppSpacing.sm),
+                                Text(
+                                  '🎉 VIEW ALL 37 SCREENS',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.white,
+                                  ),
+                                ),
+                                SizedBox(width: AppSpacing.sm),
+                                Icon(Icons.arrow_forward, color: AppColors.white, size: 20),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: AppSpacing.lg),
                     _buildWellbeingCard(),
                     const SizedBox(height: AppSpacing.lg),
                     _buildQuickAccess(),

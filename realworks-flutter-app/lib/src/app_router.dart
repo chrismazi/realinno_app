@@ -38,6 +38,7 @@ import 'screens/chat_resources_screen.dart';
 import 'screens/emergency_support_screen.dart';
 import 'screens/session_history_screen.dart';
 import 'screens/self_assessment_screen.dart';
+import 'screens/all_screens_demo.dart';
 import 'services/mock_auth_service.dart';
 
 /// App router configuration using GoRouter
@@ -226,6 +227,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/alt-splash',
         builder: (context, state) => const AltSplashScreen(),
+      ),
+      // Demo/Testing Route
+      GoRoute(
+        path: '/all-screens',
+        builder: (context, state) => const AllScreensDemo(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(
