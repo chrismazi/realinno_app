@@ -83,10 +83,15 @@ class CounselingScreen extends StatelessWidget {
               description: 'Manage workplace pressure and burnout',
             ),
             const SizedBox(height: AppSpacing.sm),
-            _buildCategoryCard(
-              icon: Icons.family_restroom,
-              title: 'Family Issues',
-              description: 'Relationship and family counseling',
+            GestureDetector(
+              onTap: () {
+                context.push('/srh-family-planning');
+              },
+              child: _buildCategoryCard(
+                icon: Icons.family_restroom,
+                title: 'SRH & Family Planning',
+                description: 'Reproductive health and family resources',
+              ),
             ),
             const SizedBox(height: AppSpacing.sm),
             _buildCategoryCard(

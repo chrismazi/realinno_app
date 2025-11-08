@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
-import '../widgets/app_card.dart';
-import '../widgets/section_title.dart';
-import '../widgets/primary_button.dart';
 
-/// Sexual & Reproductive Health and Family Planning screen
+/// SRH & Family Planning educational screen - matching clean design
 class SrhFamilyPlanningScreen extends StatelessWidget {
   const SrhFamilyPlanningScreen({super.key});
 
@@ -15,197 +12,207 @@ class SrhFamilyPlanningScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       appBar: AppBar(
-        title: const Text('SRH & Family Planning'),
+        backgroundColor: AppColors.offWhite,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
+          icon: const Icon(Icons.arrow_back, color: AppColors.textDark),
+          onPressed: () => Navigator.of(context).pop(),
         ),
+        title: const Text(
+          'SRH & Family Planning',
+          style: TextStyle(
+            color: AppColors.textDark,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppSpacing.lg),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              // Understanding Contraception Card
+              _buildHealthCard(
+                icon: Icons.shield_outlined,
+                iconColor: AppColors.primary,
+                title: 'Understanding Contraception',
+                subtitle: 'Explore different methods and find what\'s right for you.',
+                imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAv9eKUvF9G7gPr3ggKbg1CoJ-PGUc-XtNfFcG0wAxfJ5iBLDl3HihiPxVQz3m50BsK3-oxZU6J1TjroZXDB4X_O3o-hv_y9igGuXita-DXCvbZpT9OCIfHm04yuOstWYpMxemZmUEEakqW85LpXFMWyg8n6hImyA6k0qWYyz4m-SeEbRGmofgA87PvA643VNtFNTEEbaTbwyLoXBu0RsyqEYzIyeyIPsuD1iZoEw1XW7znTi5tJeVUX6sWt5Uornb-6KPeX7CNwb4',
+                backgroundColor: const Color(0xFFB0E0E6).withOpacity(0.2),
+                onTap: () {},
+              ),
+              const SizedBox(height: 16),
+              
+              // Planning for a Family Card
+              _buildHealthCard(
+                icon: Icons.family_restroom,
+                iconColor: AppColors.primary,
+                title: 'Planning for a Family',
+                subtitle: 'Resources and support for your journey to parenthood.',
+                imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-Y694N-6I_QDJAtNbTba7QN2gUnkU1Sf9q2msvZGBN7DKSkeL0nJtZQp8lrC8ZYsMYPYcoqN91kUHQddtqBFGMsqHgB07yzHwwLxZSmZSJR1EbEae3koqzGeTxX7zEQn29J08Yo3sOBCX031_D_odruOWAm02ULmSMd6ImmeU81B50h1vOkKlASDmeKO3WWqRKI7XCTj1_6yKvqJhVwBeVSl5Zrv31tqJ6cjuQK8qUsAA1kGitIicyOwAbZy_EP_5gWAICio7-mU',
+                backgroundColor: const Color(0xFFB0E0E6).withOpacity(0.2),
+                onTap: () {},
+              ),
+              const SizedBox(height: 16),
+              
+              // Men's Reproductive Health Card
+              _buildHealthCard(
+                icon: Icons.male,
+                iconColor: AppColors.primary,
+                title: "Men's Reproductive Health",
+                subtitle: 'Information on health, wellness, and preventative care.',
+                imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBenVMuDCMT1GgC_J5KgOd9CwYdJtC5BJ5PZvbM2BDDCh7awvd29VIg2V45ArvvN5lQK1KGvkHwja0v3xC0hq9vaGjz-DRl8NQOK-D2dJ7Vqzt9o5fV5V8S3DWJr9ahCZHvRlaj5nVevPgYZPsYK3Avca1CqGWTIcB4HpqF_RsRoCKpqMviSZG6bR0WoxeneCu4R-drljH-p5mU_KRp-TwuXKs1xGJ64MDzBj9ALenF_-4WtjfJE44Yv82oSp6If8rN_yW3-vPBr5A',
+                backgroundColor: const Color(0xFFFFDAB9).withOpacity(0.2),
+                onTap: () {},
+              ),
+              const SizedBox(height: 16),
+              
+              // Women's Reproductive Health Card
+              _buildHealthCard(
+                icon: Icons.female,
+                iconColor: AppColors.primary,
+                title: "Women's Reproductive Health",
+                subtitle: 'Guidance on cycles, health screenings, and more.',
+                imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCNdM0AGZDhQS2qvyp08uKmBmqpYocEGxlowZjBpwfP5Uj2pSfu4572EOfFgBzUJIVwc2IP9F2IjrBDAFZXE1vFmp-_CyHqsoXamjIrOwhDyMfrNDAHsrMWBHRu0cCApmKa1dRbvlVxKIVmoC7EiANyYul8gCTHRVCZ_ohoq6bxAC87LvCjNbTCynicHIGmBHFhUkcXi_H4S547hmchdVr43blj4sefeX19gAOS-efP6i9xMyPkEfw5TLgBRZEA_0raXaVOmPqUCBw',
+                backgroundColor: const Color(0xFFB0E0E6).withOpacity(0.2),
+                onTap: () {},
+              ),
+              const SizedBox(height: 32),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHealthCard({
+    required IconData icon,
+    required Color iconColor,
+    required String title,
+    required String subtitle,
+    required String imageUrl,
+    required Color backgroundColor,
+    required VoidCallback onTap,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Hero Card
-            AppCard(
-              color: AppColors.info.withOpacity(0.1),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.favorite,
-                    size: 48,
-                    color: Colors.pink,
+            // Header with icon and text
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFDAB9).withOpacity(0.3),
+                    shape: BoxShape.circle,
                   ),
-                  const SizedBox(height: AppSpacing.md),
-                  const Text(
-                    'Your Health Matters',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark,
-                    ),
+                  child: Icon(
+                    icon,
+                    color: iconColor,
+                    size: 28,
                   ),
-                  const SizedBox(height: AppSpacing.sm),
-                  const Text(
-                    'Access confidential support and resources for sexual and reproductive health, family planning, and wellness.',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.textLight,
-                    ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textDark,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        subtitle,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: AppColors.textLight,
+                          height: 1.4,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            // Image container
+            Container(
+              height: 120,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: backgroundColor,
+                      child: Icon(
+                        icon,
+                        size: 48,
+                        color: iconColor.withOpacity(0.3),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
-            const SizedBox(height: AppSpacing.lg),
-            const SectionTitle(title: 'Services Available'),
-            const SizedBox(height: AppSpacing.md),
-            _buildServiceCard(
-              icon: Icons.medical_services,
-              title: 'Family Planning Counseling',
-              description: 'Get expert advice on contraception and family planning',
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            _buildServiceCard(
-              icon: Icons.pregnant_woman,
-              title: 'Prenatal & Postnatal Care',
-              description: 'Support for expecting and new mothers',
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            _buildServiceCard(
-              icon: Icons.health_and_safety,
-              title: 'STI Testing & Prevention',
-              description: 'Confidential testing and education',
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            _buildServiceCard(
-              icon: Icons.psychology,
-              title: 'Reproductive Health Education',
-              description: 'Learn about your body and health',
-            ),
-            const SizedBox(height: AppSpacing.lg),
-            const SectionTitle(title: 'Resources'),
-            const SizedBox(height: AppSpacing.md),
-            _buildResourceCard(
-              'Understanding Contraception',
-              'Guide to different methods',
-              '10 min read',
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            _buildResourceCard(
-              'Healthy Pregnancy Tips',
-              'Essential care during pregnancy',
-              '8 min read',
-            ),
-            const SizedBox(height: AppSpacing.lg),
-            PrimaryButton(
-              text: 'Book Consultation',
-              icon: Icons.calendar_today,
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Consultation booking coming soon'),
-                    backgroundColor: AppColors.info,
+            const SizedBox(height: 16),
+            // Learn More button
+            Align(
+              alignment: Alignment.centerRight,
+              child: ElevatedButton(
+                onPressed: onTap,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: AppColors.white,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 10,
                   ),
-                );
-              },
-              isFullWidth: true,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  elevation: 0,
+                ),
+                child: const Text(
+                  'Learn More',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildServiceCard({
-    required IconData icon,
-    required String title,
-    required String description,
-  }) {
-    return AppCard(
-      child: Row(
-        children: [
-          Container(
-            width: 56,
-            height: 56,
-            decoration: BoxDecoration(
-              color: Colors.pink.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-            ),
-            child: Icon(icon, color: Colors.pink, size: 28),
-          ),
-          const SizedBox(width: AppSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textDark,
-                  ),
-                ),
-                const SizedBox(height: AppSpacing.xs),
-                Text(
-                  description,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: AppColors.textLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildResourceCard(String title, String subtitle, String readTime) {
-    return AppCard(
-      child: Row(
-        children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: AppColors.info.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-            ),
-            child: const Icon(
-              Icons.article,
-              color: AppColors.info,
-              size: 24,
-            ),
-          ),
-          const SizedBox(width: AppSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textDark,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '$subtitle • $readTime',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: AppColors.textLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const Icon(Icons.chevron_right, color: AppColors.textLight),
-        ],
       ),
     );
   }
