@@ -134,7 +134,7 @@ class LearningHubScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: AppSpacing.xs),
                           const Text(
-                            'Nazaretten Sophomo O'Vintus',
+                            "Nazaretten Sophomo O'Vintus",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
