@@ -4,7 +4,6 @@ import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/primary_button.dart';
-import '../widgets/glass_card.dart';
 
 /// Add transaction screen
 class AddTransactionScreen extends StatefulWidget {

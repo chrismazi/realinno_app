@@ -153,12 +153,17 @@ flutter build web --release
 | Income Setup | `/income-setup` | Configure income sources |
 | **Wellbeing & Support** |
 | Counseling | `/counseling` | Mental health support |
+| AI Companion Welcome | `/ai-companion-welcome` | Chatbot welcome screen |
+| AI Companion Home | `/ai-companion-home` | Chat with conversation starters |
+| AI Companion Chat | `/ai-companion-chat` | Live chat interface |
+| AI Companion History | `/ai-companion-history` | Chat history & conversations |
 | Environmental Wellbeing | `/environmental-wellbeing` | Eco-friendly tips |
 | SRH & Family Planning | `/srh-family-planning` | Reproductive health |
 | **Learning & Education** |
 | Financial Literacy | `/financial-literacy` | Financial education |
 | Learning Hub | `/learning-hub` | Certificates & courses |
-| **Other** |
+| **Admin & Other** |
+| Admin Dashboard | `/admin-dashboard` | Analytics and metrics (Admin) |
 | About & Help | `/about-help` | App info and support |
 
 ## 🔐 Mock Authentication

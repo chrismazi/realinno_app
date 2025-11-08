@@ -22,6 +22,11 @@ import 'screens/learning_hub_screen.dart';
 import 'screens/environmental_wellbeing_screen.dart';
 import 'screens/srh_family_planning_screen.dart';
 import 'screens/about_help_screen.dart';
+import 'screens/ai_companion_chat_screen.dart';
+import 'screens/ai_companion_home_screen.dart';
+import 'screens/ai_companion_history_screen.dart';
+import 'screens/ai_companion_welcome_screen.dart';
+import 'screens/admin_dashboard_screen.dart';
 import 'services/mock_auth_service.dart';
 
 /// App router configuration using GoRouter
@@ -141,6 +146,28 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/about-help',
         builder: (context, state) => const AboutHelpScreen(),
+      ),
+      // AI Companion/Chatbot Routes
+      GoRoute(
+        path: '/ai-companion-welcome',
+        builder: (context, state) => const AiCompanionWelcomeScreen(),
+      ),
+      GoRoute(
+        path: '/ai-companion-home',
+        builder: (context, state) => const AiCompanionHomeScreen(),
+      ),
+      GoRoute(
+        path: '/ai-companion-chat',
+        builder: (context, state) => const AiCompanionChatScreen(),
+      ),
+      GoRoute(
+        path: '/ai-companion-history',
+        builder: (context, state) => const AiCompanionHistoryScreen(),
+      ),
+      // Admin Routes
+      GoRoute(
+        path: '/admin-dashboard',
+        builder: (context, state) => const AdminDashboardScreen(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(
