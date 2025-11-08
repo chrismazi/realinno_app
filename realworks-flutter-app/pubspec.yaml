@@ -42,3 +42,5 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/animations/
+    # Include the design screenshot for onboarding slide 3
+    - designs/realworks_app_onboarding_-_step_1_2/

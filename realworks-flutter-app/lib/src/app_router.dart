@@ -39,6 +39,7 @@ import 'screens/emergency_support_screen.dart';
 import 'screens/session_history_screen.dart';
 import 'screens/self_assessment_screen.dart';
 import 'screens/all_screens_demo.dart';
+import 'screens/main_navigation_shell.dart';
 import 'services/mock_auth_service.dart';
 
 /// App router configuration using GoRouter
@@ -88,9 +89,15 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/signin',
         builder: (context, state) => const SignInScreen(),
       ),
+      // Main app with bottom navigation
+      GoRoute(
+        path: '/app',
+        builder: (context, state) => const MainNavigationShell(),
+      ),
+      // Legacy home route redirects to app
       GoRoute(
         path: '/home',
-        builder: (context, state) => const HomeScreen(),
+        redirect: (context, state) => '/app',
       ),
       GoRoute(
         path: '/profile',

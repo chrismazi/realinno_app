@@ -54,54 +54,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: AppSpacing.md),
-                    // Demo Button - View All Screens
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(AppSpacing.md),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [AppColors.primary, AppColors.primary.withOpacity(0.8)],
-                        ),
-                        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.primary.withOpacity(0.3),
-                            blurRadius: 12,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            context.push('/all-screens');
-                          },
-                          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-                          child: const Padding(
-                            padding: EdgeInsets.all(AppSpacing.sm),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.grid_view, color: AppColors.white, size: 24),
-                                SizedBox(width: AppSpacing.sm),
-                                Text(
-                                  '🎉 VIEW ALL 37 SCREENS',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                                SizedBox(width: AppSpacing.sm),
-                                Icon(Icons.arrow_forward, color: AppColors.white, size: 20),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: AppSpacing.lg),
                     _buildWellbeingCard(),
                     const SizedBox(height: AppSpacing.lg),
                     _buildQuickAccess(),
@@ -115,7 +67,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(),
     );
   }
 
@@ -350,74 +301,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildBottomNav() {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.offWhite.withOpacity(0.8),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadowLight,
-            blurRadius: 20,
-            offset: const Offset(0, -4),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
-            vertical: AppSpacing.sm,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(Icons.home, 'Home', true, () {}),
-              _buildNavItem(Icons.explore, 'Discover', false, () {
-                // Navigate to discover
-              }),
-              _buildNavItem(Icons.chat_bubble_outline, 'Support', false, () {
-                context.push('/counseling');
-              }),
-              _buildNavItem(Icons.account_circle_outlined, 'Profile', false, () {
-                context.push('/profile');
-              }),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildNavItem(
-    IconData icon,
-    String label,
-    bool isActive,
-    VoidCallback onTap,
-  ) {
-    return InkWell(
-      onTap: onTap,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            color: isActive ? AppColors.primary : AppColors.textLight,
-            size: 24,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: isActive ? AppColors.primary : AppColors.textLight,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

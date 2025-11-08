@@ -74,8 +74,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
       _isLoading = false;
     });
 
-    if (success && mounted) {
-      context.go('/home');
+    if (success) {
+      if (mounted) {
+        context.go('/app');
+      }
     } else if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

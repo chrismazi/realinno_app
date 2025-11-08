@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 
-/// Onboarding screen matching exact design from HTML
+/// Onboarding screen matching exact design from HTML and provided images
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -17,24 +17,29 @@ class _OnboardingScreenState extends State<OnboardingScreen>
   int _currentPage = 0;
   late AnimationController _animationController;
 
+  // Uses 2 Network images (provided by user) and 1 local asset
   final List<OnboardingPage> _pages = [
+    OnboardingPage(
+      title: 'Your wellbeing, your growth',
+      description:
+          "RealWorks EAP is your confidential partner in navigating life's challenges and fostering personal development.",
+      imageSrc:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuCwd1ri9zhSsm-S4usAnPx7yXfNxgbNmLy-7Q-QaUZ6-LtP3a8d9PflVLLjzQPINvapIutgZPYwCgiVmTqEWkMSH_e9IfkGvSSKq1i5t2rqwo1SyhWgzvFxuIf2hu0pODo_kCXi6QrxgiPkYK7uIzoMk_FxW5CdCDbfCxhKC9kJ3bijzQ-ofymsaz92SLSsIbk1QRLloJV-MmXwMHiedi5D8IVSVLyhWnZlGjhT0IAGFkxbqXbNqmaR_7VLwuGNCOvzgJmGJ5O9S_Y',
+      isNetwork: true,
+    ),
     OnboardingPage(
       title: 'Financial tools for your future',
       description:
           'Access resources to help you manage your finances, plan for the future, and achieve your financial goals with confidence.',
-      illustration: Icons.account_balance, // Placeholder - would use actual image
+      imageSrc:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuAYNlssoHj50Ft1tDsNzlXZ3htsplXlyC388MXVtWUlLzH83RpT8xSOyLSv5n4gZhsYZJfI6tX1-QmmqyEvBgcVKiZn16KTUn1p0s6TrYmgG57bAWFc5Xu9MqD783UV1FtMpEGtzchnEDesFKEgvOhBEwlfHvMYrXipsQ7gXbUIAkfak1FSZnKD0JsaR4NZ5Euj9mKoOCI5VpVxPQx0SH37mJpBGBOnHKPrFvcRsdy6pyz3AySU2r-vZ8H6Ppo6QWQnIOOBJ1RErQw',
+      isNetwork: true,
     ),
     OnboardingPage(
-      title: 'Mental health support',
-      description:
-          'Connect with professional counselors and access resources for your emotional wellbeing and mental health.',
-      illustration: Icons.psychology,
-    ),
-    OnboardingPage(
-      title: 'Learn and grow',
-      description:
-          'Explore our learning hub with courses, articles, and resources to help you develop new skills and knowledge.',
-      illustration: Icons.school,
+      title: 'Stay safe. Stay supported.',
+      description: '',
+      imageSrc: 'designs/realworks_app_onboarding_-_step_1_2/screen.png',
+      isNetwork: false,
     ),
   ];
 
@@ -152,34 +157,45 @@ class _OnboardingScreenState extends State<OnboardingScreen>
   }
 
   Widget _buildPage(OnboardingPage page) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 64),
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: Container(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 280,
+            height: 280,
             decoration: BoxDecoration(
               color: AppColors.primary.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.05),
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: Icon(
-                    page.illustration,
-                    size: 120,
-                    color: AppColors.primary,
-                  ),
-                ),
-              ),
+            child: ClipOval(
+              child: page.isNetwork
+                  ? Image.network(
+                      page.imageSrc,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(
+                          Icons.image,
+                          size: 100,
+                          color: AppColors.primary.withOpacity(0.5),
+                        );
+                      },
+                    )
+                  : Image.asset(
+                      page.imageSrc,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(
+                          Icons.image,
+                          size: 100,
+                          color: AppColors.primary.withOpacity(0.5),
+                        );
+                      },
+                    ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -213,16 +229,18 @@ class _OnboardingScreenState extends State<OnboardingScreen>
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 12),
-          Text(
-            _pages[_currentPage].description,
-            style: const TextStyle(
-              fontSize: 16,
-              color: AppColors.textLight,
-              height: 1.5,
+          if (_pages[_currentPage].description.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Text(
+              _pages[_currentPage].description,
+              style: const TextStyle(
+                fontSize: 16,
+                color: AppColors.textLight,
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
+          ],
           const SizedBox(height: 32),
           // Page indicators matching HTML design
           Row(
@@ -244,49 +262,83 @@ class _OnboardingScreenState extends State<OnboardingScreen>
             ),
           ),
           const SizedBox(height: 32),
-          // Navigation buttons matching HTML design
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton(
-                onPressed: _skip,
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
+          // Navigation buttons: Slide 2 has Skip/Next; Slide 1 and 3 use full-width Get Started
+          if (_currentPage == 1)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  onPressed: _skip,
+                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                  child: const Text(
+                    'Skip',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.textLight,
+                    ),
+                  ),
                 ),
-                child: const Text(
-                  'Skip',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.textLight,
+                ElevatedButton(
+                  onPressed: _nextPage,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    foregroundColor: AppColors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 12,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    elevation: 8,
+                    shadowColor: AppColors.primary.withOpacity(0.3),
+                  ),
+                  child: const Text(
+                    'Next',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_currentPage == _pages.length - 1) {
+                      _skip();
+                    } else {
+                      _nextPage();
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    foregroundColor: AppColors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    elevation: 8,
+                    shadowColor: AppColors.primary.withOpacity(0.3),
+                  ),
+                  child: Text(
+                    _currentPage == _pages.length - 1
+                        ? 'Get Started'
+                        : 'Get Started',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: _nextPage,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  foregroundColor: AppColors.white,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40,
-                    vertical: 12,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  elevation: 8,
-                  shadowColor: AppColors.primary.withOpacity(0.3),
-                ),
-                child: Text(
-                  _currentPage == _pages.length - 1 ? 'Get Started' : 'Next',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
         ],
       ),
     );
@@ -294,12 +346,14 @@ class _OnboardingScreenState extends State<OnboardingScreen>
 }
 
 class OnboardingPage {
-  final IconData illustration;
+  final String imageSrc; // network URL or asset path
+  final bool isNetwork;
   final String title;
   final String description;
 
   OnboardingPage({
-    required this.illustration,
+    required this.imageSrc,
+    required this.isNetwork,
     required this.title,
     required this.description,
   });
