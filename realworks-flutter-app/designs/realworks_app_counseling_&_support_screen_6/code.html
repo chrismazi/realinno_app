@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Companion Hub</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#f27f0d",
+            "background-light": "#f8f7f5",
+            "background-dark": "#221910",
+            "text-light": "#181411",
+            "text-dark": "#f5f2f0",
+            "text-secondary-light": "#8a7560",
+            "text-secondary-dark": "#8a7560",
+            "bubble-light": "#ffffff",
+            "bubble-dark": "#312a21",
+          },
+          fontFamily: {
+            "display": ["Poppins"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    .animated-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .animated-bg::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(242, 127, 13, 0.15) 0%, rgba(242, 127, 13, 0) 70%);
+      animation: gentle-move 15s infinite alternate ease-in-out;
+    }
+    @keyframes gentle-move {
+      from {
+        transform: translate(-10%, -10%) scale(1);
+      }
+      to {
+        transform: translate(10%, 10%) scale(1.2);
+      }
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative mx-auto flex h-screen max-w-md flex-col overflow-hidden bg-background-light dark:bg-background-dark">
+<div class="animated-bg"></div>
+<div class="sticky top-0 z-10 flex flex-shrink-0 items-center justify-between bg-transparent p-4 pb-3">
+<div class="flex size-10 items-center justify-center text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<div class="size-10"></div>
+</div>
+<div class="flex flex-1 flex-col overflow-y-auto px-6 pb-6">
+<div class="flex flex-col items-center text-center">
+<div class="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-primary/10">
+<div class="flex h-20 w-20 items-center justify-center rounded-full bg-primary/20">
+<span class="material-symbols-outlined text-4xl text-primary">psychology</span>
+</div>
+</div>
+<h1 class="text-3xl font-bold tracking-tight text-text-light dark:text-text-dark">How are you feeling today?</h1>
+</div>
+<div class="mt-8 flex flex-col gap-4">
+<button class="flex items-center gap-4 rounded-xl bg-bubble-light p-4 text-left shadow-sm transition-all hover:bg-gray-50 dark:bg-bubble-dark dark:hover:bg-bubble-dark/80">
+<div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-primary">sentiment_stressed</span>
+</div>
+<div>
+<h2 class="font-semibold text-text-light dark:text-text-dark">Feeling Stressed?</h2>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Let's talk it through.</p>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+</button>
+<button class="flex items-center gap-4 rounded-xl bg-bubble-light p-4 text-left shadow-sm transition-all hover:bg-gray-50 dark:bg-bubble-dark dark:hover:bg-bubble-dark/80">
+<div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div>
+<h2 class="font-semibold text-text-light dark:text-text-dark">Need Financial Advice?</h2>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Tips for managing your budget.</p>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+</button>
+<button class="flex items-center gap-4 rounded-xl bg-bubble-light p-4 text-left shadow-sm transition-all hover:bg-gray-50 dark:bg-bubble-dark dark:hover:bg-bubble-dark/80">
+<div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<div>
+<h2 class="font-semibold text-text-light dark:text-text-dark">Want to Learn Something New?</h2>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Explore a new skill or topic.</p>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+</button>
+</div>
+<div class="mt-auto pt-8">
+<button class="flex h-14 w-full cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-full bg-primary px-5 text-white shadow-lg transition-all hover:bg-primary/90">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-base font-bold">Start an Open Chat</span>
+</button>
+</div>
+</div>
+</div>
+
+</body></html>

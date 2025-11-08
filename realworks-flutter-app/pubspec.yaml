@@ -1,0 +1,44 @@
+name: realworks_app
+description: A production-quality Employee Assistance Program (EAP) app for financial wellness, counseling, and support.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Navigation
+  go_router: ^14.0.0
+  
+  # State Management
+  flutter_riverpod: ^2.5.1
+  
+  # UI & Animations
+  flutter_animate: ^4.5.0
+  lottie: ^3.1.0
+  google_fonts: ^6.1.0
+  
+  # Icons
+  # Using built-in Material and Cupertino icons
+  
+  # Local Storage
+  shared_preferences: ^2.2.2
+  
+  # Utils
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/animations/

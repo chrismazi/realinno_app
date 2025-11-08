@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RealWorks EAP - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#FFA500",
+            "background-light": "#F5F5F7",
+            "background-dark": "#1C1C1E",
+            "text-light": "#1C1C1E",
+            "text-dark": "#F5F5F7",
+            "icon-light": "#1C1C1E",
+            "icon-dark": "#F5F5F7",
+            "secondary-text-light": "#8A8A8E",
+            "secondary-text-dark": "#8A8A8E",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#2C2C2E",
+            "divider-light": "#E5E5EA",
+            "divider-dark": "#3A3A3C",
+          },
+          fontFamily: {
+            "display": ["Poppins", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.75rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex shrink-0 items-center bg-background-light dark:bg-background-dark px-4 pb-2 pt-6">
+<button class="flex size-10 shrink-0 items-center justify-center text-icon-light dark:text-icon-dark">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-semibold leading-tight tracking-[-0.015em] text-text-light dark:text-text-dark -ml-10">Settings</h1>
+</div>
+<!-- Main Content -->
+<main class="flex-1 space-y-8 px-4 py-4">
+<!-- General Settings Section -->
+<div class="space-y-2">
+<h3 class="px-4 text-xs font-semibold uppercase tracking-wider text-secondary-text-light dark:text-secondary-text-dark">GENERAL</h3>
+<div class="overflow-hidden rounded-lg bg-surface-light dark:bg-surface-dark">
+<ul class="divide-y divide-divider-light dark:divide-divider-dark">
+<!-- Account -->
+<li class="flex items-center gap-4 px-4 min-h-[56px] justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-9 shrink-0 items-center justify-center text-icon-light dark:text-icon-dark">
+<span class="material-symbols-outlined text-2xl">person</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-text-light dark:text-text-dark">Account</p>
+</div>
+<div class="shrink-0">
+<div class="flex size-7 items-center justify-center text-secondary-text-light dark:text-secondary-text-dark">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+</li>
+<!-- Notifications -->
+<li class="flex items-center gap-4 px-4 min-h-[56px] justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-9 shrink-0 items-center justify-center text-icon-light dark:text-icon-dark">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-text-light dark:text-text-dark">Notifications</p>
+</div>
+<div class="shrink-0">
+<div class="flex size-7 items-center justify-center text-secondary-text-light dark:text-secondary-text-dark">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+</li>
+<!-- Dark Mode -->
+<li class="flex items-center gap-4 px-4 min-h-[56px] justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-9 shrink-0 items-center justify-center text-icon-light dark:text-icon-dark">
+<span class="material-symbols-outlined text-2xl">dark_mode</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-text-light dark:text-text-dark">Dark Mode</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full bg-divider-light p-1 transition-colors duration-300 ease-in-out has-[:checked]:bg-primary dark:bg-divider-dark dark:has-[:checked]:bg-primary">
+<div class="h-[23px] w-[23px] rounded-full bg-white transition-transform duration-300 ease-in-out transform has-[:checked]:translate-x-[20px]"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Support Section -->
+<div class="space-y-2">
+<h3 class="px-4 text-xs font-semibold uppercase tracking-wider text-secondary-text-light dark:text-secondary-text-dark">SUPPORT</h3>
+<div class="overflow-hidden rounded-lg bg-surface-light dark:bg-surface-dark">
+<ul class="divide-y divide-divider-light dark:divide-divider-dark">
+<!-- Privacy Policy -->
+<li class="flex items-center gap-4 px-4 min-h-[56px] justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-9 shrink-0 items-center justify-center text-icon-light dark:text-icon-dark">
+<span class="material-symbols-outlined text-2xl">shield</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-text-light dark:text-text-dark">Privacy Policy</p>
+</div>
+<div class="shrink-0">
+<div class="flex size-7 items-center justify-center text-secondary-text-light dark:text-secondary-text-dark">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+</li>
+<!-- Help & Support -->
+<li class="flex items-center gap-4 px-4 min-h-[56px] justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-9 shrink-0 items-center justify-center text-icon-light dark:text-icon-dark">
+<span class="material-symbols-outlined text-2xl">help_outline</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-text-light dark:text-text-dark">Help &amp; Support</p>
+</div>
+<div class="shrink-0">
+<div class="flex size-7 items-center justify-center text-secondary-text-light dark:text-secondary-text-dark">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+</li>
+<!-- About RealWorks -->
+<li class="flex items-center gap-4 px-4 min-h-[56px] justify-between">
+<div class="flex items-center gap-4">
+<div class="flex size-9 shrink-0 items-center justify-center text-icon-light dark:text-icon-dark">
+<span class="material-symbols-outlined text-2xl">info</span>
+</div>
+<p class="flex-1 truncate text-base font-normal leading-normal text-text-light dark:text-text-dark">About RealWorks</p>
+</div>
+<div class="shrink-0">
+<div class="flex size-7 items-center justify-center text-secondary-text-light dark:text-secondary-text-dark">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Log Out -->
+<div class="overflow-hidden rounded-lg bg-surface-light dark:bg-surface-dark">
+<ul>
+<li class="flex items-center gap-4 px-4 min-h-[56px] justify-center">
+<div class="flex items-center gap-3">
+<div class="flex shrink-0 items-center justify-center text-red-500">
+<span class="material-symbols-outlined text-2xl">logout</span>
+</div>
+<p class="truncate text-base font-normal leading-normal text-red-500">Log Out</p>
+</div>
+</li>
+</ul>
+</div>
+</main>
+</div>
+</body></html>

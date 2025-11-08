@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RealWorks EAP Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#F98404", // Vivid Orange from logo
+              "off-white": "#F8F8F8",
+              "background-dark": "#1F2937", // Gray 800
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        @keyframes pulse-logo {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.04);
+            }
+        }
+        .animate-pulse-logo {
+            animation: pulse-logo 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes drift-petal-1 {
+            0%, 100% { transform: translate(-20%, -30%) rotate(-30deg) scale(1.4); }
+            50% { transform: translate(-22%, -33%) rotate(-33deg) scale(1.4); }
+        }
+        @keyframes drift-petal-2 {
+            0%, 100% { transform: translate(15%, 25%) rotate(15deg) scale(1.5); }
+            50% { transform: translate(18%, 28%) rotate(12deg) scale(1.5); }
+        }
+        .animate-drift-1 {
+            animation: drift-petal-1 12s ease-in-out infinite;
+        }
+        .animate-drift-2 {
+            animation: drift-petal-2 15s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-off-white dark:bg-background-dark">
+<div class="flex h-screen w-full items-center justify-center overflow-hidden">
+<div class="relative flex h-full max-h-[812px] w-full max-w-[375px] flex-col items-center justify-center bg-off-white dark:bg-background-dark p-8 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute -top-1/4 -left-1/4 h-3/4 w-3/4 opacity-[0.07] dark:opacity-[0.04]">
+<img alt="" class="w-full h-full object-contain animate-drift-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYRuZLmPK0CJGLdbL7QkrBoLQjpk_lO68cGZ2dMW3DW6nq9us4szezw_kEw5ExV4Yt8ON7XeEoqkMi4CD3G061XCFNoKtMEkEIaGJw7NfQMq6fpdrxiDPPm1wxINyHYBzuFiAaOvfqudAAXHaU_yc5Zle_ujtExv5O1espWjZTujw5A7kCbyOhixZQHgoLwUCwSMSjlQ4ZfiJ_Ngsr1FupUw8UYA2DaG4DvKOW26cq-_6n8U68aEY_ljZSOZ_Q74rHHFFDumavr8Q"/>
+</div>
+<div class="absolute -bottom-1/4 -right-1/4 h-4/5 w-4/5 opacity-[0.06] dark:opacity-[0.03]">
+<img alt="" class="w-full h-full object-contain animate-drift-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYRuZLmPK0CJGLdbL7QkrBoLQjpk_lO68cGZ2dMW3DW6nq9us4szezw_kEw5ExV4Yt8ON7XeEoqkMi4CD3G061XCFNoKtMEkEIaGJw7NfQMq6fpdrxiDPPm1wxINyHYBzuFiAaOvfqudAAXHaU_yc5Zle_ujtExv5O1espWjZTujw5A7kCbyOhixZQHgoLwUCwSMSjlQ4ZfiJ_Ngsr1FupUw8UYA2DaG4DvKOW26cq-_6n8U68aEY_ljZSOZ_Q74rHHFFDumavr8Q"/>
+</div>
+</div>
+<div class="relative z-10 flex flex-1 flex-col items-center justify-center text-center">
+<img alt="RealWorks EAP app logo, an orange abstract flower shape inside a circle." class="mb-6 h-36 w-36 animate-pulse-logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYRuZLmPK0CJGLdbL7QkrBoLQjpk_lO68cGZ2dMW3DW6nq9us4szezw_kEw5ExV4Yt8ON7XeEoqkMi4CD3G061XCFNoKtMEkEIaGJw7NfQMq6fpdrxiDPPm1wxINyHYBzuFiAaOvfqudAAXHaU_yc5Zle_ujtExv5O1espWjZTujw5A7kCbyOhixZQHgoLwUCwSMSjlQ4ZfiJ_Ngsr1FupUw8UYA2DaG4DvKOW26cq-_6n8U68aEY_ljZSOZ_Q74rHHFFDumavr8Q"/>
+<p class="mt-2 text-lg font-medium text-gray-500 dark:text-gray-400">Empowering wellbeing and resilience.</p>
+</div>
+</div>
+</div>
+
+</body></html>

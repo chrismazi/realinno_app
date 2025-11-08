@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Environmental Wellbeing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f26c0d",
+              "background-light": "#f8f7f5",
+              "background-dark": "#221710",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-zinc-900 dark:text-zinc-200 flex size-12 shrink-0 items-center">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-zinc-900 dark:text-zinc-200 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Environmental Wellbeing</h2>
+</div>
+<div class="p-4 pt-2 @container">
+<!-- Card -->
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] bg-white dark:bg-zinc-800/50">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] bg-cover rounded-t-xl" data-alt="Abstract image with green leaves and subtle light effects, symbolizing nature and growth." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZcKG4peyH8Ji5P1FqkF5o_1TJkYo_YCqI38f-Jw7XW9-FwHHkP3Jyl9V5u3iZY-p_0cWPgFdESlEwDdyWOR6eQFsfCT9Xx0GOgIs71jJEaL2-RNmovB1W9B6526crmzM8A6u5hEbqirXoNJRBN_4nR0u0Gh-t915uok2qLEGH0UoH8MDVIHo_xnRTBdFfJldmisgkhrbuHBMjAd837xhf9pmLWuuTAQpFZFtA0vvqh8aL1xHcgsc2FvUnd6uNl6bxf4RmCVdNezE");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 p-4">
+<p class="text-primary text-sm font-medium leading-normal">Challenge Tracker</p>
+<p class="text-zinc-900 dark:text-zinc-200 text-lg font-bold leading-tight tracking-[-0.015em]">Complete 3 eco-tasks this week</p>
+<p class="text-zinc-500 dark:text-zinc-400 text-base font-normal leading-normal mt-1">Track your progress and make a positive impact on the environment.</p>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-3 p-4 pt-0">
+<div class="flex gap-6 justify-between">
+<p class="text-zinc-900 dark:text-zinc-200 text-base font-medium leading-normal">This Week's Challenge</p>
+<p class="text-zinc-500 dark:text-zinc-400 text-sm font-normal leading-normal">1/3 Complete</p>
+</div>
+<div class="rounded-full bg-primary/20"><div class="h-2 rounded-full bg-primary" style="width: 33%;"></div></div>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<h3 class="text-zinc-900 dark:text-zinc-200 text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Tips for a Greener Routine</h3>
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+<span class="material-symbols-outlined">recycling</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-zinc-900 dark:text-zinc-200 text-base font-medium leading-normal line-clamp-1">Reduce Your Waste</p>
+<p class="text-zinc-500 dark:text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Learn simple ways to minimize your daily waste.</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-zinc-500 dark:text-zinc-400 flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-zinc-900 dark:text-zinc-200 text-base font-medium leading-normal line-clamp-1">Conserve Water</p>
+<p class="text-zinc-500 dark:text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Discover easy tricks to save water at home.</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-zinc-500 dark:text-zinc-400 flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-zinc-900 dark:text-zinc-200 text-base font-medium leading-normal line-clamp-1">Save Energy at Home</p>
+<p class="text-zinc-500 dark:text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Cut down on your electricity consumption effortlessly.</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-zinc-500 dark:text-zinc-400 flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- List Item 4 -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+<span class="material-symbols-outlined">directions_bus</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-zinc-900 dark:text-zinc-200 text-base font-medium leading-normal line-clamp-1">Choose Sustainable Transport</p>
+<p class="text-zinc-500 dark:text-zinc-400 text-sm font-normal leading-normal line-clamp-2">Opt for greener ways to get around town.</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-zinc-500 dark:text-zinc-400 flex size-7 items-center justify-center">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</body></html>

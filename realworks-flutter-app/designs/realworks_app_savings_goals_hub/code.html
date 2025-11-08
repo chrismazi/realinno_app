@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RealWorks EAP - Savings Goals</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF7733",
+              "background-light": "#F8F9FA",
+              "background-dark": "#121212",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1E1E1E",
+              "text-primary-light": "#1C1C1E",
+              "text-primary-dark": "#FFFFFF",
+              "text-secondary-light": "#6B7280",
+              "text-secondary-dark": "#9CA3AF",
+              "border-light": "#E5E7EB",
+              "border-dark": "#374151"
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="w-full max-w-sm mx-auto min-h-screen bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark">
+<div class="p-6">
+<header class="flex justify-between items-center mb-6">
+<h1 class="text-2xl font-bold">Your Savings Goals</h1>
+<button class="text-primary font-semibold text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                    Add Goal
+                </button>
+</header>
+<div class="space-y-4">
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-lg shadow-sm">
+<div class="flex flex-col h-full">
+<h2 class="text-lg font-semibold mb-3">Emergency Fund</h2>
+<div class="flex-grow flex items-center justify-center my-4">
+<div class="relative w-36 h-36">
+<svg class="w-full h-full" viewBox="0 0 100 100">
+<circle class="text-gray-200 dark:text-gray-700" cx="50" cy="50" fill="transparent" r="46" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="50" cy="50" fill="transparent" r="46" stroke="currentColor" stroke-linecap="round" stroke-width="8" style="stroke-dasharray: 289.027; stroke-dashoffset: 72.256;"></circle> 
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-bold text-primary">75%</span>
+<span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Complete</span>
+</div>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-end">
+<div>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Current</p>
+<p class="font-semibold text-lg">$3,750</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Target</p>
+<p class="font-semibold text-lg">$5,000</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-lg shadow-sm">
+<div class="flex flex-col h-full">
+<h2 class="text-lg font-semibold mb-3">New Ute</h2>
+<div class="w-full my-4 flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark">Progress</span>
+<span class="text-sm font-bold text-primary">40%</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 40%"></div>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-end">
+<div>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Current</p>
+<p class="font-semibold text-lg">$16,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Target</p>
+<p class="font-semibold text-lg">$40,000</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-lg shadow-sm">
+<div class="flex flex-col h-full">
+<h2 class="text-lg font-semibold mb-3">Holiday Trip</h2>
+<div class="w-full my-4 flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark">Progress</span>
+<span class="text-sm font-bold text-primary">100%</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-end">
+<div>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Current</p>
+<p class="font-semibold text-lg">$8,000</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Target</p>
+<p class="font-semibold text-lg">$8,000</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

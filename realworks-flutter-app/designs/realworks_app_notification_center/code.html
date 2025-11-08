@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RealWorks EAP App - Notification Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#FF7A00",
+              "background-light": "#F5F5F7",
+              "background-dark": "#121212",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1E1E1E",
+              "text-primary-light": "#1D1D1F",
+              "text-primary-dark": "#EAEAEA",
+              "text-secondary-light": "#8A8A8E",
+              "text-secondary-dark": "#9E9E9E",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.75rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "full": "9999px"
+            },
+            boxShadow: {
+                'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05)',
+                'subtle-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden antialiased">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex h-16 items-center border-b border-gray-200/80 dark:border-gray-800/80 bg-background-light/80 dark:bg-background-dark/80 px-4 backdrop-blur-sm">
+<div class="flex-1">
+<!-- Back button can be added here if needed -->
+</div>
+<h1 class="flex-1 text-center text-lg font-bold text-text-primary-light dark:text-text-primary-dark">Notifications</h1>
+<div class="flex flex-1 items-center justify-end">
+<button class="text-primary text-sm font-semibold">Clear All</button>
+</div>
+</div>
+<!-- Notification List -->
+<div class="flex flex-col gap-3 p-4">
+<!-- Notification Card: Unread -->
+<div class="flex w-full items-center gap-4 rounded-lg bg-card-light dark:bg-card-dark p-4 shadow-subtle dark:shadow-subtle-dark">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">task_alt</span>
+</div>
+<div class="flex-grow">
+<p class="font-semibold text-text-primary-light dark:text-text-primary-dark">Your weekly check-in is ready</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">2 hours ago</p>
+</div>
+<div class="h-2.5 w-2.5 shrink-0 rounded-full bg-primary"></div>
+</div>
+<!-- Notification Card: Unread -->
+<div class="flex w-full items-center gap-4 rounded-lg bg-card-light dark:bg-card-dark p-4 shadow-subtle dark:shadow-subtle-dark">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<div class="flex-grow">
+<p class="font-semibold text-text-primary-light dark:text-text-primary-dark">Appointment with Dr. Smith confirmed</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Yesterday</p>
+</div>
+<div class="h-2.5 w-2.5 shrink-0 rounded-full bg-primary"></div>
+</div>
+<!-- Notification Card: Read -->
+<div class="flex w-full items-center gap-4 rounded-lg bg-card-light dark:bg-card-dark p-4 shadow-subtle dark:shadow-subtle-dark">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined">article</span>
+</div>
+<div class="flex-grow">
+<p class="font-semibold text-text-primary-light dark:text-text-primary-dark">New article: 'Managing Stress'</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">2 days ago</p>
+</div>
+<div class="h-2.5 w-2.5 shrink-0 rounded-full bg-transparent"></div>
+</div>
+<!-- Notification Card: Read -->
+<div class="flex w-full items-center gap-4 rounded-lg bg-card-light dark:bg-card-dark p-4 shadow-subtle dark:shadow-subtle-dark">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div class="flex-grow">
+<p class="font-semibold text-text-primary-light dark:text-text-primary-dark">Don't forget your daily meditation</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">3 days ago</p>
+</div>
+<div class="h-2.5 w-2.5 shrink-0 rounded-full bg-transparent"></div>
+</div>
+<!-- Notification Card: Read with heart icon -->
+<div class="flex w-full items-center gap-4 rounded-lg bg-card-light dark:bg-card-dark p-4 shadow-subtle dark:shadow-subtle-dark">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div class="flex-grow">
+<p class="font-semibold text-text-primary-light dark:text-text-primary-dark">A wellbeing tip for your day</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">4 days ago</p>
+</div>
+<div class="h-2.5 w-2.5 shrink-0 rounded-full bg-transparent"></div>
+</div>
+<!-- Empty State -->
+<!-- Uncomment the section below to see the empty state -->
+<!--
+            <div class="flex flex-col items-center justify-center pt-24 text-center">
+                <div class="flex h-24 w-24 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+                    <span class="material-symbols-outlined text-4xl text-text-secondary-light dark:text-text-secondary-dark">notifications_off</span>
+                </div>
+                <h2 class="mt-6 text-xl font-bold text-text-primary-light dark:text-text-primary-dark">You're all caught up!</h2>
+                <p class="mt-2 text-text-secondary-light dark:text-text-secondary-dark">Check back later for new notifications.</p>
+            </div>
+            -->
+</div>
+</div>
+</body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expense Categories Setup</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#F97316", // Orange-500 from Tailwind palette
+            "background-light": "#F8FAFC", // Slate-50
+            "background-dark": "#0B1118", // Custom dark blue-gray
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#1E293B", // Slate-800
+            "text-light-primary": "#1E293B", // Slate-800
+            "text-dark-primary": "#F8FAFC", // Slate-50
+            "text-light-secondary": "#64748B", // Slate-500
+            "text-dark-secondary": "#94A3B8", // Slate-400
+            "border-light": "#E2E8F0", // Slate-200
+            "border-dark": "#334155", // Slate-700
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            lg: "1.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex justify-center p-4">
+<div class="w-full max-w-sm mx-auto bg-background-light dark:bg-background-dark rounded-lg overflow-hidden">
+<div class="h-[844px] w-full bg-background-light dark:bg-background-dark flex flex-col p-6">
+<header class="flex items-center justify-between mb-8">
+<button class="p-2 -ml-2 text-text-light-primary dark:text-text-dark-primary">
+<span class="material-icons-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-text-light-primary dark:text-text-dark-primary">
+            Expense Categories
+          </h1>
+<div class="w-8 h-8"></div>
+</header>
+<p class="mb-8 text-center text-text-light-secondary dark:text-text-dark-secondary">
+          Select your expense categories to help us personalize your budget.
+        </p>
+<div class="flex-grow space-y-4 overflow-y-auto">
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-light dark:bg-surface-dark border border-transparent dark:border-border-dark cursor-pointer">
+<div class="flex items-center">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/50 mr-4">
+<span class="material-icons-outlined text-primary">restaurant</span>
+</div>
+<span class="font-semibold text-text-light-primary dark:text-text-dark-primary">Food &amp; Dining</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+<span class="material-icons-outlined text-white text-base">check</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-light dark:bg-surface-dark border border-transparent dark:border-border-dark cursor-pointer">
+<div class="flex items-center">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/50 mr-4">
+<span class="material-icons-outlined text-primary">directions_bus</span>
+</div>
+<span class="font-semibold text-text-light-primary dark:text-text-dark-primary">Transport</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-border-light dark:border-border-dark"></div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-light dark:bg-surface-dark border border-transparent dark:border-border-dark cursor-pointer">
+<div class="flex items-center">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/50 mr-4">
+<span class="material-icons-outlined text-primary">groups</span>
+</div>
+<span class="font-semibold text-text-light-primary dark:text-text-dark-primary">Family Support</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+<span class="material-icons-outlined text-white text-base">check</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-light dark:bg-surface-dark border border-transparent dark:border-border-dark cursor-pointer">
+<div class="flex items-center">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/50 mr-4">
+<span class="material-icons-outlined text-primary">home</span>
+</div>
+<span class="font-semibold text-text-light-primary dark:text-text-dark-primary">Housing</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-border-light dark:border-border-dark"></div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-light dark:bg-surface-dark border border-transparent dark:border-border-dark cursor-pointer">
+<div class="flex items-center">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/50 mr-4">
+<span class="material-icons-outlined text-primary">construction</span>
+</div>
+<span class="font-semibold text-text-light-primary dark:text-text-dark-primary">Safety Gear</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-border-light dark:border-border-dark"></div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-light dark:bg-surface-dark border border-transparent dark:border-border-dark cursor-pointer">
+<div class="flex items-center">
+<div class="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/50 mr-4">
+<span class="material-icons-outlined text-primary">theaters</span>
+</div>
+<span class="font-semibold text-text-light-primary dark:text-text-dark-primary">Entertainment</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+<span class="material-icons-outlined text-white text-base">check</span>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6">
+<button class="w-full bg-primary text-white font-bold py-4 rounded-lg text-lg">
+            Save Categories
+          </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About / Help &amp; Feedback</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#f26c0d",
+            "background-light": "#f8f7f5",
+            "background-dark": "#221710",
+          },
+          fontFamily: {
+            "display": ["Manrope"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom font for social icons */
+    .icon-font-linkedin:before { content: 'in'; font-weight: 700; font-style: normal; }
+    .icon-font-twitter:before { content: 't'; font-weight: 700; font-style: normal; }
+    .icon-font-facebook:before { content: 'f'; font-weight: 700; font-style: normal; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-[#1c130d] dark:text-gray-200">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-[#1c130d] dark:text-gray-200 flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-[#1c130d] dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">About &amp; Help</h2>
+</div>
+<div class="flex flex-1 flex-col items-center px-4 pt-8">
+<!-- Logo -->
+<div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary">
+<span class="material-symbols-outlined text-white text-4xl">construction</span>
+</div>
+<!-- Headline Text -->
+<h2 class="text-[#1c130d] dark:text-gray-100 tracking-light text-[28px] font-bold leading-tight text-center pb-3 pt-5 max-w-sm">Dedicated to the wellbeing of mining workers.</h2>
+<!-- Spacer -->
+<div class="h-8"></div>
+<!-- Get in Touch Section -->
+<div class="w-full max-w-md">
+<h3 class="text-[#1c130d] dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Get in Touch</h3>
+<!-- List Item: Email -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<p class="text-[#1c130d] dark:text-gray-300 text-base font-normal leading-normal flex-1 truncate">support@realworks.com</p>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-medium leading-normal">Email Us</button></div>
+</div>
+<!-- List Item: Phone -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">call</span>
+</div>
+<p class="text-[#1c130d] dark:text-gray-300 text-base font-normal leading-normal flex-1 truncate">1-800-MIN-WORK</p>
+</div>
+<div class="shrink-0"><button class="text-primary text-base font-medium leading-normal">Call Us</button></div>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<div class="w-full px-4 pb-12 pt-8">
+<div class="flex justify-center items-center gap-6">
+<a aria-label="LinkedIn" class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-[#4a4a4a] dark:text-gray-300 transition-colors hover:bg-primary hover:text-white" href="#">
+<i class="icon-font-linkedin text-2xl not-italic"></i>
+</a>
+<a aria-label="Twitter" class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-[#4a4a4a] dark:text-gray-300 transition-colors hover:bg-primary hover:text-white" href="#">
+<i class="icon-font-twitter text-2xl not-italic"></i>
+</a>
+<a aria-label="Facebook" class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-[#4a4a4a] dark:text-gray-300 transition-colors hover:bg-primary hover:text-white" href="#">
+<i class="icon-font-facebook text-2xl not-italic"></i>
+</a>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RealWorks EAP - Budget Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#F97316", // Orange-500 from Tailwind palette
+              "background-light": "#F8FAFC", // Slate-50
+              "background-dark": "#18181B", // Zinc-900
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem", // 16px
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(249, 115, 22, 0.1), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(249, 115, 22, 0.1), transparent 30%);
+            z-index: 0;
+        }
+        .dark .animated-bg {
+             background-image:
+                radial-gradient(circle at 15% 50%, rgba(249, 115, 22, 0.15), transparent 35%),
+                radial-gradient(circle at 85% 30%, rgba(249, 115, 22, 0.15), transparent 35%);
+        }
+        .material-icons {
+            font-size: 24px;
+            vertical-align: middle;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="w-full max-w-sm mx-auto min-h-screen bg-background-light dark:bg-background-dark shadow-lg relative overflow-hidden">
+<div class="animated-bg"></div>
+<main class="relative z-10 p-6 pb-28">
+<div class="bg-white/70 dark:bg-zinc-800/70 backdrop-blur-sm rounded-lg p-6 shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<p class="text-sm text-slate-500 dark:text-zinc-400">Total Balance</p>
+<span class="material-icons text-slate-500 dark:text-zinc-400">visibility</span>
+</div>
+<div class="text-center">
+<h1 class="text-4xl font-bold text-slate-800 dark:text-white">$12,854.67</h1>
+<div class="flex items-center justify-center mt-2 text-sm text-green-500">
+<span class="material-icons text-base">arrow_upward</span>
+<p>12.5% this month</p>
+</div>
+</div>
+<div class="mt-6">
+<img alt="Sparkline chart showing spending trends" class="w-full h-16" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4osQX6NOJq9b3C6MXpw7XOLO7moTjvPmKrIsE2OuAadsVdgsLy_GheLDuahZBeq0Op_thTRonBOwzqIsMJRDdS9gCv4b0-a5nngMRH8rtxweqNBH5m3hVnyCn6q8dpYG5NCc2mScPretOXBGE-dsYV5WRcF2SxneOzXsW2G9Nv2fC8R_g_ocrSh7BlZ3L3N0GdMPqVVnAOSl6navGKITDZDI1zd5AmId0rkOlk8tPhrg_JHkoHU3jw9UH43YDAWWQSeAlyAegYrA"/>
+</div>
+</div>
+<div class="bg-white/70 dark:bg-zinc-800/70 backdrop-blur-sm rounded-lg p-6 mt-6 shadow-sm">
+<h2 class="text-lg font-semibold text-slate-800 dark:text-white mb-6">Expense by Category</h2>
+<div class="flex items-center space-x-6">
+<div class="relative w-32 h-32 flex-shrink-0">
+<svg class="w-full h-full" viewBox="0 0 36 36">
+<path class="stroke-slate-200 dark:stroke-zinc-700" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="4"></path>
+<path class="stroke-orange-500" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="60, 100" stroke-width="4" transform="rotate(90 18 18)"></path>
+<path class="stroke-cyan-500" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="25, 100" stroke-dashoffset="-60" stroke-width="4" transform="rotate(90 18 18)"></path>
+<path class="stroke-purple-500" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="15, 100" stroke-dashoffset="-85" stroke-width="4" transform="rotate(90 18 18)"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-slate-800 dark:text-white">$2,140</span>
+</div>
+</div>
+<div class="w-full">
+<ul class="space-y-4 text-sm">
+<li class="flex justify-between items-center">
+<div class="flex items-center">
+<span class="w-2.5 h-2.5 rounded-full bg-orange-500 mr-3"></span>
+<span class="text-slate-600 dark:text-zinc-300">Food</span>
+</div>
+<span class="font-semibold text-slate-700 dark:text-zinc-100">$1280</span>
+</li>
+<li class="flex justify-between items-center">
+<div class="flex items-center">
+<span class="w-2.5 h-2.5 rounded-full bg-cyan-500 mr-3"></span>
+<span class="text-slate-600 dark:text-zinc-300">Transport</span>
+</div>
+<span class="font-semibold text-slate-700 dark:text-zinc-100">$540</span>
+</li>
+<li class="flex justify-between items-center">
+<div class="flex items-center">
+<span class="w-2.5 h-2.5 rounded-full bg-purple-500 mr-3"></span>
+<span class="text-slate-600 dark:text-zinc-300">Family Support</span>
+</div>
+<span class="font-semibold text-slate-700 dark:text-zinc-100">$320</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-8 right-0 left-0 w-full flex justify-center px-6 z-20">
+<button class="bg-primary text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-primary/30 flex items-center justify-center space-x-2 transform hover:scale-105 transition-transform duration-200 ease-in-out">
+<span class="material-icons">add</span>
+<span>Add Transaction</span>
+</button>
+</div>
+</div>
+
+</body></html>
