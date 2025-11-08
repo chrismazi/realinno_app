@@ -11,6 +11,17 @@ import 'screens/notifications_screen.dart';
 import 'screens/counseling_screen.dart';
 import 'screens/financial_literacy_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/budget_planner_screen.dart';
+import 'screens/add_transaction_screen.dart';
+import 'screens/savings_goals_screen.dart';
+import 'screens/transactions_list_screen.dart';
+import 'screens/expense_categories_screen.dart';
+import 'screens/goal_setup_screen.dart';
+import 'screens/income_setup_screen.dart';
+import 'screens/learning_hub_screen.dart';
+import 'screens/environmental_wellbeing_screen.dart';
+import 'screens/srh_family_planning_screen.dart';
+import 'screens/about_help_screen.dart';
 import 'services/mock_auth_service.dart';
 
 /// App router configuration using GoRouter
@@ -83,6 +94,53 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/settings',
         builder: (context, state) => const SettingsScreen(),
+      ),
+      // Budget & Finance Routes
+      GoRoute(
+        path: '/budget-planner',
+        builder: (context, state) => const BudgetPlannerScreen(),
+      ),
+      GoRoute(
+        path: '/add-transaction',
+        builder: (context, state) => const AddTransactionScreen(),
+      ),
+      GoRoute(
+        path: '/savings-goals',
+        builder: (context, state) => const SavingsGoalsScreen(),
+      ),
+      GoRoute(
+        path: '/transactions',
+        builder: (context, state) => const TransactionsListScreen(),
+      ),
+      GoRoute(
+        path: '/expense-categories',
+        builder: (context, state) => const ExpenseCategoriesScreen(),
+      ),
+      GoRoute(
+        path: '/goal-setup',
+        builder: (context, state) => const GoalSetupScreen(),
+      ),
+      GoRoute(
+        path: '/income-setup',
+        builder: (context, state) => const IncomeSetupScreen(),
+      ),
+      // Wellbeing & Learning Routes
+      GoRoute(
+        path: '/learning-hub',
+        builder: (context, state) => const LearningHubScreen(),
+      ),
+      GoRoute(
+        path: '/environmental-wellbeing',
+        builder: (context, state) => const EnvironmentalWellbeingScreen(),
+      ),
+      GoRoute(
+        path: '/srh-family-planning',
+        builder: (context, state) => const SrhFamilyPlanningScreen(),
+      ),
+      // Other Routes
+      GoRoute(
+        path: '/about-help',
+        builder: (context, state) => const AboutHelpScreen(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(

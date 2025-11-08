@@ -133,16 +133,33 @@ flutter build web --release
 
 | Screen | Route | Description |
 |--------|-------|-------------|
+| **Authentication & Onboarding** |
 | Splash | `/splash` | App initialization screen |
 | Onboarding | `/onboarding` | Multi-step intro flow |
 | Sign Up | `/signup` | User registration |
 | Sign In | `/signin` | User authentication |
+| **Core Screens** |
 | Home | `/home` | Main dashboard |
 | Profile | `/profile` | User profile management |
 | Notifications | `/notifications` | App notifications |
-| Counseling | `/counseling` | Mental health support |
-| Financial Literacy | `/financial-literacy` | Financial education |
 | Settings | `/settings` | App preferences |
+| **Budget & Finance** |
+| Budget Planner | `/budget-planner` | Budget dashboard with charts |
+| Add Transaction | `/add-transaction` | Add income/expense |
+| Transactions List | `/transactions` | All transactions history |
+| Savings Goals | `/savings-goals` | Track savings goals |
+| Expense Categories | `/expense-categories` | Setup spending categories |
+| Goal Setup | `/goal-setup` | Create new financial goal |
+| Income Setup | `/income-setup` | Configure income sources |
+| **Wellbeing & Support** |
+| Counseling | `/counseling` | Mental health support |
+| Environmental Wellbeing | `/environmental-wellbeing` | Eco-friendly tips |
+| SRH & Family Planning | `/srh-family-planning` | Reproductive health |
+| **Learning & Education** |
+| Financial Literacy | `/financial-literacy` | Financial education |
+| Learning Hub | `/learning-hub` | Certificates & courses |
+| **Other** |
+| About & Help | `/about-help` | App info and support |
 
 ## 🔐 Mock Authentication
 
