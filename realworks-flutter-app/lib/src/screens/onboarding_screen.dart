@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
-import '../widgets/primary_button.dart';
-import '../widgets/ghost_button.dart';
 
-/// Onboarding screen with multiple steps
+/// Onboarding screen matching exact design from HTML
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -13,33 +11,45 @@ class OnboardingScreen extends StatefulWidget {
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends State<OnboardingScreen>
+    with SingleTickerProviderStateMixin {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  late AnimationController _animationController;
 
   final List<OnboardingPage> _pages = [
     OnboardingPage(
-      icon: Icons.trending_up,
       title: 'Financial tools for your future',
       description:
           'Access resources to help you manage your finances, plan for the future, and achieve your financial goals with confidence.',
+      illustration: Icons.account_balance, // Placeholder - would use actual image
     ),
     OnboardingPage(
-      icon: Icons.psychology,
       title: 'Mental health support',
       description:
           'Connect with professional counselors and access resources for your emotional wellbeing and mental health.',
+      illustration: Icons.psychology,
     ),
     OnboardingPage(
-      icon: Icons.school,
       title: 'Learn and grow',
       description:
           'Explore our learning hub with courses, articles, and resources to help you develop new skills and knowledge.',
+      illustration: Icons.school,
     ),
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 12),
+    )..repeat();
+  }
+
+  @override
   void dispose() {
+    _animationController.dispose();
     _pageController.dispose();
     super.dispose();
   }
@@ -71,35 +81,51 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       backgroundColor: AppColors.offWhite,
       body: Stack(
         children: [
-          // Background decorative elements
+          // Animated floating background petals (matching HTML design)
           Positioned(
-            top: -100,
-            left: -100,
-            child: Opacity(
-              opacity: 0.07,
-              child: Container(
-                width: 300,
-                height: 300,
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                ),
-              ),
+            top: -MediaQuery.of(context).size.height * 0.15,
+            left: -MediaQuery.of(context).size.width * 0.25,
+            child: AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(
+                    10 * _animationController.value,
+                    10 * _animationController.value,
+                  ),
+                  child: Opacity(
+                    opacity: 0.07,
+                    child: Icon(
+                      Icons.spa,
+                      size: 400,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           Positioned(
-            bottom: -150,
-            right: -150,
-            child: Opacity(
-              opacity: 0.06,
-              child: Container(
-                width: 400,
-                height: 400,
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                ),
-              ),
+            bottom: -MediaQuery.of(context).size.height * 0.2,
+            right: -MediaQuery.of(context).size.width * 0.25,
+            child: AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(
+                    -15 * _animationController.value,
+                    -15 * _animationController.value,
+                  ),
+                  child: Opacity(
+                    opacity: 0.06,
+                    child: Icon(
+                      Icons.spa,
+                      size: 500,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           // Main content
@@ -128,18 +154,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget _buildPage(OnboardingPage page) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 300, maxHeight: 300),
-          decoration: BoxDecoration(
-            color: AppColors.primary.withOpacity(0.1),
-            shape: BoxShape.circle,
-          ),
-          child: Center(
-            child: Icon(
-              page.icon,
-              size: 120,
-              color: AppColors.primary,
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 64),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.primary.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withOpacity(0.05),
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Icon(
+                    page.illustration,
+                    size: 120,
+                    color: AppColors.primary,
+                  ),
+                ),
+              ),
             ),
           ),
         ),
@@ -152,18 +189,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(AppSpacing.radiusXxl),
-          topRight: Radius.circular(AppSpacing.radiusXxl),
+          topLeft: Radius.circular(32), // 2rem from HTML
+          topRight: Radius.circular(32),
         ),
         boxShadow: [
           BoxShadow(
-            color: AppColors.shadowLight,
+            color: Colors.black.withOpacity(0.05),
             blurRadius: 40,
             offset: const Offset(0, -20),
           ),
         ],
       ),
-      padding: const EdgeInsets.all(AppSpacing.lg),
+      padding: const EdgeInsets.fromLTRB(32, 32, 32, 48),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -176,17 +213,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: AppSpacing.md),
+          const SizedBox(height: 12),
           Text(
             _pages[_currentPage].description,
             style: const TextStyle(
               fontSize: 16,
               color: AppColors.textLight,
+              height: 1.5,
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: AppSpacing.lg),
-          // Page indicators
+          const SizedBox(height: 32),
+          // Page indicators matching HTML design
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
@@ -194,7 +232,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               (index) => AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 margin: const EdgeInsets.symmetric(horizontal: 4),
-                width: _currentPage == index ? 16 : 8,
+                width: _currentPage == index ? 16 : 8, // Elongated for active
                 height: 8,
                 decoration: BoxDecoration(
                   color: _currentPage == index
@@ -205,22 +243,50 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
           ),
-          const SizedBox(height: AppSpacing.lg),
-          // Navigation buttons
+          const SizedBox(height: 32),
+          // Navigation buttons matching HTML design
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              GhostButton(
-                text: 'Skip',
+              TextButton(
                 onPressed: _skip,
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: const Text(
+                  'Skip',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.textLight,
+                  ),
+                ),
               ),
-              PrimaryButton(
-                text: _currentPage == _pages.length - 1 ? 'Get Started' : 'Next',
+              ElevatedButton(
                 onPressed: _nextPage,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: AppColors.white,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40,
+                    vertical: 12,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  elevation: 8,
+                  shadowColor: AppColors.primary.withOpacity(0.3),
+                ),
+                child: Text(
+                  _currentPage == _pages.length - 1 ? 'Get Started' : 'Next',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ],
           ),
-          const SizedBox(height: AppSpacing.sm),
         ],
       ),
     );
@@ -228,12 +294,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 }
 
 class OnboardingPage {
-  final IconData icon;
+  final IconData illustration;
   final String title;
   final String description;
 
   OnboardingPage({
-    required this.icon,
+    required this.illustration,
     required this.title,
     required this.description,
   });
