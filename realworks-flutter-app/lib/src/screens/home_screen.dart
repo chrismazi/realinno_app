@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:realworks_app/l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
@@ -18,8 +19,8 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  String _selectedQuickAccess = 'Counseling';
-  String _userName = 'Terry';
+  String _selectedQuickAccess = 'counseling';
+  String _userName = 'User';
 
   @override
   void initState() {
@@ -39,12 +40,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       body: SafeArea(
         child: Column(
           children: [
-            _buildHeader(),
+            _buildHeader(l10n),
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(
@@ -54,11 +57,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: AppSpacing.md),
-                    _buildWellbeingCard(),
+                    _buildWellbeingCard(l10n),
                     const SizedBox(height: AppSpacing.lg),
-                    _buildQuickAccess(),
+                    _buildQuickAccess(l10n),
                     const SizedBox(height: AppSpacing.lg),
-                    _buildTodaysHighlights(),
+                    _buildTodaysHighlights(l10n),
                     const SizedBox(height: AppSpacing.xl),
                   ],
                 ),
@@ -70,13 +73,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(AppLocalizations l10n) {
     final timeOfDay = DateTime.now().hour;
-    String greeting = 'Good morning';
+    String greeting = l10n.homeGreetingMorning;
     if (timeOfDay >= 12 && timeOfDay < 18) {
-      greeting = 'Good afternoon';
+      greeting = l10n.homeGreetingAfternoon;
     } else if (timeOfDay >= 18) {
-      greeting = 'Good evening';
+      greeting = l10n.homeGreetingEvening;
     }
 
     return Padding(
@@ -97,9 +100,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: AppSpacing.xs),
-                const Text(
-                  "Here's your wellbeing summary",
-                  style: TextStyle(
+                Text(
+                  l10n.homeGreetingSummary,
+                  style: const TextStyle(
                     fontSize: 14,
                     color: AppColors.textLight,
                   ),
@@ -130,14 +133,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildWellbeingCard() {
+  Widget _buildWellbeingCard(AppLocalizations l10n) {
     return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Your Wellbeing Score',
-            style: TextStyle(
+          Text(
+            l10n.homeWellbeingScoreTitle,
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
               color: AppColors.textLight,
@@ -147,9 +150,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                '78/100',
-                style: TextStyle(
+              Text(
+                l10n.homeWellbeingScoreValue,
+                style: const TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primary,
@@ -171,9 +174,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ],
           ),
           const SizedBox(height: AppSpacing.sm),
-          const Text(
-            "You've improved by 5 points this week. Keep it up!",
-            style: TextStyle(
+          Text(
+            l10n.homeWellbeingImprovement,
+            style: const TextStyle(
               fontSize: 12,
               color: AppColors.textLight,
             ),
@@ -183,20 +186,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildQuickAccess() {
+  Widget _buildQuickAccess(AppLocalizations l10n) {
     final categories = [
-      'Counseling',
-      'Financial Literacy',
-      'Legal Aid',
-      'Fitness',
-      'Nutrition',
-      'Mindfulness',
+      {'id': 'counseling', 'label': l10n.homeQuickAccessCounseling},
+      {'id': 'financial', 'label': l10n.homeQuickAccessFinancial},
+      {'id': 'legal', 'label': l10n.homeQuickAccessLegal},
+      {'id': 'fitness', 'label': l10n.homeQuickAccessFitness},
+      {'id': 'nutrition', 'label': l10n.homeQuickAccessNutrition},
+      {'id': 'mindfulness', 'label': l10n.homeQuickAccessMindfulness},
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionTitle(title: 'Quick Access'),
+        SectionTitle(title: l10n.homeQuickAccessTitle),
         const SizedBox(height: AppSpacing.sm),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -205,16 +208,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               return Padding(
                 padding: const EdgeInsets.only(right: AppSpacing.sm),
                 child: ChipButton(
-                  label: category,
-                  isSelected: _selectedQuickAccess == category,
+                  label: category['label']!,
+                  isSelected: _selectedQuickAccess == category['id'],
                   onTap: () {
                     setState(() {
-                      _selectedQuickAccess = category;
+                      _selectedQuickAccess = category['id']!;
                     });
                     // Navigate to specific category
-                    if (category == 'Counseling') {
+                    if (category['id'] == 'counseling') {
                       context.push('/counseling');
-                    } else if (category == 'Financial Literacy') {
+                    } else if (category['id'] == 'financial') {
                       context.push('/financial-literacy');
                     }
                   },
@@ -227,29 +230,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildTodaysHighlights() {
+  Widget _buildTodaysHighlights(AppLocalizations l10n) {
     return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SectionTitle(title: "Today's Highlights"),
+          SectionTitle(title: l10n.homeHighlightsTitle),
           const SizedBox(height: AppSpacing.md),
           _buildHighlightItem(
             icon: Icons.calendar_month,
-            title: 'Appointment with Dr. Evans',
-            subtitle: 'Today, 2:00 PM',
+            title: l10n.homeHighlightAppointmentTitle,
+            subtitle: l10n.homeHighlightAppointmentSubtitle,
           ),
           const SizedBox(height: AppSpacing.md),
           _buildHighlightItem(
             icon: Icons.self_improvement,
-            title: '10-minute mindfulness session',
-            subtitle: 'Complete your daily goal',
+            title: l10n.homeHighlightMindfulnessTitle,
+            subtitle: l10n.homeHighlightMindfulnessSubtitle,
           ),
           const SizedBox(height: AppSpacing.md),
           _buildHighlightItem(
             icon: Icons.article,
-            title: 'Read: Managing Work Stress',
-            subtitle: 'New article available',
+            title: l10n.homeHighlightArticleTitle,
+            subtitle: l10n.homeHighlightArticleSubtitle,
           ),
         ],
       ),

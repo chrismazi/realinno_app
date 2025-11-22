@@ -38,17 +38,13 @@ class _AltSplashScreenState extends State<AltSplashScreen> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Center(
-                child: Container(
-                  width: 80,
-                  height: 80,
-                  decoration: const BoxDecoration(
-                    color: AppColors.primary,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.spa,
-                    size: 40,
-                    color: AppColors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    'assets/logo.jpeg',
+                    width: 120,
+                    height: 120,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),

@@ -1,16 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:realworks_app/l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../widgets/app_card.dart';
 import '../widgets/chip_button.dart';
+import '../services/supabase_auth_service.dart';
+import '../services/supabase_profile_service.dart';
 
 /// Alternative home screen with wellbeing summary (Onboarding 1_2 variant)
-class AltHomeWellbeingScreen extends StatelessWidget {
+class AltHomeWellbeingScreen extends ConsumerWidget {
   const AltHomeWellbeingScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final user = ref.watch(supabaseAuthProvider).currentUser;
+    
+    // Get display name with fallback logic
+    String displayName = 'User';
+    
+    print('User object: $user');
+    print('User metadata: ${user?.userMetadata}');
+    
+    // First try user metadata (most reliable)
+    if (user != null && user.userMetadata != null && user.userMetadata!['display_name'] != null) {
+      displayName = user.userMetadata!['display_name']!;
+      print('Found display name in metadata: $displayName');
+    }
+    // Fallback to email prefix if no metadata
+    else if (user?.email != null) {
+      displayName = user!.email!.split('@')[0];
+      print('Using email prefix: $displayName');
+    }
+    
+    print('Final display name: $displayName');
+    print('Greeting text: ${l10n.altHomeGreeting(displayName)}');
+    
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       body: SafeArea(
@@ -23,12 +50,15 @@ class AltHomeWellbeingScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Good morning, Terry',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark,
+                  Expanded(
+                    child: Text(
+                      l10n.altHomeGreeting(displayName),
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textDark,
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   IconButton(
@@ -39,9 +69,9 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const Text(
-                "Here's your wellbeing summary",
-                style: TextStyle(
+              Text(
+                l10n.altHomeSummary,
+                style: const TextStyle(
                   fontSize: 14,
                   color: AppColors.textLight,
                 ),
@@ -53,9 +83,9 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Your Wellbeing Score',
-                      style: TextStyle(
+                    Text(
+                      l10n.altHomeScoreLabel,
+                      style: const TextStyle(
                         fontSize: 14,
                         color: AppColors.textLight,
                       ),
@@ -84,8 +114,8 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                '+2% this week',
-                                style: TextStyle(
+                                l10n.altHomeScoreTrend('2'),
+                                style: const TextStyle(
                                   fontSize: 14,
                                   color: AppColors.primary,
                                   fontWeight: FontWeight.w600,
@@ -97,9 +127,9 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: AppSpacing.sm),
-                    const Text(
-                      'Great progress! Your consistent mindfulness exercises are paying off.',
-                      style: TextStyle(
+                    Text(
+                      l10n.altHomeScoreDescription,
+                      style: const TextStyle(
                         fontSize: 14,
                         color: AppColors.textLight,
                       ),
@@ -108,9 +138,9 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
-              const Text(
-                'Quick Access',
-                style: TextStyle(
+              Text(
+                l10n.altHomeQuickAccess,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textDark,
@@ -122,7 +152,7 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     ChipButton(
-                      label: 'Counseling',
+                      label: l10n.commonQuickAccessCounseling,
                       isSelected: true,
                       onTap: () {
                         context.push('/counseling');
@@ -130,7 +160,7 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: AppSpacing.sm),
                     ChipButton(
-                      label: 'Financial Aid',
+                      label: l10n.commonQuickAccessFinancialAid,
                       isSelected: false,
                       onTap: () {
                         context.push('/budget-planner');
@@ -138,7 +168,7 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: AppSpacing.sm),
                     ChipButton(
-                      label: 'Legal',
+                      label: l10n.commonQuickAccessLegal,
                       isSelected: false,
                       onTap: () {},
                     ),
@@ -146,9 +176,9 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
-              const Text(
-                'Recommended For You',
-                style: TextStyle(
+              Text(
+                l10n.altHomeRecommended,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textDark,
@@ -157,8 +187,8 @@ class AltHomeWellbeingScreen extends StatelessWidget {
               const SizedBox(height: AppSpacing.md),
               _buildRecommendationCard(
                 icon: Icons.self_improvement,
-                title: 'Start a guided meditation',
-                subtitle: '5-min session to find calm',
+                title: l10n.altHomeRecommendationMeditationTitle,
+                subtitle: l10n.altHomeRecommendationMeditationSubtitle,
                 color: AppColors.primary,
                 actionIcon: Icons.play_circle,
                 onTap: () {},
@@ -166,8 +196,8 @@ class AltHomeWellbeingScreen extends StatelessWidget {
               const SizedBox(height: AppSpacing.sm),
               _buildRecommendationCard(
                 icon: Icons.article,
-                title: 'Read: Building Resilience',
-                subtitle: 'Tips for overcoming challenges',
+                title: l10n.altHomeRecommendationResilienceTitle,
+                subtitle: l10n.altHomeRecommendationResilienceSubtitle,
                 color: AppColors.info,
                 actionIcon: Icons.arrow_forward,
                 onTap: () {},
@@ -175,8 +205,8 @@ class AltHomeWellbeingScreen extends StatelessWidget {
               const SizedBox(height: AppSpacing.sm),
               _buildRecommendationCard(
                 icon: Icons.chat_bubble_outline,
-                title: 'Connect with a counselor',
-                subtitle: 'Book a confidential session',
+                title: l10n.altHomeRecommendationCounselorTitle,
+                subtitle: l10n.altHomeRecommendationCounselorSubtitle,
                 color: AppColors.success,
                 actionIcon: Icons.arrow_forward,
                 onTap: () {
@@ -230,6 +260,8 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: AppColors.textDark,
                     ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -238,6 +270,8 @@ class AltHomeWellbeingScreen extends StatelessWidget {
                       fontSize: 12,
                       color: AppColors.textLight,
                     ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
                 ],
               ),
@@ -257,6 +291,7 @@ class AltHomeWellbeingScreen extends StatelessWidget {
   }
 
   Widget _buildBottomNav(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -277,12 +312,12 @@ class AltHomeWellbeingScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(Icons.home, 'Home', true, () {}),
-              _buildNavItem(Icons.explore_outlined, 'Discover', false, () {}),
-              _buildNavItem(Icons.chat_bubble_outline, 'Support', false, () {
+              _buildNavItem(context, Icons.home, l10n.navHome, true, () {}),
+              _buildNavItem(context, Icons.explore_outlined, l10n.navDiscover, false, () {}),
+              _buildNavItem(context, Icons.chat_bubble_outline, l10n.navSupport, false, () {
                 context.push('/counseling');
               }),
-              _buildNavItem(Icons.account_circle_outlined, 'Profile', false, () {
+              _buildNavItem(context, Icons.account_circle_outlined, l10n.navProfile, false, () {
                 context.push('/profile');
               }),
             ],
@@ -293,6 +328,7 @@ class AltHomeWellbeingScreen extends StatelessWidget {
   }
 
   Widget _buildNavItem(
+    BuildContext context,
     IconData icon,
     String label,
     bool isActive,

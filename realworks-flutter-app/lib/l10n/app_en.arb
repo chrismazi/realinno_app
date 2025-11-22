@@ -1,0 +1,626 @@
+{
+  "@@locale": "en",
+  "appTitle": "RealWorks EAP",
+  "onboardingTitle1": "Your wellbeing, your growth",
+  "onboardingDescription1": "RealWorks EAP is your confidential partner in navigating life's challenges and fostering personal development.",
+  "onboardingTitle2": "Financial tools for your future",
+  "onboardingDescription2": "Access resources to help you manage your finances, plan for the future, and achieve your financial goals with confidence.",
+  "onboardingTitle3": "Stay safe. Stay supported.",
+  "onboardingDescription3": "",
+  "onboardingSkip": "Skip",
+  "onboardingNext": "Next",
+  "onboardingGetStarted": "Get Started",
+  "splashBrandName": "RealWorks",
+  "splashTagline": "Employee Assistance Program",
+  "signUpTitle": "Sign Up",
+  "signUpFullNameHint": "Full Name",
+  "signUpFullNameError": "Please enter your name",
+  "signUpEmailHint": "Email Address",
+  "signUpEmailErrorEmpty": "Please enter your email",
+  "signUpEmailErrorInvalid": "Please enter a valid email",
+  "signUpPhoneHint": "Phone Number (optional)",
+  "signUpPasswordHint": "Password",
+  "signUpPasswordErrorEmpty": "Please enter a password",
+  "signUpPasswordErrorLength": "Password must be at least 6 characters",
+  "signUpConfirmPasswordHint": "Confirm Password",
+  "signUpConfirmPasswordErrorMismatch": "Passwords do not match",
+  "signUpGenderHint": "Gender (optional)",
+  "signUpGenderMale": "Male",
+  "signUpGenderFemale": "Female",
+  "signUpGenderPreferNot": "Prefer not to say",
+  "signUpAgeGroupHint": "Age Group (optional)",
+  "signUpAgeGroupOption1824": "18-24",
+  "signUpAgeGroupOption2534": "25-34",
+  "signUpAgeGroupOption3544": "35-44",
+  "signUpAgeGroupOption4554": "45-54",
+  "signUpAgeGroupOption55Plus": "55+",
+  "signUpOccupationHint": "Occupation / Worksite (optional)",
+  "signUpOccupationSiteA": "Site A",
+  "signUpOccupationSiteB": "Site B",
+  "signUpOccupationOffice": "Office",
+  "signUpOccupationOther": "Other",
+  "signUpTermsPrefix": "I agree to the ",
+  "signUpTermsLabel": "Terms",
+  "signUpTermsConnector": " and ",
+  "signUpPrivacyLabel": "Privacy Policy",
+  "signUpTermsSuffix": ".",
+  "signUpAcceptTermsError": "Please accept the terms and privacy policy",
+  "signUpSubmitError": "Sign up failed. Please try again.",
+  "signUpButton": "Sign Up",
+  "signUpExistingAccountPrompt": "Already have an account? ",
+  "signUpExistingAccountAction": "Sign in",
+  "signInTitle": "Sign In",
+  "signInEmailHint": "Email Address",
+  "signInEmailErrorEmpty": "Please enter your email",
+  "signInEmailErrorInvalid": "Please enter a valid email",
+  "signInPasswordHint": "Password",
+  "signInPasswordErrorEmpty": "Please enter your password",
+  "signInForgotPassword": "Forgot Password?",
+  "signInButton": "Sign In",
+  "signInInvalidCredentials": "Invalid email or password",
+  "signInNoAccountPrompt": "Don't have an account? ",
+  "signInNoAccountAction": "Sign up",
+  "homeGreetingMorning": "Good morning",
+  "homeGreetingAfternoon": "Good afternoon",
+  "homeGreetingEvening": "Good evening",
+  "homeGreetingSummary": "Here's your wellbeing summary",
+  "homeWellbeingScoreTitle": "Your Wellbeing Score",
+  "homeWellbeingScoreValue": "78/100",
+  "homeWellbeingImprovement": "You've improved by 5 points this week. Keep it up!",
+  "homeQuickAccessTitle": "Quick Access",
+  "homeQuickAccessCounseling": "Counseling",
+  "homeQuickAccessFinancial": "Financial Literacy",
+  "homeQuickAccessLegal": "Legal Aid",
+  "homeQuickAccessFitness": "Fitness",
+  "homeQuickAccessNutrition": "Nutrition",
+  "homeQuickAccessMindfulness": "Mindfulness",
+  "homeHighlightsTitle": "Today's Highlights",
+  "homeHighlightAppointmentTitle": "Appointment with Dr. Evans",
+  "homeHighlightAppointmentSubtitle": "Today, 2:00 PM",
+  "homeHighlightMindfulnessTitle": "10-minute mindfulness session",
+  "homeHighlightMindfulnessSubtitle": "Complete your daily goal",
+  "homeHighlightArticleTitle": "Read: Managing Work Stress",
+  "homeHighlightArticleSubtitle": "New article available",
+  "budgetPlannerTitle": "Budget Planner",
+  "budgetTotalBalanceLabel": "Total Balance",
+  "budgetTotalBalanceValue": "RWF 14,500,000",
+  "budgetGrowthLabel": "12.5% this month",
+  "budgetExpenseByCategoryTitle": "Expense by Category",
+  "budgetCategoryTotalLabel": "RWF 2,400,000",
+  "budgetCategoryFood": "Food",
+  "budgetCategoryTransport": "Transport",
+  "budgetCategoryFamilySupport": "Family Support",
+  "budgetCategoryFoodAmount": "RWF 1,440,000",
+  "budgetCategoryTransportAmount": "RWF 607,500",
+  "budgetCategoryFamilySupportAmount": "RWF 360,000",
+  "budgetAddTransaction": "Add Transaction",
+  "counselingTitle": "Counseling & Support",
+  "counselingHeroTitle": "Professional Support",
+  "counselingHeroDescription": "Connect with licensed counselors for mental health support, stress management, and personal guidance.",
+  "counselingBookAppointment": "Book Appointment",
+  "counselingSupportSectionTitle": "Support Categories",
+  "counselingSupportSectionSubtitle": "Choose the area where you need help",
+  "counselingCategoryMentalHealthTitle": "Mental Health",
+  "counselingCategoryMentalHealthDescription": "Depression, anxiety, and emotional support",
+  "counselingCategoryWorkStressTitle": "Work Stress",
+  "counselingCategoryWorkStressDescription": "Manage workplace pressure and burnout",
+  "counselingCategorySrhTitle": "SRH & Family Planning",
+  "counselingCategorySrhDescription": "Reproductive health and family resources",
+  "counselingCategorySubstanceTitle": "Substance Abuse",
+  "counselingCategorySubstanceDescription": "Recovery support and treatment guidance",
+  "counselingAvailableCounselorsTitle": "Available Counselors",
+  "counselingSpecialtyClinicalPsychologist": "Clinical Psychologist",
+  "counselingSpecialtyFamilyTherapist": "Family Therapist",
+  "counselingCounselorExperience": "{years} years experience",
+  "counselingMoodTitle": "How are you feeling today?",
+  "counselingMoodOptionStressedTitle": "Feeling Stressed?",
+  "counselingMoodOptionStressedSubtitle": "Let's talk it through.",
+  "counselingMoodOptionFinancialTitle": "Need Financial Advice?",
+  "counselingMoodOptionFinancialSubtitle": "Tips for managing your budget.",
+  "counselingMoodOptionLearnTitle": "Want to Learn Something New?",
+  "counselingMoodOptionLearnSubtitle": "Explore a new skill or topic.",
+  "counselingMoodStartChat": "Start an Open Chat",
+  "emergencySupportTitle": "Emergency Support",
+  "emergencyBannerText": "If this is a life-threatening emergency, please call 911 immediately.",
+  "emergencyCrisisHotlinesTitle": "Crisis Hotlines",
+  "emergencyHotlineNationalTitle": "National Crisis Line",
+  "emergencyHotlineNationalDescription": "24/7 confidential support",
+  "emergencyHotlineMentalTitle": "Mental Health Support",
+  "emergencyHotlineMentalDescription": "Professional counseling available",
+  "emergencyHotlineSubstanceTitle": "Substance Abuse Support",
+  "emergencyHotlineSubstanceDescription": "Free and confidential help",
+  "emergencyImmediateResourcesTitle": "Immediate Resources",
+  "emergencyStartLiveChat": "Start Live Chat",
+  "emergencyScheduleSession": "Schedule Emergency Session",
+  "emergencySelfHelpTitle": "Self-Help Resources",
+  "emergencyResourceBreathingTitle": "Breathing Exercises",
+  "emergencyResourceBreathingSubtitle": "Quick techniques to manage anxiety",
+  "emergencyResourceGroundingTitle": "Grounding Techniques",
+  "emergencyResourceGroundingSubtitle": "Stay present during difficult moments",
+  "emergencyResourceSafetyTitle": "Safety Planning",
+  "emergencyResourceSafetySubtitle": "Create your personal crisis plan",
+  "incomeSetupTitle": "Income Setup",
+  "incomeSetupHeading": "Set up your income",
+  "incomeSetupSubtitle": "Help us understand your financial situation",
+  "incomePrimarySourceLabel": "Primary Income Source",
+  "incomeSourceSalary": "Salary",
+  "incomeSourceBusiness": "Business",
+  "incomeSourceFreelance": "Freelance",
+  "incomeSourcePension": "Pension",
+  "incomeSourceOther": "Other",
+  "incomeAmountLabel": "Income Amount",
+  "incomeAmountPlaceholder": "RWF 5,000,000",
+  "incomeAmountValidation": "Please enter your income amount",
+  "incomeFrequencyLabel": "Income Frequency",
+  "incomeFrequencyWeekly": "Weekly",
+  "incomeFrequencyBiWeekly": "Bi-weekly",
+  "incomeFrequencyMonthly": "Monthly",
+  "incomeFrequencyAnnually": "Annually",
+  "incomeAdditionalLabel": "Additional Income (Optional)",
+  "incomeAdditionalPlaceholder": "RWF 0",
+  "incomeAdditionalHelper": "Include any side income, investments, or other sources",
+  "incomeSaveButton": "Save Income",
+  "incomeSaveSuccess": "Income information saved successfully",
+  "savingsTitle": "Your Savings Goals",
+  "savingsAddGoal": "Add Goal",
+  "savingsGoalEmergencyFund": "Emergency Fund",
+  "savingsGoalNewUte": "New Ute",
+  "savingsGoalHolidayTrip": "Holiday Trip",
+  "savingsGoalCompleteLabel": "Complete",
+  "savingsGoalProgressLabel": "Progress",
+  "savingsGoalCurrentLabel": "Current",
+  "savingsGoalTargetLabel": "Target",
+  "savingsGoalCompleted": "Goal Completed!",
+  "transactionsAddTitle": "Add Transaction",
+  "transactionsTypeExpense": "Expense",
+  "transactionsTypeIncome": "Income",
+  "transactionsAmountLabel": "Amount",
+  "transactionsAmountPlaceholder": "RWF 0.00",
+  "transactionsAmountValidation": "Please enter an amount",
+  "transactionsCategoryLabel": "Category",
+  "transactionsCategoryShopping": "Shopping",
+  "transactionsCategoryBills": "Bills",
+  "transactionsCategoryEntertainment": "Entertainment",
+  "transactionsCategoryOther": "Other",
+  "transactionsCategoryIncome": "Income",
+  "transactionsDescriptionLabel": "Description",
+  "transactionsDescriptionPlaceholder": "e.g. Lunch with team",
+  "transactionsDateLabel": "Date",
+  "transactionsDateToday": "Today",
+  "transactionsSaveButton": "Save Transaction",
+  "transactionsSaveSuccess": "Transaction saved successfully",
+  "transactionsListTitle": "All Transactions",
+  "transactionsSectionToday": "Today",
+  "transactionsSectionYesterday": "Yesterday",
+  "transactionsSectionWeek": "This Week",
+  "transactionsDescriptionLunchCafe": "Lunch at Cafe",
+  "transactionsDescriptionFuel": "Fuel",
+  "transactionsDescriptionGroceries": "Groceries",
+  "transactionsDescriptionSalary": "Salary",
+  "transactionsDescriptionMovieTickets": "Movie Tickets",
+  "transactionsDescriptionElectricityBill": "Electricity Bill",
+  "transactionsDescriptionPhoneBill": "Phone Bill",
+  "transactionsTimeLunchCafe": "12:30 PM",
+  "transactionsTimeFuel": "09:15 AM",
+  "transactionsTimeGroceries": "06:45 PM",
+  "transactionsTimeSalary": "09:00 AM",
+  "transactionsTimeMovieTickets": "Mon 7:30 PM",
+  "transactionsTimeElectricityBill": "Mon 2:00 PM",
+  "transactionsTimePhoneBill": "Sun 10:00 AM",
+  "learningCertificateScreenTitle": "Certificate Earned",
+  "learningCertificateCongrats": "Congratulations!",
+  "learningCertificateProgramName": "RealWorks Employee Assistance Program",
+  "learningCertificateBadgeLabel": "CERTIFICATE",
+  "learningCertificateAwardedTo": "Awarded to {name}",
+  "@learningCertificateAwardedTo": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "learningCertificateDownload": "Download Certificate",
+  "learningCertificateShare": "Share to Profile",
+  "learningCertificateDownloadedMessage": "{title} downloaded",
+  "@learningCertificateDownloadedMessage": {
+    "placeholders": {
+      "title": {}
+    }
+  },
+  "learningCertificateSharedMessage": "{title} shared to profile",
+  "@learningCertificateSharedMessage": {
+    "placeholders": {
+      "title": {}
+    }
+  },
+  "learningCertificateDefaultTitle": "Heavy Machinery Safety",
+  "learningCertificateDefaultSubtitle": "Completed: 15 Oct 2023",
+  "learningCertificateFirstAidTitle": "First Aid Basics",
+  "learningCertificateFirstAidSubtitle": "Completed: 02 Sep 2023",
+  "learningHubTitle": "Learning & Training",
+  "learningHubSubtitle": "Expand your skills and knowledge",
+  "learningHubCategoryAll": "All",
+  "learningHubCategorySafety": "Safety",
+  "learningHubCategoryFinance": "Finance",
+  "learningHubCategoryWellness": "Wellness",
+  "learningHubCategorySkills": "Skills",
+  "learningHubCertificatesHeading": "My Certificates",
+  "learningCourseAdvancedSafetyTitle": "Advanced Site Safety",
+  "learningCourseAdvancedSafetyDuration": "3h 15m",
+  "learningCourseFinancialPlanningTitle": "Financial Planning 101",
+  "learningCourseFinancialPlanningDuration": "1h 30m",
+  "learningCourseMindfulnessTitle": "Mindfulness at Work",
+  "learningCourseMindfulnessDuration": "45m",
+  "learningCourseManagingDebtTitle": "Managing Debt",
+  "learningCourseManagingDebtDuration": "2h 00m",
+  "learningHubCourseOpening": "Opening: {title}",
+  "@learningHubCourseOpening": {
+    "placeholders": {
+      "title": {}
+    }
+  },
+  "selfAssessmentScreenTitle": "Wellness Check-In",
+  "selfAssessmentProgressLabel": "Question {current} of {total}",
+  "@selfAssessmentProgressLabel": {
+    "placeholders": {
+      "current": {},
+      "total": {}
+    }
+  },
+  "selfAssessmentProgressPercent": "{percent}%",
+  "@selfAssessmentProgressPercent": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "selfAssessmentQuestionStress": "How often have you felt stressed in the past week?",
+  "selfAssessmentQuestionSleepQuality": "How would you rate your sleep quality?",
+  "selfAssessmentQuestionOverwhelmed": "Do you feel overwhelmed by daily tasks?",
+  "selfAssessmentOptionNever": "Never",
+  "selfAssessmentOptionRarely": "Rarely",
+  "selfAssessmentOptionSometimes": "Sometimes",
+  "selfAssessmentOptionOften": "Often",
+  "selfAssessmentOptionVeryOften": "Very Often",
+  "selfAssessmentOptionExcellent": "Excellent",
+  "selfAssessmentOptionGood": "Good",
+  "selfAssessmentOptionFair": "Fair",
+  "selfAssessmentOptionPoor": "Poor",
+  "selfAssessmentOptionAlways": "Always",
+  "selfAssessmentNextQuestion": "Next Question",
+  "selfAssessmentComplete": "Complete Assessment",
+  "selfAssessmentCompletedMessage": "Assessment completed!",
+  "aboutHelpScreenTitle": "About & Help",
+  "aboutHelpAppName": "RealWorks EAP",
+  "aboutHelpVersionLabel": "Version {version}",
+  "@aboutHelpVersionLabel": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "aboutHelpAboutSectionTitle": "About This App",
+  "aboutHelpAboutDescription": "RealWorks Employee Assistance Program provides comprehensive support for your wellbeing, financial literacy, mental health, and professional development. Access counseling, learning resources, and tools to help you thrive at work and in life.",
+  "aboutHelpSupportSectionTitle": "Help & Support",
+  "aboutHelpContactSupportTitle": "Contact Support",
+  "aboutHelpContactSupportSubtitle": "24/7 helpline available",
+  "aboutHelpEmailUsTitle": "Email Us",
+  "aboutHelpEmailUsSubtitle": "support@realworks-eap.com",
+  "aboutHelpFaqTitle": "FAQ",
+  "aboutHelpFaqSubtitle": "Frequently asked questions",
+  "aboutHelpReportProblemTitle": "Report a Problem",
+  "aboutHelpReportProblemSubtitle": "Help us improve the app",
+  "aboutHelpLegalSectionTitle": "Legal",
+  "commonTermsOfService": "Terms of Service",
+  "commonPrivacyPolicy": "Privacy Policy",
+  "commonDataProtection": "Data Protection",
+  "aboutHelpFooterText": "© 2024 RealWorks EAP. All rights reserved.",
+  "settingsScreenTitle": "Settings",
+  "settingsSectionNotificationsTitle": "Notifications",
+  "settingsEnableNotificationsTitle": "Enable Notifications",
+  "settingsEnableNotificationsSubtitle": "Receive app notifications",
+  "settingsPushNotificationsTitle": "Push Notifications",
+  "settingsPushNotificationsSubtitle": "Get notified on your device",
+  "settingsEmailNotificationsTitle": "Email Notifications",
+  "settingsEmailNotificationsSubtitle": "Receive updates via email",
+  "settingsSectionAppearanceTitle": "Appearance",
+  "settingsDarkModeTitle": "Dark Mode",
+  "settingsDarkModeSubtitle": "Use dark theme",
+  "settingsSectionAccountTitle": "Account",
+  "settingsChangePasswordTitle": "Change Password",
+  "settingsPrivacySettingsTitle": "Privacy Settings",
+  "settingsSecurityTitle": "Security",
+  "settingsSectionSupportTitle": "Support",
+  "commonHelpCenter": "Help Center",
+  "commonSendFeedback": "Send Feedback",
+  "settingsAppVersion": "RealWorks EAP v{version}",
+  "@settingsAppVersion": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "notificationsScreenTitle": "Notifications",
+  "notificationsMarkAllRead": "Mark all read",
+  "notificationsAppointmentTitle": "Upcoming Appointment",
+  "notificationsAppointmentMessage": "Your appointment with Dr. Evans is tomorrow at 2:00 PM",
+  "notificationsAppointmentTime": "2 hours ago",
+  "notificationsArticleTitle": "New Article Available",
+  "notificationsArticleMessage": "Check out \"Managing Work Stress in a Fast-Paced Environment\"",
+  "notificationsArticleTime": "5 hours ago",
+  "notificationsGoalTitle": "Goal Achievement!",
+  "notificationsGoalMessage": "Congratulations! You completed your weekly wellness goal",
+  "notificationsGoalTime": "1 day ago",
+  "notificationsWellbeingTitle": "Wellbeing Score Updated",
+  "notificationsWellbeingMessage": "Your wellbeing score improved by 5 points this week",
+  "notificationsWellbeingTime": "2 days ago",
+  "adminDashboardTitle": "Admin Dashboard",
+  "adminDashboardPeriodLast7Days": "Last 7 Days",
+  "adminDashboardPeriodLast30Days": "Last 30 Days",
+  "adminDashboardPeriodAllTime": "All Time",
+  "adminDashboardStatActiveUsers": "Active Users",
+  "adminDashboardStatCompletedSessions": "Completed Sessions",
+  "adminDashboardTopResourceLabel": "Top Used Resource",
+  "adminDashboardTopResourceMeditation": "Meditation",
+  "adminDashboardEngagementRate": "Engagement Rate",
+  "adminDashboardLast30Days": "Last 30 Days",
+  "adminDashboardWeekLabel": "Week {week}",
+  "@adminDashboardWeekLabel": {
+    "placeholders": {
+      "week": {}
+    }
+  },
+  "adminDashboardSessionCompletion": "Session Completion by Category",
+  "adminDashboardCategoryStress": "Stress",
+  "adminDashboardCategoryAnxiety": "Anxiety",
+  "adminDashboardCategorySleep": "Sleep",
+  "adminDashboardCategoryFocus": "Focus",
+  "adminDashboardExport": "Export",
+  "adminDashboardExporting": "Exporting data...",
+  "profileScreenTitle": "Profile",
+  "profileDefaultName": "User",
+  "profileDefaultEmail": "user@example.com",
+  "profileOptionEditProfile": "Edit Profile",
+  "profileOptionHealthRecords": "Health Records",
+  "profileOptionCounselingHistory": "Counseling History",
+  "profileOptionFinancialGoals": "Financial Goals",
+  "profileOptionNotifications": "Notifications",
+  "profileOptionHelpSupport": "Help & Support",
+  "profileOptionAbout": "About",
+  "profileLogout": "Logout",
+  "aiCompanionNewChatTitle": "New Chat",
+  "aiCompanionPromptHeadline": "Ask me anything about your wellbeing",
+  "aiCompanionSuggestionStress": "Feeling stressed after a long shift?",
+  "aiCompanionSuggestionBudget": "How can I budget my earnings better?",
+  "commonMessageInputHint": "Type your message...",
+  "aiCompanionTitle": "AI Companion",
+  "aiCompanionStatusOnline": "Online",
+  "aiCompanionSampleUserMessage": "I'm feeling stressed today.",
+  "aiCompanionSampleCoachPrompt": "I'm here to listen. Tell me more about what's on your mind.",
+  "aiCompanionSampleCoachFollowup": "I understand. Let's talk through this together.",
+  "aiCompanionHistoryNewChat": "New Chat",
+  "aiCompanionHistoryRecentChats": "Recent Chats",
+  "aiCompanionHistoryTopicShiftFatigue": "Managing Shift Work Fatigue",
+  "aiCompanionHistoryPreviewShiftFatigue": "You: What are some tips for better sleep during t...",
+  "aiCompanionHistoryTopicBudgeting": "Budgeting Strategies for Miners",
+  "aiCompanionHistoryPreviewBudgeting": "AI: Creating a detailed budget is the first step. L...",
+  "aiCompanionHistoryTopicConflict": "Conflict Resolution with Co-workers",
+  "aiCompanionHistoryPreviewConflict": "You: How do I talk to a colleague about safety co...",
+  "aiCompanionHistoryTopicBenefits": "Understanding EAP Benefits",
+  "aiCompanionHistoryPreviewBenefits": "AI: Your EAP provides access to confidential cou...",
+  "aiCompanionHistoryTimeMorning": "10:42 AM",
+  "aiCompanionHistoryTimeYesterday": "Yesterday",
+  "aiCompanionHistoryTimeDateOne": "02/11/23",
+  "aiCompanionHistoryTimeDateTwo": "01/11/23",
+  "navHome": "Home",
+  "navTopics": "Topics",
+  "navChatbot": "Chatbot",
+  "navProfile": "Profile",
+  "aiCompanionGreeting": "Hi, {name}.",
+  "@aiCompanionGreeting": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "aiCompanionWelcomeSubtitle": "Your confidential wellbeing partner is here to help.",
+  "aiCompanionAskAnythingCard": "Ask me anything...",
+  "aiCompanionCategoryCounseling": "Confidential Counseling",
+  "aiCompanionCategoryFinancial": "Financial Planning",
+  "aiCompanionCategorySafety": "Safety Guideline Queries",
+  "aiCompanionSuggestedTitle": "Suggested for You",
+  "aiCompanionSuggestionShiftFatigue": "How to manage shift work fatigue?",
+  "aiCompanionSuggestionStressTips": "Tips for managing stress on site.",
+  "aiCompanionSuggestionBudgeting": "What are some good budgeting strategies?",
+  "aiCompanionThinkingMessage": "Your AI companion is thinking...",
+  "aiCompanionTipBreathing": "Tip: Taking three deep breaths can help calm your nervous system."
+  ,"commonLearnMore": "Learn More"
+  ,"environmentalScreenTitle": "Environmental Wellbeing"
+  ,"environmentalChallengeTracker": "Challenge Tracker"
+  ,"environmentalChallengeHeadline": "Complete 3 eco-tasks this week"
+  ,"environmentalChallengeDescription": "Track your progress and make a positive impact on the environment."
+  ,"environmentalThisWeek": "This Week's Challenge"
+  ,"environmentalProgress": "1/3 Complete"
+  ,"environmentalTipsTitle": "Tips for a Greener Routine"
+  ,"environmentalTipReduceWasteTitle": "Reduce Your Waste"
+  ,"environmentalTipReduceWasteDescription": "Learn simple ways to minimize your daily waste."
+  ,"environmentalTipConserveWaterTitle": "Conserve Water"
+  ,"environmentalTipConserveWaterDescription": "Discover easy tricks to save water at home."
+  ,"environmentalTipSaveEnergyTitle": "Save Energy at Home"
+  ,"environmentalTipSaveEnergyDescription": "Cut down on your electricity consumption effortlessly."
+  ,"environmentalTipSustainableTransportTitle": "Choose Sustainable Transport"
+  ,"environmentalTipSustainableTransportDescription": "Opt for greener ways to get around town."
+  ,"srhScreenTitle": "SRH & Family Planning"
+  ,"srhCardContraceptionTitle": "Understanding Contraception"
+  ,"srhCardContraceptionSubtitle": "Explore different methods and find what's right for you."
+  ,"srhCardFamilyPlanningTitle": "Planning for a Family"
+  ,"srhCardFamilyPlanningSubtitle": "Resources and support for your journey to parenthood."
+  ,"srhCardMensHealthTitle": "Men's Reproductive Health"
+  ,"srhCardMensHealthSubtitle": "Information on health, wellness, and preventative care."
+  ,"srhCardWomensHealthTitle": "Women's Reproductive Health"
+  ,"srhCardWomensHealthSubtitle": "Guidance on cycles, health screenings, and more."
+  ,"counselorBookingTitle": "Book a Session"
+  ,"counselorBookingCounselorName": "Dr. Sarah Johnson"
+  ,"counselorBookingCounselorSpecialty": "Clinical Psychologist"
+  ,"counselorBookingRatingLabel": "{rating} ({count} reviews)"
+  ,"@counselorBookingRatingLabel": {
+    "placeholders": {
+      "rating": {},
+      "count": {}
+    }
+  }
+  ,"counselorBookingSelectDate": "Select Date"
+  ,"counselorBookingAvailableSlots": "Available Time Slots"
+  ,"counselorBookingDateLabel": "{day}\n{date}"
+  ,"@counselorBookingDateLabel": {
+    "placeholders": {
+      "day": {},
+      "date": {}
+    }
+  }
+  ,"counselorBookingWeekdayMon": "Mon"
+  ,"counselorBookingWeekdayTue": "Tue"
+  ,"counselorBookingWeekdayWed": "Wed"
+  ,"counselorBookingWeekdayThu": "Thu"
+  ,"counselorBookingWeekdayFri": "Fri"
+  ,"counselorBookingConfirm": "Confirm Booking"
+  ,"counselorBookingSuccess": "Session booked successfully!"
+  ,"sessionHistoryTitle": "Session History"
+  ,"sessionHistoryUpcoming": "Upcoming Sessions"
+  ,"sessionHistoryPast": "Past Sessions"
+  ,"sessionHistoryStatusUpcoming": "Upcoming"
+  ,"sessionHistoryStatusCompleted": "Completed"
+  ,"sessionHistoryDateOne": "Monday, Nov 13"
+  ,"sessionHistoryDateTwo": "Friday, Nov 3"
+  ,"sessionHistoryDateThree": "Monday, Oct 23"
+  ,"sessionHistoryDateFour": "Wednesday, Oct 11"
+  ,"sessionHistoryTimeMorning": "10:00 AM"
+  ,"sessionHistoryTimeAfternoon": "02:00 PM"
+  ,"sessionHistoryTimeLateAfternoon": "03:00 PM"
+  ,"sessionHistoryCancel": "Cancel"
+  ,"sessionHistoryJoin": "Join"
+  ,"sessionHistoryBookSession": "Book Session"
+  ,"chatResourcesTitle": "Resources"
+  ,"chatResourcesRecommended": "Recommended Resources"
+  ,"chatResourcesArticleStress": "Managing Stress at Work"
+  ,"chatResourcesArticleFinancialResilience": "Building Financial Resilience"
+  ,"chatResourcesArticleBreathing": "Mindful Breathing Exercises"
+  ,"chatResourcesArticleSleep": "Sleep Better with Shift Work"
+  ,"chatResourcesArticleConflict": "Conflict Resolution Tips"
+  ,"commonCategoryMentalHealth": "Mental Health"
+  ,"commonCategoryFinance": "Finance"
+  ,"commonCategoryWellness": "Wellness"
+  ,"commonCategoryHealth": "Health"
+  ,"commonCategoryRelationships": "Relationships"
+  ,"commonDurationMinutesRead": "{minutes} min read"
+  ,"@commonDurationMinutesRead": {
+    "placeholders": {
+      "minutes": {}
+    }
+  }
+  ,"commonDurationMinutes": "{minutes} min"
+  ,"@commonDurationMinutes": {
+    "placeholders": {
+      "minutes": {}
+    }
+  }
+  ,"chatResourcesCategoryDuration": "{category} • {duration}"
+  ,"@chatResourcesCategoryDuration": {
+    "placeholders": {
+      "category": {},
+      "duration": {}
+    }
+  }
+  ,"chatbotTopicsTitle": "Choose a Topic"
+  ,"chatbotTopicsPrompt": "What would you like to talk about?"
+  ,"chatbotTopicMentalWellbeingTitle": "Mental Wellbeing"
+  ,"chatbotTopicMentalWellbeingSubtitle": "Stress, anxiety, and emotional health"
+  ,"chatbotTopicFinancialPlanningTitle": "Financial Planning"
+  ,"chatbotTopicFinancialPlanningSubtitle": "Budgeting, saving, and money management"
+  ,"chatbotTopicPhysicalHealthTitle": "Physical Health"
+  ,"chatbotTopicPhysicalHealthSubtitle": "Exercise, nutrition, and wellness"
+  ,"chatbotTopicWorkLifeTitle": "Work-Life Balance"
+  ,"chatbotTopicWorkLifeSubtitle": "Managing shift work and time"
+  ,"chatbotTopicFamilyTitle": "Family & Relationships"
+  ,"chatbotTopicFamilySubtitle": "Support for family matters"
+  ,"chatbotTopicLearningTitle": "Learning & Development"
+  ,"chatbotTopicLearningSubtitle": "Skills training and education"
+  ,"goalSetupTitle": "Create Savings Goal"
+  ,"goalSetupHeading": "Set your financial goal"
+  ,"goalSetupDescription": "Track your progress towards achieving your financial objectives"
+  ,"goalSetupFieldName": "Goal Name"
+  ,"goalSetupHintName": "e.g. Emergency Fund, New Car"
+  ,"goalSetupFieldTargetAmount": "Target Amount"
+  ,"goalSetupHintTargetAmount": "RWF 5,625,000"
+  ,"goalSetupFieldCurrentAmount": "Current Amount (Optional)"
+  ,"goalSetupHintCurrentAmount": "RWF 0"
+  ,"goalSetupFieldTargetDate": "Target Date"
+  ,"goalSetupErrorName": "Please enter a goal name"
+  ,"goalSetupErrorTargetAmount": "Please enter a target amount"
+  ,"goalSetupCreate": "Create Goal"
+  ,"goalSetupSuccess": "Goal created successfully"
+  ,"expenseCategoriesTitle": "Expense Categories"
+  ,"expenseCategoriesHeading": "Set up your expense categories"
+  ,"expenseCategoriesDescription": "Choose the categories that match your spending habits"
+  ,"expenseCategoriesButton": "Save Categories"
+  ,"expenseCategoriesSuccess": "Categories saved successfully"
+  ,"expenseCategoryFood": "Food"
+  ,"expenseCategoryTransport": "Transport"
+  ,"expenseCategoryShopping": "Shopping"
+  ,"expenseCategoryHousing": "Housing"
+  ,"expenseCategoryHealthcare": "Healthcare"
+  ,"expenseCategoryEducation": "Education"
+  ,"expenseCategoryEntertainment": "Entertainment"
+  ,"expenseCategoryFitness": "Fitness"
+  ,"financialLiteracyTitle": "Financial Literacy"
+  ,"financialLiteracyHeroTitle": "Build Financial Confidence"
+  ,"financialLiteracyHeroDescription": "Learn essential financial skills to manage your money, plan for the future, and achieve your goals."
+  ,"financialLiteracyFeaturedTitle": "Featured Courses"
+  ,"financialLiteracyFeaturedSubtitle": "Start learning today"
+  ,"financialCourseBudgetingTitle": "Budgeting Basics"
+  ,"financialCourseBudgetingDescription": "Learn how to create and stick to a budget"
+  ,"financialCourseSavingTitle": "Saving Strategies"
+  ,"financialCourseSavingDescription": "Build an emergency fund and save for goals"
+  ,"financialCourseCreditTitle": "Understanding Credit"
+  ,"financialCourseCreditDescription": "How credit scores work and why they matter"
+  ,"financialCourseInvestingTitle": "Investing 101"
+  ,"financialCourseInvestingDescription": "Introduction to stocks, bonds, and retirement"
+  ,"financialCourseLevelBeginner": "Beginner"
+  ,"financialCourseLevelIntermediate": "Intermediate"
+  ,"financialCourseProgress": "{percent}% complete"
+  ,"@financialCourseProgress": {
+    "placeholders": {
+      "percent": {}
+    }
+  }
+  ,"financialArticlesTitle": "Articles & Resources"
+  ,"financialArticleReduceExpenses": "5 Ways to Reduce Monthly Expenses"
+  ,"financialArticleUnderstandingPaycheck": "Understanding Your Paycheck"
+  ,"financialArticleRetirementTwenties": "Planning for Retirement in Your 20s"
+  ,"commonCategoryBudgeting": "Budgeting"
+  ,"commonCategoryIncome": "Income"
+  ,"commonCategoryInvesting": "Investing"
+  ,"altHomeGreeting": "Good morning, {name}"
+  ,"@altHomeGreeting": {
+    "placeholders": {
+      "name": {}
+    }
+  }
+  ,"altHomeSummary": "Here's your wellbeing summary"
+  ,"altHomeScoreLabel": "Your Wellbeing Score"
+  ,"altHomeScoreTrend": "+{percent}% this week"
+  ,"@altHomeScoreTrend": {
+    "placeholders": {
+      "percent": {}
+    }
+  }
+  ,"altHomeScoreDescription": "Great progress! Your consistent mindfulness exercises are paying off."
+  ,"altHomeQuickAccess": "Quick Access"
+  ,"commonQuickAccessCounseling": "Counseling"
+  ,"commonQuickAccessFinancialAid": "Financial Aid"
+  ,"commonQuickAccessLegal": "Legal"
+  ,"altHomeRecommended": "Recommended For You"
+  ,"altHomeRecommendationMeditationTitle": "Start a guided meditation"
+  ,"altHomeRecommendationMeditationSubtitle": "5-min session to find calm"
+  ,"altHomeRecommendationResilienceTitle": "Read: Building Resilience"
+  ,"altHomeRecommendationResilienceSubtitle": "Tips for overcoming challenges"
+  ,"altHomeRecommendationCounselorTitle": "Connect with a counselor"
+  ,"altHomeRecommendationCounselorSubtitle": "Book a confidential session"
+  ,"navDiscover": "Discover"
+  ,"navSupport": "Support"
+  ,"altSplashTagline": "Empowering wellbeing and\nresilience."
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:realworks_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
@@ -10,10 +11,12 @@ class SavingsGoalsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       appBar: AppBar(
-        title: const Text('Your Savings Goals'),
+        title: Text(l10n.savingsTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -24,9 +27,9 @@ class SavingsGoalsScreen extends StatelessWidget {
               // Add new goal
             },
             icon: const Icon(Icons.add_circle_outline, color: AppColors.primary),
-            label: const Text(
-              'Add Goal',
-              style: TextStyle(color: AppColors.primary),
+            label: Text(
+              l10n.savingsAddGoal,
+              style: const TextStyle(color: AppColors.primary),
             ),
           ),
         ],
@@ -35,21 +38,24 @@ class SavingsGoalsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(AppSpacing.lg),
         children: [
           _buildGoalCard(
-            title: 'Emergency Fund',
+            context,
+            title: l10n.savingsGoalEmergencyFund,
             current: 3750,
             target: 5000,
             progress: 0.75,
           ),
           const SizedBox(height: AppSpacing.md),
           _buildGoalCard(
-            title: 'New Ute',
+            context,
+            title: l10n.savingsGoalNewUte,
             current: 16000,
             target: 40000,
             progress: 0.40,
           ),
           const SizedBox(height: AppSpacing.md),
           _buildGoalCard(
-            title: 'Holiday Trip',
+            context,
+            title: l10n.savingsGoalHolidayTrip,
             current: 8000,
             target: 8000,
             progress: 1.0,
@@ -60,13 +66,15 @@ class SavingsGoalsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildGoalCard({
+  Widget _buildGoalCard(
+    BuildContext context, {
     required String title,
     required double current,
     required double target,
     required double progress,
     bool isCompleted = false,
   }) {
+    final l10n = AppLocalizations.of(context)!;
     final percentage = (progress * 100).toInt();
 
     return AppCard(
@@ -113,9 +121,9 @@ class SavingsGoalsScreen extends StatelessWidget {
                             color: AppColors.primary,
                           ),
                         ),
-                        const Text(
-                          'Complete',
-                          style: TextStyle(
+                        Text(
+                          l10n.savingsGoalCompleteLabel,
+                          style: const TextStyle(
                             fontSize: 14,
                             color: AppColors.textLight,
                           ),
@@ -133,9 +141,9 @@ class SavingsGoalsScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Progress',
-                      style: TextStyle(
+                    Text(
+                      l10n.savingsGoalProgressLabel,
+                      style: const TextStyle(
                         fontSize: 14,
                         color: AppColors.textLight,
                       ),
@@ -170,16 +178,16 @@ class SavingsGoalsScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Current',
-                    style: TextStyle(
+                  Text(
+                    l10n.savingsGoalCurrentLabel,
+                    style: const TextStyle(
                       fontSize: 12,
                       color: AppColors.textLight,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '\$${current.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
+                    'RWF ${current.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -191,16 +199,16 @@ class SavingsGoalsScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text(
-                    'Target',
-                    style: TextStyle(
+                  Text(
+                    l10n.savingsGoalTargetLabel,
+                    style: const TextStyle(
                       fontSize: 12,
                       color: AppColors.textLight,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '\$${target.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
+                    'RWF ${target.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -229,8 +237,8 @@ class SavingsGoalsScreen extends StatelessWidget {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    'Goal Completed!',
-                    style: TextStyle(
+                    l10n.savingsGoalCompleted,
+                    style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color: AppColors.success,

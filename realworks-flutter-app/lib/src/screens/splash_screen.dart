@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:realworks_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
@@ -51,6 +52,8 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       body: Stack(
@@ -104,34 +107,29 @@ class _SplashScreenState extends State<SplashScreen>
                         shape: BoxShape.circle,
                       ),
                       child: Center(
-                        child: Container(
-                          width: 200,
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.trending_up,
-                            size: 100,
-                            color: AppColors.white,
+                        child: ClipOval(
+                          child: Image.asset(
+                            'assets/logo.jpeg',
+                            width: 180,
+                            height: 180,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
                     ),
                     const SizedBox(height: AppSpacing.xl),
-                    const Text(
-                      'RealWorks',
-                      style: TextStyle(
+                    Text(
+                      l10n.splashBrandName,
+                      style: const TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
                         color: AppColors.textDark,
                       ),
                     ),
                     const SizedBox(height: AppSpacing.sm),
-                    const Text(
-                      'Employee Assistance Program',
-                      style: TextStyle(
+                    Text(
+                      l10n.splashTagline,
+                      style: const TextStyle(
                         fontSize: 14,
                         color: AppColors.textLight,
                       ),

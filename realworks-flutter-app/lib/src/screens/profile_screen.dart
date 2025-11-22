@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:realworks_app/l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../widgets/app_card.dart';
-import '../services/mock_auth_service.dart';
+import '../services/supabase_auth_service.dart';
+import '../services/supabase_profile_service.dart';
 
 /// Profile screen showing user information
 class ProfileScreen extends ConsumerStatefulWidget {
@@ -15,8 +17,8 @@ class ProfileScreen extends ConsumerStatefulWidget {
 }
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
-  String _userName = 'Terry';
-  String _userEmail = 'terry@example.com';
+  String _userName = '';
+  String _userEmail = '';
 
   @override
   void initState() {
@@ -25,21 +27,29 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   }
 
   Future<void> _loadUserData() async {
-    final authService = ref.read(authServiceProvider);
-    final name = await authService.getUserName();
-    final email = await authService.getUserEmail();
+    final user = ref.read(supabaseAuthProvider).currentUser;
+    final profile = ref.read(supabaseProfileProvider);
     
-    if (mounted) {
-      setState(() {
-        _userName = name ?? 'User';
-        _userEmail = email ?? 'user@example.com';
-      });
+    if (user != null) {
+      final userProfile = await profile.getProfile(user.id);
+      if (mounted) {
+        setState(() {
+          _userName = userProfile?.displayName ?? user.userMetadata?['display_name'] ?? 'User';
+          _userEmail = user.email ?? 'No email';
+        });
+      }
+    } else {
+      if (mounted) {
+        setState(() {
+          _userName = 'User';
+          _userEmail = 'No email';
+        });
+      }
     }
   }
 
   Future<void> _handleLogout() async {
-    final authService = ref.read(authServiceProvider);
-    await authService.logout();
+    await ref.read(supabaseAuthProvider).signOut();
     if (mounted) {
       context.go('/signin');
     }
@@ -47,10 +57,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final displayName = _userName.isNotEmpty ? _userName : l10n.profileDefaultName;
+    final displayEmail =
+        _userEmail.isNotEmpty ? _userEmail : l10n.profileDefaultEmail;
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: Text(l10n.profileScreenTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -79,7 +93,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        _userName.isNotEmpty ? _userName[0].toUpperCase() : 'U',
+                        displayName.isNotEmpty
+                            ? displayName[0].toUpperCase()
+                            : '',
                         style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -90,7 +106,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
-                    _userName,
+                    displayName,
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -99,7 +115,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
-                    _userEmail,
+                    displayEmail,
                     style: const TextStyle(
                       fontSize: 14,
                       color: AppColors.textLight,
@@ -112,7 +128,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             // Profile options
             _buildOptionItem(
               icon: Icons.person_outline,
-              title: 'Edit Profile',
+              title: l10n.profileOptionEditProfile,
               onTap: () {
                 // TODO: Navigate to edit profile
               },
@@ -120,7 +136,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             const SizedBox(height: AppSpacing.sm),
             _buildOptionItem(
               icon: Icons.health_and_safety_outlined,
-              title: 'Health Records',
+              title: l10n.profileOptionHealthRecords,
               onTap: () {
                 // TODO: Navigate to health records
               },
@@ -128,7 +144,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             const SizedBox(height: AppSpacing.sm),
             _buildOptionItem(
               icon: Icons.psychology_outlined,
-              title: 'Counseling History',
+              title: l10n.profileOptionCounselingHistory,
               onTap: () {
                 // TODO: Navigate to counseling history
               },
@@ -136,7 +152,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             const SizedBox(height: AppSpacing.sm),
             _buildOptionItem(
               icon: Icons.account_balance_wallet_outlined,
-              title: 'Financial Goals',
+              title: l10n.profileOptionFinancialGoals,
               onTap: () {
                 // TODO: Navigate to financial goals
               },
@@ -144,13 +160,13 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             const SizedBox(height: AppSpacing.sm),
             _buildOptionItem(
               icon: Icons.notifications_outlined,
-              title: 'Notifications',
+              title: l10n.profileOptionNotifications,
               onTap: () => context.push('/notifications'),
             ),
             const SizedBox(height: AppSpacing.sm),
             _buildOptionItem(
               icon: Icons.help_outline,
-              title: 'Help & Support',
+              title: l10n.profileOptionHelpSupport,
               onTap: () {
                 // TODO: Navigate to help
               },
@@ -158,7 +174,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             const SizedBox(height: AppSpacing.sm),
             _buildOptionItem(
               icon: Icons.info_outline,
-              title: 'About',
+              title: l10n.profileOptionAbout,
               onTap: () {
                 // TODO: Show about dialog
               },
@@ -168,13 +184,13 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             AppCard(
               onTap: _handleLogout,
               color: AppColors.error.withOpacity(0.1),
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.logout, color: AppColors.error),
-                  SizedBox(width: AppSpacing.md),
+                  const Icon(Icons.logout, color: AppColors.error),
+                  const SizedBox(width: AppSpacing.md),
                   Text(
-                    'Logout',
-                    style: TextStyle(
+                    l10n.profileLogout,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: AppColors.error,

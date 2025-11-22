@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:realworks_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
@@ -11,10 +12,12 @@ class TransactionsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.offWhite,
       appBar: AppBar(
-        title: const Text('All Transactions'),
+        title: Text(l10n.transactionsListTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -31,66 +34,66 @@ class TransactionsListScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(AppSpacing.lg),
         children: [
-          const SectionTitle(title: 'Today'),
+          SectionTitle(title: l10n.transactionsSectionToday),
           const SizedBox(height: AppSpacing.sm),
           _buildTransactionItem(
             icon: Icons.restaurant,
-            category: 'Food',
-            description: 'Lunch at Cafe',
+            category: l10n.budgetCategoryFood,
+            description: l10n.transactionsDescriptionLunchCafe,
             amount: -25.50,
-            time: '12:30 PM',
+            time: l10n.transactionsTimeLunchCafe,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTransactionItem(
             icon: Icons.local_gas_station,
-            category: 'Transport',
-            description: 'Fuel',
+            category: l10n.budgetCategoryTransport,
+            description: l10n.transactionsDescriptionFuel,
             amount: -60.00,
-            time: '09:15 AM',
+            time: l10n.transactionsTimeFuel,
           ),
           const SizedBox(height: AppSpacing.lg),
-          const SectionTitle(title: 'Yesterday'),
+          SectionTitle(title: l10n.transactionsSectionYesterday),
           const SizedBox(height: AppSpacing.sm),
           _buildTransactionItem(
             icon: Icons.shopping_bag,
-            category: 'Shopping',
-            description: 'Groceries',
+            category: l10n.transactionsCategoryShopping,
+            description: l10n.transactionsDescriptionGroceries,
             amount: -120.75,
-            time: '06:45 PM',
+            time: l10n.transactionsTimeGroceries,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTransactionItem(
             icon: Icons.account_balance_wallet,
-            category: 'Income',
-            description: 'Salary',
+            category: l10n.transactionsCategoryIncome,
+            description: l10n.transactionsDescriptionSalary,
             amount: 4500.00,
-            time: '09:00 AM',
+            time: l10n.transactionsTimeSalary,
           ),
           const SizedBox(height: AppSpacing.lg),
-          const SectionTitle(title: 'This Week'),
+          SectionTitle(title: l10n.transactionsSectionWeek),
           const SizedBox(height: AppSpacing.sm),
           _buildTransactionItem(
             icon: Icons.movie,
-            category: 'Entertainment',
-            description: 'Movie Tickets',
+            category: l10n.transactionsCategoryEntertainment,
+            description: l10n.transactionsDescriptionMovieTickets,
             amount: -45.00,
-            time: 'Mon 7:30 PM',
+            time: l10n.transactionsTimeMovieTickets,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTransactionItem(
             icon: Icons.receipt_long,
-            category: 'Bills',
-            description: 'Electricity Bill',
+            category: l10n.transactionsCategoryBills,
+            description: l10n.transactionsDescriptionElectricityBill,
             amount: -89.50,
-            time: 'Mon 2:00 PM',
+            time: l10n.transactionsTimeElectricityBill,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTransactionItem(
             icon: Icons.phone_android,
-            category: 'Bills',
-            description: 'Phone Bill',
+            category: l10n.transactionsCategoryBills,
+            description: l10n.transactionsDescriptionPhoneBill,
             amount: -55.00,
-            time: 'Sun 10:00 AM',
+            time: l10n.transactionsTimePhoneBill,
           ),
         ],
       ),
@@ -164,7 +167,7 @@ class TransactionsListScreen extends StatelessWidget {
             ),
           ),
           Text(
-            '${isIncome ? '+' : ''}\$${amount.abs().toStringAsFixed(2)}',
+            'RWF ${amount.abs().toStringAsFixed(2)}',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
